@@ -1,4 +1,4 @@
-# listrello
+# LisTrello
 
 ## Project setup
 ```
