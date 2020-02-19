@@ -28,40 +28,7 @@
 
     <v-content>
       <v-container class="fill-height" fluid>
-        <v-row class="fill-height">
-          <v-col cols="12" md="6">
-            <v-textarea
-              filled
-              name="input"
-              label="Paste Trello JSON Here"
-              v-model="inputJSON"
-              v-on:input="onChangeInput"
-            ></v-textarea>
-          </v-col>
-          <v-col cols="12" md="6" height="100%">
-            <v-card outlined class="pa-2" height="100%">
-              <div v-if="trelloObj" id="trelloOutput">
-                <h1>{{trelloObj.name}}</h1>
-                <a :href="trelloObj.url">{{trelloObj.url}}</a>
-                <br />
-                <span v-if="trelloObj.dateLastActivity">
-                  Last Updated: {{trelloObj.dateLastActivity}}
-                  <br />
-                </span>
-                <div v-for="list in trelloObj.lists" v-bind:key="list.id">
-                  <h2>{{list.name}}</h2>
-                  <div v-for="card in trelloObj.cards" v-bind:key="card.id">
-                    <span v-if="card.idList == list.id">
-                      {{card.name}}
-                      <br />
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div v-else>{{message}}</div>
-            </v-card>
-          </v-col>
-        </v-row>
+        <router-view />
       </v-container>
     </v-content>
     <v-footer color="indigo" app>
