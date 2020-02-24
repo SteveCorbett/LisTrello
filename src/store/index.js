@@ -7,14 +7,9 @@ import actions from './actions'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
   state,
   getters,
   mutations,
   actions
 })
-
-// const { accessToken } = localStorage
-// store.commit('LOGIN', { accessToken })
-
-export default store

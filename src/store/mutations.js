@@ -1,10 +1,10 @@
 import { setDefaultAuthHeader } from "../utils/httpApi"
+
 const mutations = {
-    LOGIN (state, {userToken}) {
-      if (!userToken) return
-      state.trelloUserToken = userToken
-      localStorage.trelloUserToken = userToken
-      setDefaultAuthHeader(userToken)
+    LOGIN (state, payload) {
+      //console.log("mutations LOGIN ", payload);
+      if (!payload) return
+      state.trelloUserToken = payload
     },
     LOGOUT (state) {
       state.trelloUserToken = null 

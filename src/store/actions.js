@@ -1,22 +1,24 @@
-import { auth, board, card } from '../utils/httpApi'
+import { setDefaultAuthHeader } from "../utils/httpApi";
+//import { auth, board, card } from '../utils/httpApi'
+
+const localStorageUserToken = "lisTrelloHash"
 
 const actions = {
-  LOGIN({ commit }, { email, password }) {
-    return auth.login(email, password)
-      .then(({ accessToken }) => commit('LOGIN', { accessToken }))
+  LOGIN({ commit }, token) {
+    //console.log("Action LOGIN: " + token);
+    localStorage.setItem(localStorageUserToken, token);
+    setDefaultAuthHeader(token);
+    commit("LOGIN", token);
   },
-  FETCH_BOARD_LIST ({commit}) {
-    return board.fetch()
-      .then(data => commit('SET_BOARD_LIST', data))
-  },
-  FETCH_BOARD ({commit}, id) {
-    return board.fetch(id)
-      .then(data => commit('SET_BOARD', data))
-  },
-  FETCH_CARD ({commit}, id) {
-    return card.fetch(id)
-      .then(({item}) => commit('SET_CARD', item))
-  },
-}
+  LOADTOKEN({ commit }) {
+    var trelloUserToken = localStorage.getItem(localStorageUserToken);
+      
+    if (trelloUserToken) {
+      //console.log("Action LOADTOKEN: " + trelloUserToken);
+      setDefaultAuthHeader(trelloUserToken);
+      commit("LOGIN", trelloUserToken);
+    }
+  }
+};
 
-export default actions 
+export default actions;

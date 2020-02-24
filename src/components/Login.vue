@@ -38,10 +38,10 @@ export default {
   methods: {
     Login() {
       window.location = "https://trello.com/1" +
-        "/authorize?expiration=1day&name=" + store.state.appName +
+        "/authorize?expiration=1hour&name=" + store.state.appName +
         "&scope=read&response_type=token&key=" +
         store.state.trelloToken +
-        "&return_url=http://localhost:8080/home&response_type=fragment";
+        "&return_url=http://localhost:8080/return&response_type=fragment";
     }
   }
 };

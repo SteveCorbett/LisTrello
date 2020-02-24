@@ -1,6 +1,6 @@
 import axios from "axios";
 import router from "../router";
-import { store } from "../store";
+import store from "../store";
 
 const Unauthorized = 401;
 const onUnauthorized = () => {
@@ -20,7 +20,7 @@ const request = {
     const apiUrl = store.state.trelloApiUrl;
     return axios.post(`${apiUrl + path}`, data);
   },
-   put(path, data) {
+  put(path, data) {
     const apiUrl = store.state.trelloApiUrl;
     return axios.put(`${apiUrl + path}`, data);
   }

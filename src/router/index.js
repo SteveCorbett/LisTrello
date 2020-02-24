@@ -17,7 +17,7 @@ const requireAuth = () => (from, to, next) => {
 };
 
 const doDefault = () => (from, to, next) => {
-  //console.log("DoDefault", from);
+  console.log("DoDefault", from);
   if (from.hash != null && from.hash.startsWith("#token=")) {
     console.log("Set token = " + from.hash.substr(7));
     next("/ListCards");
@@ -41,11 +41,18 @@ export default new VueRouter({
     },
     {
       path: "/login",
+      name: "login",
       component: Login
     },
     {
       path: "/ListCards",
+      name: "listcards",
       component: ListCards
+    },
+    {
+      path: "/return",
+      component: Home,
+      props: (route) => ({ token: route.hash })
     },
     {
       path: "*",
