@@ -1,5 +1,5 @@
 <template>
-  <div>Home found! ({{token}})</div>
+  <div>Loading...</div>
 </template>
 
 <script>
@@ -33,7 +33,7 @@ export default {
         this.LOADTOKEN();
       }
       var token = this.trelloUserToken();
-      console.log("token = " + token);
+      //console.log("token = " + token);
 
       if (!token) {
         this.$router.push("login");

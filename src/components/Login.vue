@@ -40,8 +40,9 @@ export default {
       window.location = "https://trello.com/1" +
         "/authorize?expiration=1hour&name=" + store.state.appName +
         "&scope=read&response_type=token&key=" +
-        store.state.trelloToken +
-        "&return_url=http://localhost:8080/return&response_type=fragment";
+        store.state.trelloKey +
+        "&return_url=" + window.location.protocol + "//" + window.location.host + 
+        "&response_type=fragment";
     }
   }
 };

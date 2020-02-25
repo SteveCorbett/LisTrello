@@ -4,13 +4,18 @@ import store from "../store";
 
 const Unauthorized = 401;
 const onUnauthorized = () => {
-  router.push(`/login?returnPath=${encodeURIComponent(location.pathname)}`);
+  router.push(`/login`);
 };
 
 const request = {
-  get(path) {
-    const apiUrl = store.state.trelloApiUrl;
-    return axios.get(`${apiUrl + path}`).catch(({ response }) => {
+  get(endpoint, query) {
+    var apiUrl = store.state.trelloApiUrl + endpoint +
+        "/?key=" + store.state.trelloKey + 
+        "&token=" + store.state.trelloUserToken;
+    if (query) {
+      apiUrl = apiUrl + query
+    }
+    return axios.get(apiUrl).catch(({ response }) => {
       const { status } = response;
       if (status === Unauthorized) return onUnauthorized();
       throw Error(response);
@@ -26,33 +31,15 @@ const request = {
   }
 };
 
-export const setDefaultAuthHeader = trelloToken => {
-  axios.defaults.headers.common["Authorization"] = trelloToken
-    ? `Bearer ${trelloToken}`
-    : null;
-};
-
-export const auth = {
-  login(email, password) {
-    return request.post("/login", { email, password }).then(({ data }) => data);
+export const boards = {
+  get() {
+    return request.get("/members/me/boards").then(({ data }) => data);
   }
 };
 
 export const board = {
-  fetch(id) {
-    if (id) {
-      return request.get(`/boards/${id}`).then(({ data }) => data);
-    }
-    return request.get("/boards").then(({ data }) => data);
-  },
-  create(title) {
-    return request.post("/boards", { title }).then(({ data }) => data);
-  },
-  update(id, data) {
-    return request.put(`/boards/${id}`, data).then(({ data }) => data);
-  },
-  destroy(id) {
-    return request.delete(`/boards/${id}`);
+  getLists(id) {
+      return request.get(`/boards/${id}/Lists`, "&cards=open").then(({ data }) => data);
   }
 };
 

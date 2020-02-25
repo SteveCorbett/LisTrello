@@ -4,20 +4,12 @@ import VueRouter from "vue-router";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import ListCards from "../components/ListCards";
-import store from "../store";
 
 Vue.use(VueRouter);
 
-const requireAuth = () => (from, to, next) => {
-  console.log("requireAuth", from);
-  if (!store.state.trelloUserToken) {
-    next("/login");
-  }
-  else next();
-};
-
 const doDefault = () => (from, to, next) => {
   console.log("DoDefault", from);
+  console.log(window.location);
   if (from.hash != null && from.hash.startsWith("#token=")) {
     console.log("Set token = " + from.hash.substr(7));
     next("/ListCards");
@@ -37,7 +29,7 @@ export default new VueRouter({
     {
       path: "/",
       component: Home,
-      beforeEnter: requireAuth()
+      props: (route) => ({ token: route.hash })
     },
     {
       path: "/login",
@@ -48,11 +40,6 @@ export default new VueRouter({
       path: "/ListCards",
       name: "listcards",
       component: ListCards
-    },
-    {
-      path: "/return",
-      component: Home,
-      props: (route) => ({ token: route.hash })
     },
     {
       path: "*",
