@@ -9,11 +9,15 @@ const onUnauthorized = () => {
 
 const request = {
   get(endpoint, query) {
-    var apiUrl = store.state.trelloApiUrl + endpoint +
-        "/?key=" + store.state.trelloKey + 
-        "&token=" + store.state.trelloUserToken;
+    var apiUrl =
+      store.state.trelloApiUrl +
+      endpoint +
+      "/?key=" +
+      store.state.trelloKey +
+      "&token=" +
+      store.state.trelloUserToken;
     if (query) {
-      apiUrl = apiUrl + query
+      apiUrl = apiUrl + query;
     }
     return axios.get(apiUrl).catch(({ response }) => {
       const { status } = response;
@@ -33,13 +37,21 @@ const request = {
 
 export const boards = {
   get() {
-    return request.get("/members/me/boards").then(({ data }) => data);
+    return request
+      .get(
+        "/members/me/boards",
+        "&filter=open&fields=name,id,url,dateLastActivity"
+      )
+      .then(({ data }) => data);
   }
 };
 
 export const board = {
   getLists(id) {
-      return request.get(`/boards/${id}/Lists`, "&cards=open").then(({ data }) => data);
+    //console.log("board: " + id);
+    return request
+      .get(`/boards/${id}/Lists`, "&cards=open")
+      .then(({ data }) => data);
   }
 };
 

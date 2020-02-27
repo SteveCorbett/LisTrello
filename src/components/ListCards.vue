@@ -3,16 +3,17 @@
     <v-col cols="12" md="6">
       <v-select
         :items="boardList"
-        label="Select board"
+        :label="boardSelectLabel"
+        :disabled="(boardList.length == 0)"
         item-text="name"
         item-value="id"
         @change="onSelectBoard"
         solo
       ></v-select>
       <v-select
-        v-if="(stateBoardsLists.length > 0)"
+        :disabled="!listAvailable"
         :items="boardsLists()"
-        label="Select list"
+        :label="listSelectLabel"
         item-text="name"
         item-value="id"
         solo
@@ -45,12 +46,11 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 
 export default {
   data: () => ({
     inputJSON: "",
-    trelloObj: null,
     message: "",
     selectAll: [{ name: "Select All", id: "0" }]
   }),
@@ -61,15 +61,29 @@ export default {
   computed: {
     ...mapState({
       boardList: "boards",
+      trelloObj: "currentBoard"
+    }),
+    ...mapGetters({
       stateBoardsLists: "lists"
-    })
+    }),
+    boardSelectLabel() {
+      return this.boardList.length == 0
+        ? "No boards available"
+        : "Select board";
+    },
+    listAvailable() {
+      return this.currentBoard && this.currentBoard.lists.length > 0;
+    },
+    listSelectLabel() {
+      return this.listAvailable ? "Select list" : "No lists available";
+    }
   },
   methods: {
     ...mapActions(["LOADTOKEN", "GET_BOARDS", "GET_LISTS_FOR_BOARD"]),
+
     onSelectBoard(boardId) {
       //console.log("onSelectBoard :", boardId);
       this.GET_LISTS_FOR_BOARD(boardId);
-      this.trelloObj = null;
     },
     boardsLists() {
       switch (this.stateBoardsLists.length) {

@@ -1,4 +1,4 @@
-import { setDefaultAuthHeader } from "../utils/httpApi";
+//import { setDefaultAuthHeader } from "../utils/httpApi";
 
 const mutations = {
   LOGIN(state, payload) {
@@ -9,18 +9,28 @@ const mutations = {
   LOGOUT(state) {
     state.trelloUserToken = null;
     delete localStorage.trelloUserToken;
-    setDefaultAuthHeader(null);
   },
   SET_BOARDS(state, list) {
     if (!list) state.boards = [];
     else state.boards = list.map(board => board);
-    //console.log("state.boards :", state.boards);
+    console.log("state.boards :", state.boards);
+  },
+  SET_CURRENT_BOARD(state, board) {
+    state.currentBoard = {
+      id: board.id,
+      name: board.name,
+      url: board.url,
+      dateLastActivity: board.dateLastActivity,
+      lists: []
+    };
   },
   SET_LISTS(state, list) {
-    if (!list) state.lists = [];
+    if (!list && state.currentBoard) state.currentBoard.lists = [];
     else {
-      state.lists = list.map(board => board);
-      console.log("state.lists :", state.lists);
+      //state.lists = list.map(board => board);
+      if (state.currentBoard)
+        state.currentBoard.lists = list.map(board => board);
+      //console.log("state.lists :", state.lists);
     }
   }
 };

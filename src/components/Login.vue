@@ -14,7 +14,7 @@
               provides us to read your boards, lists and cards.
             </p>
             <p>Selecting the button below will re-direct you to Trello.com.</p>
-            <p>Once you have signed in to Trello you will be re-directed back here.</p>
+            <p>Once you have signed in to Trello you will be re-directed back to the goodies awaiting you here.</p>
           </div>
         </v-card-text>
         <v-card-actions>
