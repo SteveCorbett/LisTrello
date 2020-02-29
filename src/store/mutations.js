@@ -1,5 +1,3 @@
-//import { setDefaultAuthHeader } from "../utils/httpApi";
-
 const mutations = {
   LOGIN(state, payload) {
     //console.log("mutations LOGIN ", payload);
@@ -13,23 +11,25 @@ const mutations = {
   SET_BOARDS(state, list) {
     if (!list) state.boards = [];
     else state.boards = list.map(board => board);
-    console.log("state.boards :", state.boards);
+    //console.log("state.boards :", state.boards);
   },
   SET_CURRENT_BOARD(state, board) {
-    state.currentBoard = {
-      id: board.id,
-      name: board.name,
-      url: board.url,
-      dateLastActivity: board.dateLastActivity,
-      lists: []
-    };
+    if (!board) {
+      state.currentBoard = {};
+    } else {
+      state.currentBoard = {
+        id: board.id,
+        name: board.name,
+        url: board.url,
+        dateLastActivity: board.dateLastActivity,
+        lists: []
+      };
+    }
   },
   SET_LISTS(state, list) {
-    if (!list && state.currentBoard) state.currentBoard.lists = [];
+    if (!list) state.currentLists = [];
     else {
-      //state.lists = list.map(board => board);
-      if (state.currentBoard)
-        state.currentBoard.lists = list.map(board => board);
+      state.currentLists = list.map(list => list);
       //console.log("state.lists :", state.lists);
     }
   }

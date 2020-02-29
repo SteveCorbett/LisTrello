@@ -23,6 +23,10 @@ const actions = {
     commit("SET_LISTS", null);
     return boards.get().then(data => commit("SET_BOARDS", data));
   },
+  CLEAR_CURRENT_BOARD({ commit }) {
+    commit("SET_CURRENT_BOARD", null);
+    commit("SET_LISTS", null);
+  },
   GET_LISTS_FOR_BOARD({ commit }, boardId) {
     const inputBoard = this.getters["getBoardForId"](boardId);
     //console.log("inputBoard :", inputBoard);

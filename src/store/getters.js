@@ -9,8 +9,8 @@ const getters = {
   boards(state) {
     return state.boards;
   },
-  lists(state) {
-    return (state.currentboard) ? state.currentboard.lists : [];
+  currentLists(state) {
+    return state.currentLists;
   },
   getBoardForId: state => id => {
     const results = state.boards.filter(function (board) { 

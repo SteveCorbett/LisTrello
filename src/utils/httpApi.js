@@ -40,7 +40,7 @@ export const boards = {
     return request
       .get(
         "/members/me/boards",
-        "&filter=open&fields=name,id,url,dateLastActivity"
+        "&filter=open&fields=name,id,url,dateLastActivity,desc"
       )
       .then(({ data }) => data);
   }
@@ -50,7 +50,7 @@ export const board = {
   getLists(id) {
     //console.log("board: " + id);
     return request
-      .get(`/boards/${id}/Lists`, "&cards=open")
+      .get(`/boards/${id}/Lists`, "&cards=open&card_fields=id,name,desc,labels")
       .then(({ data }) => data);
   }
 };
@@ -58,12 +58,6 @@ export const board = {
 export const list = {
   create(data) {
     return request.post(`/lists`, data);
-  },
-  update(id, data) {
-    return request.put(`/lists/${id}`, data).then(({ data }) => data);
-  },
-  destroy(id) {
-    return request.delete(`/lists/${id}`).then(({ data }) => data);
   }
 };
 

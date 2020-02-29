@@ -5,7 +5,7 @@ const state = {
   trelloUserToken: null,
   boards: [],
   currentBoard: null,
-  card: {}
+  currentLists: [],
 };
 
 export default state;

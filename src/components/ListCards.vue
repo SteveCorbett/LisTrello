@@ -9,15 +9,55 @@
         item-value="id"
         @change="onSelectBoard"
         solo
-      ></v-select>
+      >
+        <template v-slot:item="{ item }">
+          <span v-if="item.desc != ''">{{ item.name }}: {{item.desc}}</span>
+          <span v-else>{{ item.name }}</span>
+        </template>
+      </v-select>
       <v-select
         :disabled="!listAvailable"
         :items="boardsLists()"
         :label="listSelectLabel"
+        :value="listValue"
         item-text="name"
         item-value="id"
+        @change="onSelectList"
         solo
       ></v-select>
+      <v-card class="mx-auto">
+        <v-toolbar color="#02F" dark>
+          <v-toolbar-title>Options</v-toolbar-title>
+        </v-toolbar>
+
+        <v-list subheader two-line flat>
+          <v-list-item-group multiple>
+            <v-list-item>
+              <template v-slot:default="{ }">
+                <v-list-item-action>
+                  <v-checkbox v-model="optionLabels" color="primary"></v-checkbox>
+                </v-list-item-action>
+
+                <v-list-item-content>
+                  <v-list-item-title>Show Labels</v-list-item-title>
+                </v-list-item-content>
+              </template>
+            </v-list-item>
+
+            <v-list-item>
+              <template v-slot:default="{ }">
+                <v-list-item-action>
+                  <v-checkbox v-model="optionDescriptions" color="primary"></v-checkbox>
+                </v-list-item-action>
+
+                <v-list-item-content>
+                  <v-list-item-title>Show Card Descriptions</v-list-item-title>
+                </v-list-item-content>
+              </template>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-card>
     </v-col>
     <v-col cols="12" md="6" height="100%">
       <v-card outlined class="pa-2" height="100%">
@@ -31,40 +71,59 @@
           </span>
           <div v-for="list in trelloObj.lists" v-bind:key="list.id">
             <h2>{{list.name}}</h2>
-            <div v-for="card in trelloObj.cards" v-bind:key="card.id">
-              <span v-if="card.idList == list.id">
-                {{card.name}}
+            <div v-for="card in list.cards" v-bind:key="card.id">
+              {{card.name}}
+              <br />
+              <div v-if="optionLabels">
+                <div
+                  v-for="label in card.labels"
+                  v-bind:key="label.id"
+                  :class="label.color + 'Text ml-4'"
+                >{{label.name}}</div>
+              </div>
+              <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3">
+                {{card.desc}}
                 <br />
-              </span>
+              </div>
             </div>
           </div>
         </div>
-        <div v-else>{{message}}</div>
       </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import { mapActions, mapState, mapGetters } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   data: () => ({
-    inputJSON: "",
-    message: "",
-    selectAll: [{ name: "Select All", id: "0" }]
+    listValue: null,
+    selectAll: [{ name: "Select All", id: "0" }],
+    optionLabels: true,
+    optionDescriptions: true
   }),
   mounted() {
     this.LOADTOKEN();
     this.GET_BOARDS();
   },
+  created() {
+    this.CLEAR_CURRENT_BOARD();
+    this.$watch(
+      function() {
+        return this.currentLists;
+      },
+      function() {
+        //console.log("currentLists changed: ", newVal, " | was: ", oldVal);
+        if (this.trelloObj) this.trelloObj.lists = this.currentLists;
+      }
+    );
+  },
   computed: {
     ...mapState({
       boardList: "boards",
-      trelloObj: "currentBoard"
-    }),
-    ...mapGetters({
-      stateBoardsLists: "lists"
+      trelloObj: "currentBoard",
+      currentLists: "currentLists"
     }),
     boardSelectLabel() {
       return this.boardList.length == 0
@@ -72,59 +131,100 @@ export default {
         : "Select board";
     },
     listAvailable() {
-      return this.currentBoard && this.currentBoard.lists.length > 0;
+      console.log(
+        "listAvailable: " + (this.trelloObj && this.currentLists.length > 0)
+      );
+      return this.trelloObj && this.currentLists.length > 0;
     },
     listSelectLabel() {
-      return this.listAvailable ? "Select list" : "No lists available";
+      switch (this.currentLists.length) {
+        case 0:
+          return "No lists available";
+        case 1:
+          return this.currentLists[0].name;
+        case 2:
+          return "Select Both Lists";
+        default:
+          return `Select All ${this.currentLists.length} Lists`;
+      }
     }
   },
   methods: {
-    ...mapActions(["LOADTOKEN", "GET_BOARDS", "GET_LISTS_FOR_BOARD"]),
-
+    ...mapActions([
+      "LOADTOKEN",
+      "CLEAR_CURRENT_BOARD",
+      "GET_BOARDS",
+      "GET_LISTS_FOR_BOARD"
+    ]),
     onSelectBoard(boardId) {
       //console.log("onSelectBoard :", boardId);
       this.GET_LISTS_FOR_BOARD(boardId);
     },
+    onSelectList(listId) {
+      if (listId == "0") {
+        this.trelloObj.lists = this.currentLists;
+      } else
+        this.trelloObj.lists = this.currentLists.filter(list => {
+          return list.id === listId;
+        });
+      //console.log("onSelectList listId: " + listId, this.trelloObj);
+    },
     boardsLists() {
-      switch (this.stateBoardsLists.length) {
+      switch (this.currentLists.length) {
         case 0:
+          this.listValue = null;
           return [];
         case 1:
-          return this.stateBoardsLists;
+          this.listValue = this.currentLists[0].id;
+          return this.currentLists;
         case 2:
-          this.selectAll[0].name = `Select Both Lists`;
-          return this.selectAll.concat(this.stateBoardsLists);
+          this.selectAll[0].name = "Select Both Lists";
+          this.selectAll[0].id = "0";
+          this.listValue = "0";
+          return this.selectAll.concat(this.currentLists);
         default:
-          this.selectAll[0].name = `Select All ${this.stateBoardsLists.length} Lists`;
-          return this.selectAll.concat(this.stateBoardsLists);
-      }
-    },
-    onChangeInput(newText) {
-      this.trelloObj = null;
-      this.message = "";
-      if (newText == "") return;
-      try {
-        var newTrelloObj = JSON.parse(newText);
-        //console.log('It worked!', newTrelloObj);
-        if (
-          !newTrelloObj.name ||
-          !newTrelloObj.url ||
-          !newTrelloObj.lists ||
-          !newTrelloObj.cards
-        ) {
-          this.message = "The input JSON does not appear to be from Trello";
-          return;
-        }
-        this.message = JSON.stringify(newTrelloObj, null, "\t").replace(
-          "\n",
-          "</br>"
-        );
-        this.trelloObj = newTrelloObj;
-      } catch (error) {
-        this.message = "The input does not appear to be valid JSON: " + error;
-        // console.log("Do-oh", error);
+          this.selectAll[0].name = `Select All ${this.currentLists.length} Lists`;
+          this.selectAll[0].id = "0";
+          this.listValue = "0";
+          return this.selectAll.concat(this.currentLists);
       }
     }
   }
 };
 </script>
+
+<style>
+.indented {
+  margin-left: 1em;
+}
+.blackText {
+  color: black;
+}
+.blueText {
+  color: blue;
+}
+.greenText {
+  color: green;
+}
+.limeText {
+  color: lime;
+}
+.orangeText {
+  color: orange;
+}
+.pinkText {
+  color: pink;
+}
+.purpleText {
+  color: purple;
+}
+.redText {
+  color: red;
+}
+.skyText {
+  color: skyblue;
+}
+.yellowText {
+  color: yellow;
+}
+</style>
