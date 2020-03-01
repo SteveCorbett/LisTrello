@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 import Home from "../components/Home";
 import Login from "../components/Login";
+import Logout from "../components/Logout";
 import ListCards from "../components/ListCards";
 
 Vue.use(VueRouter);
@@ -16,12 +17,10 @@ const doDefault = () => (from, to, next) => {
   } else next();
 };
 
-// Initial route needs to check if token exists and if so, test
-// it's still valid and if so go to select boards.
+// Initial route checks if a token exists and if so, 
+// goes to the select board.
 // If not, display a screen saying "log on to Trello"
-// On return from said Trello, test the token.
-// Testing the token could be attempting to read boards,
-// if it fails, reset the token and display log on prompt again
+// On return from said Trello, go to the select board.
 
 export default new VueRouter({
   mode: "history",
@@ -35,6 +34,11 @@ export default new VueRouter({
       path: "/login",
       name: "login",
       component: Login
+    },
+    {
+      path: "/logout",
+      name: "logout",
+      component: Logout
     },
     {
       path: "/ListCards",
