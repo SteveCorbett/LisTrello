@@ -1,23 +1,41 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="lisTrello">
     <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-list-item link v-on="on" @click="LogOut">
+              <v-list-item-action>
+                <v-icon>mdi-repeat</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Log Out/Switch Account</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+          <p>
+            When you log in to Trello, we are given read only access to your account's boards
+            for one hour only. Select this to log out immediately.
+          </p>
+          <p>
+            You may need to do this
+            to switch to using a different Trello account.
+          </p>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-list-item link v-on="on">
+              <v-list-item-action>
+                <v-icon>mdi-contact-mail</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Contact</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+          We're still working on this, check back soon
+        </v-tooltip>
       </v-list>
     </v-navigation-drawer>
 
@@ -39,41 +57,13 @@
 
 <script>
 export default {
-  props: {
-    source: String
-  },
   data: () => ({
-    drawer: false,
-    inputJSON: "",
-    trelloObj: null,
-    message: ""
+    drawer: false
   }),
   methods: {
-    onChangeInput(newText) {
-      this.trelloObj = null;
-      this.message = "";
-      if (newText == "") return;
-      try {
-        var newTrelloObj = JSON.parse(newText);
-        //console.log('It worked!', newTrelloObj);
-        if (
-          !newTrelloObj.name ||
-          !newTrelloObj.url ||
-          !newTrelloObj.lists ||
-          !newTrelloObj.cards
-        ) {
-          this.message = "The input JSON does not appear to be from Trello";
-          return;
-        }
-        this.message = JSON.stringify(newTrelloObj, null, "\t").replace(
-          "\n",
-          "</br>"
-        );
-        this.trelloObj = newTrelloObj;
-      } catch (error) {
-        this.message = "The input does not appear to be valid JSON: " + error;
-        // console.log("Do-oh", error);
-      }
+    LogOut() {
+      this.drawer = false;
+      this.$router.push("Logout");
     }
   }
 };

@@ -11,7 +11,7 @@
               So that we can list your cards you will need to
               sign in to your Trello account. Your details are not 
               available to us apart from a unique token that Trello
-              provides us to read your boards, lists and cards.
+              provides us to read your boards, lists and cards for one hour only.
             </p>
             <p>Selecting the button below will re-direct you to Trello.com.</p>
             <p>Once you have signed in to Trello you will be re-directed back to the goodies awaiting you here.</p>
@@ -29,12 +29,6 @@
 import store from "../store";
 
 export default {
-  mounted() {
-    console.log(
-      `Mounted: this.$route.query: ${this.$route.query}`,
-      this.$route
-    );
-  },
   methods: {
     Login() {
       window.location = "https://trello.com/1" +
