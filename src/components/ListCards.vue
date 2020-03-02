@@ -58,7 +58,9 @@
           </v-list-item-group>
         </v-list>
       </v-card>
+      <v-btn v-print="'#trelloOutput'" class="mt-5" :disabled="false">Print</v-btn>
     </v-col>
+
     <v-col cols="12" md="6" height="100%">
       <v-card outlined class="pa-2" height="100%">
         <div v-if="trelloObj" id="trelloOutput">
@@ -78,10 +80,10 @@
                 <div
                   v-for="label in card.labels"
                   v-bind:key="label.id"
-                  :class="label.color + 'Text ml-4'"
+                  :class="label.color + 'Text ml-4 indented'"
                 >{{label.name}}</div>
               </div>
-              <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3">
+              <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
                 {{card.desc}}
                 <br />
               </div>
@@ -194,37 +196,47 @@ export default {
 </script>
 
 <style>
-.indented {
-  margin-left: 1em;
+@media print {
+  h2 {
+    margin-top: 4mm;
+  }
 }
-.blackText {
-  color: black;
+@page {
+  margin: 20mm;
 }
-.blueText {
-  color: blue;
-}
-.greenText {
-  color: green;
-}
-.limeText {
-  color: lime;
-}
-.orangeText {
-  color: orange;
-}
-.pinkText {
-  color: pink;
-}
-.purpleText {
-  color: purple;
-}
-.redText {
-  color: red;
-}
-.skyText {
-  color: skyblue;
-}
-.yellowText {
-  color: yellow;
+@media all {
+  .indented {
+    margin-left: 10mm;
+  }
+  .blackText {
+    color: black;
+  }
+  .blueText {
+    color: blue;
+  }
+  .greenText {
+    color: green;
+  }
+  .limeText {
+    color: lime;
+  }
+  .orangeText {
+    color: orange;
+  }
+  .pinkText {
+    color: pink;
+  }
+  .purpleText {
+    color: purple;
+  }
+  .redText {
+    color: red;
+  }
+  .skyText {
+    color: skyblue;
+  }
+  .yellowText {
+    color: yellow;
+  }
 }
 </style>

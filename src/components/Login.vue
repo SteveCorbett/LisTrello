@@ -13,8 +13,10 @@
               available to us apart from a unique token that Trello
               provides us to read your boards, lists and cards for one hour only.
             </p>
-            <p>Selecting the button below will re-direct you to Trello.com.</p>
-            <p>Once you have signed in to Trello you will be re-directed back to the goodies awaiting you here.</p>
+            <p>Selecting the button below will re-direct you to Trello.com. You will 
+              need to scroll down to the bottom of the page to allow access.</p>
+            <p>Once you have signed in to Trello you will be re-directed back 
+              to the goodies awaiting you here.</p>
           </div>
         </v-card-text>
         <v-card-actions>
