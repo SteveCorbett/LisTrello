@@ -1,0 +1,20 @@
+@media print {
+    body {
+        margin: 5mm;
+        overflow: auto;
+        height: auto;
+    }
+    .noprint {
+        visibility: hidden;
+        height: 0;
+    }
+    .print, .printonly {
+        visibility: visible;
+    }
+}
+
+@media screen {
+    .printonly {
+        visibility: hidden;
+    }
+}

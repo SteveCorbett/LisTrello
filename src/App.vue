@@ -1,6 +1,6 @@
 <template>
   <v-app id="lisTrello">
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" app class="noprint d-print-none">
       <v-list dense>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
@@ -23,7 +23,7 @@
           </p>
         </v-tooltip>
 
-        <v-tooltip bottom>
+        <v-tooltip bottom  class="noprint">
           <template v-slot:activator="{ on }">
             <v-list-item link v-on="on">
               <v-list-item-action>
@@ -39,27 +39,34 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="#02F" dark>
+    <v-app-bar app :color="background" dark class="noprint d-print-none">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>LisTrello - List Trello Cards</v-toolbar-title>
     </v-app-bar>
 
-    <v-content>
-      <v-container class="fill-height" fluid>
+    <v-content dense>
+      <v-container>
         <router-view />
       </v-container>
     </v-content>
-    <v-footer color="#02F" app>
+    <v-footer :color="background"  app class="noprint">
       <span class="white--text">&copy; 2020 Corbett Technologies Pty Limited</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   data: () => ({
     drawer: false
   }),
+  computed:{
+    ...mapState({
+      background: "background"
+    })
+  },
   methods: {
     LogOut() {
       this.drawer = false;

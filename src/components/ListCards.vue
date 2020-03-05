@@ -1,98 +1,130 @@
 <template>
-  <v-row class="fill-height">
-    <v-col cols="12" md="6">
-      <v-select
-        :items="boardList"
-        :label="boardSelectLabel"
-        :disabled="(boardList.length == 0)"
-        item-text="name"
-        item-value="id"
-        @change="onSelectBoard"
-        solo
-      >
-        <template v-slot:item="{ item }">
-          <span v-if="item.desc != ''">{{ item.name }}: {{item.desc}}</span>
-          <span v-else>{{ item.name }}</span>
-        </template>
-      </v-select>
-      <v-select
-        :disabled="!listAvailable"
-        :items="boardsLists()"
-        :label="listSelectLabel"
-        :value="listValue"
-        item-text="name"
-        item-value="id"
-        @change="onSelectList"
-        solo
-      ></v-select>
-      <v-card class="mx-auto">
-        <v-toolbar color="#02F" dark>
-          <v-toolbar-title>Options</v-toolbar-title>
-        </v-toolbar>
+  <v-container>
+    <v-row>
+      <v-col xd="12" md="6" class="noprint d-print-none">
+        <v-select
+          :items="boardList"
+          :label="boardSelectLabel"
+          :disabled="(boardList.length == 0)"
+          item-text="name"
+          item-value="id"
+          @change="onSelectBoard"
+          solo
+        >
+          <template v-slot:item="{ item }">
+            <span v-if="item.desc != ''">{{ item.name }}: {{item.desc}}</span>
+            <span v-else>{{ item.name }}</span>
+          </template>
+        </v-select>
+        <v-select
+          :disabled="!listAvailable"
+          :items="boardsLists()"
+          :label="listSelectLabel"
+          :value="listValue"
+          item-text="name"
+          item-value="id"
+          @change="onSelectList"
+          solo
+        ></v-select>
+        <v-card class="mx-auto">
+          <v-toolbar :color="background" dark>
+            <v-toolbar-title>Options</v-toolbar-title>
+          </v-toolbar>
 
-        <v-list subheader two-line flat>
-          <v-list-item-group multiple>
-            <v-list-item>
-              <template v-slot:default="{ }">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionLabels" color="primary"></v-checkbox>
-                </v-list-item-action>
+          <v-list subheader two-line flat>
+            <v-list-item-group multiple>
+              <v-list-item>
+                <template v-slot:default="{ }">
+                  <v-list-item-action>
+                    <v-checkbox v-model="optionLabels" color="primary"></v-checkbox>
+                  </v-list-item-action>
 
-                <v-list-item-content>
-                  <v-list-item-title>Show Labels</v-list-item-title>
-                </v-list-item-content>
-              </template>
-            </v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>Show Labels</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-list-item>
 
-            <v-list-item>
-              <template v-slot:default="{ }">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionDescriptions" color="primary"></v-checkbox>
-                </v-list-item-action>
+              <v-list-item>
+                <template v-slot:default="{ }">
+                  <v-list-item-action>
+                    <v-checkbox v-model="optionDescriptions" color="primary"></v-checkbox>
+                  </v-list-item-action>
 
-                <v-list-item-content>
-                  <v-list-item-title>Show Card Descriptions</v-list-item-title>
-                </v-list-item-content>
-              </template>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-card>
-      <v-btn v-print="'#trelloOutput'" class="mt-5" :disabled="false">Print</v-btn>
-    </v-col>
+                  <v-list-item-content>
+                    <v-list-item-title>Show Card Descriptions</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </v-card>
+        <v-btn v-print="'#trelloOutput'" class="mt-5" :disabled="false">Print</v-btn>
+      </v-col>
 
-    <v-col cols="12" md="6" height="100%">
-      <v-card outlined class="pa-2" height="100%">
-        <div v-if="trelloObj" id="trelloOutput">
-          <h1>{{trelloObj.name}}</h1>
-          <a :href="trelloObj.url">{{trelloObj.url}}</a>
-          <br />
-          <span v-if="trelloObj.dateLastActivity">
-            Last Updated: {{trelloObj.dateLastActivity}}
+      <v-col xs="12" md="6" height="100%" class="noprint">
+        <v-card outlined class="pa-2 noprint" height="100%">
+          <div v-if="trelloObj" id="trelloOutput">
+            <h1>{{trelloObj.name}}</h1>
+            <a :href="trelloObj.url">{{trelloObj.url}}</a>
             <br />
-          </span>
-          <div v-for="list in trelloObj.lists" v-bind:key="list.id">
-            <h2>{{list.name}}</h2>
-            <div v-for="card in list.cards" v-bind:key="card.id">
-              {{card.name}}
+            <span v-if="trelloObj.dateLastActivity">
+              Last Updated: {{trelloObj.dateLastActivity}}
               <br />
-              <div v-if="optionLabels">
-                <div
-                  v-for="label in card.labels"
-                  v-bind:key="label.id"
-                  :class="label.color + 'Text ml-4 indented'"
-                >{{label.name}}</div>
-              </div>
-              <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
-                {{card.desc}}
+            </span>
+            <div v-for="list in trelloObj.lists" v-bind:key="list.id">
+              <h2>{{list.name}}</h2>
+              <div v-for="card in list.cards" v-bind:key="card.id">
+                {{card.name}}
                 <br />
+                <div v-if="optionLabels">
+                  <div
+                    v-for="label in card.labels"
+                    v-bind:key="label.id"
+                    :class="label.color + 'Text ml-4 indented'"
+                  >{{label.name}}</div>
+                </div>
+                <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
+                  {{card.desc}}
+                  <br />
+                </div>
               </div>
             </div>
           </div>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row dense class="printonly">
+      <div v-if="trelloObj" id="trelloOutput" class="print">
+        <h1>{{trelloObj.name}}</h1>
+        <a :href="trelloObj.url">{{trelloObj.url}}</a>
+        <br />
+        <span v-if="trelloObj.dateLastActivity">
+          Last Updated: {{trelloObj.dateLastActivity}}
+          <br />
+        </span>
+        <div v-for="list in trelloObj.lists" v-bind:key="list.id">
+          <h2>{{list.name}}</h2>
+          <div v-for="card in list.cards" v-bind:key="card.id">
+            {{card.name}}
+            <br />
+            <div v-if="optionLabels">
+              <div
+                v-for="label in card.labels"
+                v-bind:key="label.id"
+                :class="label.color + 'Text ml-4 indented'"
+              >{{label.name}}</div>
+            </div>
+            <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
+              {{card.desc}}
+              <br />
+            </div>
+          </div>
         </div>
-      </v-card>
-    </v-col>
-  </v-row>
+      </div>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -125,7 +157,8 @@ export default {
     ...mapState({
       boardList: "boards",
       trelloObj: "currentBoard",
-      currentLists: "currentLists"
+      currentLists: "currentLists",
+      background: "background"
     }),
     boardSelectLabel() {
       return this.boardList.length == 0
@@ -200,9 +233,6 @@ export default {
   h2 {
     margin-top: 4mm;
   }
-}
-@page {
-  margin: 20mm;
 }
 @media all {
   .indented {
