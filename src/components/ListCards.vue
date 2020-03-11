@@ -59,7 +59,7 @@
             </v-list-item-group>
           </v-list>
         </v-card>
-        <v-btn v-print="'#trelloOutput'" class="mt-5" :disabled="false">Print</v-btn>
+        <v-btn v-if="showPrintButton" v-print="'#trelloOutput'" class="mt-5" :disabled="!listAvailable">Print</v-btn>
       </v-col>
 
       <v-col xs="12" md="6" height="100%" class="noprint">
@@ -129,6 +129,7 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
+import { browserDetect } from "../utils/browserDetect";
 
 export default {
   data: () => ({
@@ -165,10 +166,19 @@ export default {
         ? "No boards available"
         : "Select board";
     },
+    showPrintButton() {
+      const browserObj = browserDetect.browserObj();
+      console.log("showPrintButton");
+      console.log(browserObj);
+      if (browserObj.isEdge || browserObj.isAndroid || browserObj.isSafari || browserObj.isChromeIOS || browserObj.isIOS) {
+        return false;
+      }
+      return true;
+    },
     listAvailable() {
-      console.log(
-        "listAvailable: " + (this.trelloObj && this.currentLists.length > 0)
-      );
+      // console.log(
+      //   "listAvailable: " + (this.trelloObj && this.currentLists.length > 0)
+      // );
       return this.trelloObj && this.currentLists.length > 0;
     },
     listSelectLabel() {
