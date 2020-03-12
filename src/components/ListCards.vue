@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col xd="12" md="6" class="noprint d-print-none">
+    <v-row class="noprint d-print-none">
+      <v-col xd="12" sm="12" md="6">
         <v-select
           :items="boardList"
           :label="boardSelectLabel"
@@ -26,19 +26,19 @@
           @change="onSelectList"
           solo
         ></v-select>
+
         <v-card class="mx-auto">
           <v-toolbar :color="background" dark>
             <v-toolbar-title>Options</v-toolbar-title>
           </v-toolbar>
 
-          <v-list subheader two-line flat>
+          <v-list subheader flat>
             <v-list-item-group multiple>
               <v-list-item>
                 <template v-slot:default="{ }">
                   <v-list-item-action>
                     <v-checkbox v-model="optionLabels" color="primary"></v-checkbox>
                   </v-list-item-action>
-
                   <v-list-item-content>
                     <v-list-item-title>Show Labels</v-list-item-title>
                   </v-list-item-content>
@@ -50,7 +50,6 @@
                   <v-list-item-action>
                     <v-checkbox v-model="optionDescriptions" color="primary"></v-checkbox>
                   </v-list-item-action>
-
                   <v-list-item-content>
                     <v-list-item-title>Show Card Descriptions</v-list-item-title>
                   </v-list-item-content>
@@ -59,12 +58,48 @@
             </v-list-item-group>
           </v-list>
         </v-card>
-        <v-btn v-if="showPrintButton" v-print="'#trelloOutput'" class="mt-5" :disabled="!listAvailable">Print</v-btn>
+        <v-card class="mt-3">
+          <v-toolbar :color="background" dark>
+            <v-toolbar-title>Print Options</v-toolbar-title>
+          </v-toolbar>
+
+          <v-list subheader flat>
+            <v-list-item-group multiple>
+              <v-list-item>
+                <template v-slot:default="{ }">
+                  <v-list-item-action>
+                    <v-checkbox v-model="optionTitles" color="primary"></v-checkbox>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>Print Title</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-list-item>
+
+              <v-list-item>
+                <template v-slot:default="{ }">
+                  <v-list-item-action>
+                    <v-checkbox v-model="optionNewPage" color="primary"></v-checkbox>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>Start List on New Page</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </v-card>
+        <v-btn
+          v-if="showPrintButton"
+          v-print="'#trelloOutput'"
+          class="mt-5"
+          :disabled="!listAvailable"
+        >Print</v-btn>
       </v-col>
 
-      <v-col xs="12" md="6" height="100%" class="noprint">
+      <v-col v-if="listAvailable" xs="12" sm="12" md="6" height="100%" class="noprint">
         <v-card outlined class="pa-2 noprint" height="100%">
-          <div v-if="trelloObj" id="trelloOutput">
+          <div id="trelloOutput">
             <h1>{{trelloObj.name}}</h1>
             <a :href="trelloObj.url">{{trelloObj.url}}</a>
             <br />
@@ -97,14 +132,17 @@
 
     <v-row dense class="printonly">
       <div v-if="trelloObj" id="trelloOutput" class="print">
-        <h1>{{trelloObj.name}}</h1>
-        <a :href="trelloObj.url">{{trelloObj.url}}</a>
-        <br />
-        <span v-if="trelloObj.dateLastActivity">
-          Last Updated: {{trelloObj.dateLastActivity}}
+        <div v-if="optionTitles">
+          <h1>{{trelloObj.name}}</h1>
+          <a :href="trelloObj.url">{{trelloObj.url}}</a>
           <br />
-        </span>
-        <div v-for="list in trelloObj.lists" v-bind:key="list.id">
+          <span v-if="trelloObj.dateLastActivity">
+            Last Updated: {{trelloObj.dateLastActivity}}
+            <br />
+          </span>
+        </div>
+        <div v-for="(list, index) in trelloObj.lists" v-bind:key="list.id">
+          <div v-if="optionNewPage && index > 0" style="page-break-before:always;" />
           <h2>{{list.name}}</h2>
           <div v-for="card in list.cards" v-bind:key="card.id">
             {{card.name}}
@@ -136,7 +174,9 @@ export default {
     listValue: null,
     selectAll: [{ name: "Select All", id: "0" }],
     optionLabels: true,
-    optionDescriptions: true
+    optionDescriptions: true,
+    optionTitles: true,
+    optionNewPage: false
   }),
   mounted() {
     this.LOADTOKEN();
@@ -170,7 +210,13 @@ export default {
       const browserObj = browserDetect.browserObj();
       console.log("showPrintButton");
       console.log(browserObj);
-      if (browserObj.isEdge || browserObj.isAndroid || browserObj.isSafari || browserObj.isChromeIOS || browserObj.isIOS) {
+      if (
+        browserObj.isEdge ||
+        browserObj.isAndroid ||
+        browserObj.isSafari ||
+        browserObj.isChromeIOS ||
+        browserObj.isIOS
+      ) {
         return false;
       }
       return true;

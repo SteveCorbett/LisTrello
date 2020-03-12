@@ -1,20 +1,37 @@
 @media print {
     body {
-        margin: 5mm;
+        margin: 0mm 6mm 1mm 3mm;
         overflow: auto;
         height: auto;
+    }
+    main {
+        padding: 0 !important; 
+    }
+
+    .container {
+        margin: 0mm 4mm;
+        padding: 3mm
     }
     .noprint {
         visibility: hidden;
         height: 0;
+        max-height: mm;
     }
     .print, .printonly {
         visibility: visible;
     }
 }
 
+@page {
+    margin: 10mm 16mm 10mm 6mm;
+}
+
 @media screen {
     .printonly {
         visibility: hidden;
     }
+    main {
+        padding: 24px 0px !important; 
+    }
+
 }

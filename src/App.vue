@@ -46,7 +46,7 @@
 
     <v-content dense>
       <v-container>
-        <router-view />
+        <router-view class="pt-xs-0 pt-md-8 mt-xs-0 mt-sm-4" />
       </v-container>
     </v-content>
     <v-footer :color="background"  app class="noprint">
