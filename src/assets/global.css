@@ -1,11 +1,13 @@
 @media print {
     body {
         margin: 0mm 6mm 1mm 3mm;
-        overflow: auto;
         height: auto;
     }
     main {
         padding: 0 !important; 
+    }
+    .table-responsive {
+        overflow-x: initial !important;
     }
 
     .container {
@@ -19,6 +21,9 @@
     }
     .print, .printonly {
         visibility: visible;
+    }
+    .row {
+        display: block ;
     }
 }
 
