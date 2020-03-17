@@ -173,6 +173,9 @@ export default {
   }),
   mounted() {
     this.LOADTOKEN();
+    if (this.trelloUserToken == null) {
+      this.$router.push("login");
+    }
     this.GET_BOARDS();
   },
   created() {
@@ -192,7 +195,8 @@ export default {
       boardList: "boards",
       trelloObj: "currentBoard",
       currentLists: "currentLists",
-      background: "background"
+      background: "background",
+      trelloUserToken: "trelloUserToken"
     }),
     boardSelectLabel() {
       return this.boardList.length == 0
