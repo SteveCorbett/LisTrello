@@ -25,16 +25,16 @@
 
         <v-tooltip bottom  class="noprint">
           <template v-slot:activator="{ on }">
-            <v-list-item link v-on="on">
+            <v-list-item link v-on="on" @click="LogOut">
               <v-list-item-action>
                 <v-icon>mdi-contact-mail</v-icon>
               </v-list-item-action>
               <v-list-item-content>
-                <v-list-item-title>Contact</v-list-item-title>
+                <v-list-item-title>Contact Us</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </template>
-          We're still working on this, check back soon
+          Need to send us a comment, suggestion or idea? Click here.
         </v-tooltip>
       </v-list>
     </v-navigation-drawer>
@@ -68,9 +68,13 @@ export default {
     })
   },
   methods: {
-    LogOut() {
+    ContactUs() {
       this.drawer = false;
-      this.$router.push("Logout");
+      this.$router.push("logout");
+    },
+        LogOut() {
+      this.drawer = false;
+      this.$router.push("contactUs");
     }
   }
 };
