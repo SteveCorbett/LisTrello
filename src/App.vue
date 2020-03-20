@@ -27,7 +27,7 @@
           <template v-slot:activator="{ on }">
             <v-list-item link v-on="on" @click="LogOut">
               <v-list-item-action>
-                <v-icon>mdi-contact-mail</v-icon>
+                <v-icon>mdi-email-outline</v-icon>
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>Contact Us</v-list-item-title>
