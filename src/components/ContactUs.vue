@@ -32,7 +32,7 @@
                 <v-btn
                   block
                   rounded
-                  @click.native="ListBoards"
+                  type="submit"
                   class="button__full mb-4"
                 >Send Comment</v-btn>
                 <v-btn block rounded @click.native="ListBoards" class="button__full">Cancel</v-btn>
