@@ -6,7 +6,7 @@
           <v-card-text xs-12>
             <div>Contact Us</div>
             <p class="display-1 text--primary">LisTrello</p>
-            <p>The Trello Card List Utility!</p>
+            <p>The Trello Card List Utility</p>
             <div class="text--primary">
               <p>
                 Thank you for looking at LisTrello. If you have any comments, ideas,
