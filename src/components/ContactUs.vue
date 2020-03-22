@@ -6,7 +6,7 @@
           <v-card-text xs-12>
             <div>Contact Us</div>
             <p class="display-1 text--primary">LisTrello</p>
-            <p>The Trello Card List Utility</p>
+            <p>The Trello Card List Utility!</p>
             <div class="text--primary">
               <p>
                 Thank you for looking at LisTrello. If you have any comments, ideas,
@@ -36,6 +36,7 @@
                   type="submit"
                   class="button__full mb-4"
                   :disabled="comment.length == 0"
+                  @click="onSubmit()"
                 >Send Comment</v-btn>
                 <v-btn block rounded @click.native="ListBoards" class="button__full">Cancel</v-btn>
               </v-form>
@@ -52,10 +53,13 @@ export default {
   methods: {
     ListBoards() {
       this.$router.push("listcards");
+    },
+    onSubmit(ev) {
+        console.log("onSubmit", ev);
     }
   },
   data: () => ({
-    comment: "abc"
+    comment: ""
   })
 };
 </script>
