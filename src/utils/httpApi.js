@@ -5,6 +5,7 @@ import store from "../store";
 const Unauthorized = 401;
 const onUnauthorized = () => {
   router.push(`/login`);
+  return "";
 };
 
 const request = {

@@ -17,6 +17,9 @@ const getters = {
       return board.id === id; 
     });
     return (results.length == 0) ? null : results[0]
+  },
+  isSubmittingForm: state => {
+    return state.isSubmittingForm
   }
 };
 

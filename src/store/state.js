@@ -8,7 +8,8 @@ const state = {
   boards: [],
   background: "#2238c9",
   currentBoard: null,
-  currentLists: []
+  currentLists: [],
+  isSubmittingForm: false,
 };
 
 export default state;

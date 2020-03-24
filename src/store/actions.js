@@ -29,12 +29,13 @@ const actions = {
   },
   GET_LISTS_FOR_BOARD({ commit }, boardId) {
     const inputBoard = this.getters["getBoardForId"](boardId);
-    //console.log("inputBoard :", inputBoard);
     commit("SET_CURRENT_BOARD", inputBoard);
     commit("SET_LISTS", null);
-    return board
-      .getLists(boardId)
-      .then(data => commit("SET_LISTS", data));
+    return board.getLists(boardId).then(data => commit("SET_LISTS", data));
+  },
+  IS_SUBMITTING_FORM({ commit }, value) {
+    console.log("IS_SUBMITTING_FORM :", value);
+    commit("SET_IS_SUBMITTING_FORM", value);
   }
 };
 

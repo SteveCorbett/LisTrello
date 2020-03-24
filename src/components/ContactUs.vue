@@ -36,7 +36,7 @@
                   type="submit"
                   class="button__full mb-4"
                   :disabled="comment.length == 0"
-                  @click="onSubmit()"
+                  @click="onSubmit"
                 >Send Comment</v-btn>
                 <v-btn block rounded @click.native="ListBoards" class="button__full">Cancel</v-btn>
               </v-form>
@@ -49,13 +49,25 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
+  mounted() {
+    console.log("ContactUs mounted");
+    if (this.isSubmittingForm == true) {
+      this.IS_SUBMITTING_FORM(false);
+      this.$router.push("listcards");
+    }
+  },
   methods: {
+    ...mapActions(["IS_SUBMITTING_FORM"]),
+    ...mapGetters(["isSubmittingForm"]),
     ListBoards() {
       this.$router.push("listcards");
     },
-    onSubmit(ev) {
-        console.log("onSubmit", ev);
+    onSubmit() {
+      this.IS_SUBMITTING_FORM(true);
+      console.log("ContactUs onSubmit");
     }
   },
   data: () => ({
