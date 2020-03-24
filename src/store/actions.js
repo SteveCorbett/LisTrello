@@ -13,7 +13,6 @@ const actions = {
   },
   LOADTOKEN({ commit }) {
     var trelloUserToken = localStorage.getItem(localStorageUserToken);
-    //console.log("Action LOADTOKEN: " + trelloUserToken);
     if (trelloUserToken) {
       commit("LOGIN", trelloUserToken);
     }
@@ -34,7 +33,6 @@ const actions = {
     return board.getLists(boardId).then(data => commit("SET_LISTS", data));
   },
   IS_SUBMITTING_FORM({ commit }, value) {
-    console.log("IS_SUBMITTING_FORM :", value);
     commit("SET_IS_SUBMITTING_FORM", value);
   }
 };

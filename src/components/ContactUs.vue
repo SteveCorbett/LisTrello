@@ -2,7 +2,7 @@
   <v-content>
     <v-container>
       <v-row align="center">
-        <v-card class="mx-auto" max-width="400">
+        <v-card class="mx-auto" max-width="500">
           <v-card-text xs-12>
             <div>Contact Us</div>
             <p class="display-1 text--primary">LisTrello</p>
@@ -49,25 +49,33 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   mounted() {
-    console.log("ContactUs mounted");
-    if (this.isSubmittingForm == true) {
-      this.IS_SUBMITTING_FORM(false);
-      this.$router.push("listcards");
+    const isSubmittingForm = sessionStorage.getItem("isSubmittingForm");
+    if (isSubmittingForm == "true") {
+      this.IS_SUBMITTING_FORM("false");
+      this.LOADTOKEN();
+      if (this.trelloUserToken == null) {
+        this.$router.push("login");
+      } else {
+        this.$router.push("listcards");
+      }
     }
   },
+  computed: {
+    ...mapState({
+      trelloUserToken: "trelloUserToken"
+    })
+  },
   methods: {
-    ...mapActions(["IS_SUBMITTING_FORM"]),
-    ...mapGetters(["isSubmittingForm"]),
+    ...mapActions(["IS_SUBMITTING_FORM", "LOADTOKEN"]),
     ListBoards() {
       this.$router.push("listcards");
     },
     onSubmit() {
-      this.IS_SUBMITTING_FORM(true);
-      console.log("ContactUs onSubmit");
+      this.IS_SUBMITTING_FORM("true");
     }
   },
   data: () => ({

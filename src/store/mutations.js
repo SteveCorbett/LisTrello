@@ -27,7 +27,7 @@ const mutations = {
     }
   },
   SET_IS_SUBMITTING_FORM(state, value) {
-    state.isSubmittingForm = value;
+    sessionStorage.setItem("isSubmittingForm", value);
   },
   SET_LISTS(state, list) {
     if (!list) state.currentLists = [];
