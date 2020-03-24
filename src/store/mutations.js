@@ -26,6 +26,9 @@ const mutations = {
       };
     }
   },
+  SET_IS_SUBMITTING_FORM(state, value) {
+    sessionStorage.setItem("isSubmittingForm", value);
+  },
   SET_LISTS(state, list) {
     if (!list) state.currentLists = [];
     else {

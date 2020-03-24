@@ -2,11 +2,11 @@
   <v-content>
     <v-container>
       <v-row align="center">
-        <v-card class="mx-auto" max-width="400">
+        <v-card class="mx-auto" max-width="500">
           <v-card-text xs-12>
             <div>Contact Us</div>
             <p class="display-1 text--primary">LisTrello</p>
-            <p>The Trello Card List Utility!</p>
+            <p>The Trello Card List Utility</p>
             <div class="text--primary">
               <p>
                 Thank you for looking at LisTrello. If you have any comments, ideas,
@@ -36,7 +36,7 @@
                   type="submit"
                   class="button__full mb-4"
                   :disabled="comment.length == 0"
-                  @click="onSubmit()"
+                  @click="onSubmit"
                 >Send Comment</v-btn>
                 <v-btn block rounded @click.native="ListBoards" class="button__full">Cancel</v-btn>
               </v-form>
@@ -49,13 +49,33 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+
 export default {
+  mounted() {
+    const isSubmittingForm = sessionStorage.getItem("isSubmittingForm");
+    if (isSubmittingForm == "true") {
+      this.IS_SUBMITTING_FORM("false");
+      this.LOADTOKEN();
+      if (this.trelloUserToken == null) {
+        this.$router.push("login");
+      } else {
+        this.$router.push("listcards");
+      }
+    }
+  },
+  computed: {
+    ...mapState({
+      trelloUserToken: "trelloUserToken"
+    })
+  },
   methods: {
+    ...mapActions(["IS_SUBMITTING_FORM", "LOADTOKEN"]),
     ListBoards() {
       this.$router.push("listcards");
     },
-    onSubmit(ev) {
-        console.log("onSubmit", ev);
+    onSubmit() {
+      this.IS_SUBMITTING_FORM("true");
     }
   },
   data: () => ({
