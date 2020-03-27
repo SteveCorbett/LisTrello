@@ -23,7 +23,7 @@
           </p>
         </v-tooltip>
 
-        <v-tooltip bottom  class="noprint">
+        <v-tooltip bottom class="noprint">
           <template v-slot:activator="{ on }">
             <v-list-item link v-on="on" @click="LogOut">
               <v-list-item-action>
@@ -35,6 +35,20 @@
             </v-list-item>
           </template>
           Need to send us a comment, suggestion or idea? Click here.
+        </v-tooltip>
+
+        <v-tooltip bottom class="noprint">
+          <template v-slot:activator="{ on }">
+            <v-list-item link v-on="on" @click="About">
+              <v-list-item-action>
+                <v-icon>mdi-information-outline</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>About</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+          Wondering what LisTrello is all about? Click here..
         </v-tooltip>
       </v-list>
     </v-navigation-drawer>
@@ -49,7 +63,7 @@
         <router-view class="pt-xs-0 pt-md-8 mt-xs-0 mt-sm-4" />
       </v-container>
     </v-content>
-    <v-footer :color="background"  app class="noprint">
+    <v-footer :color="background" app class="noprint">
       <span class="white--text">&copy; 2020 Corbett Technologies Pty Limited</span>
     </v-footer>
   </v-app>
@@ -62,17 +76,21 @@ export default {
   data: () => ({
     drawer: false
   }),
-  computed:{
+  computed: {
     ...mapState({
       background: "background"
     })
   },
   methods: {
+    About() {
+      this.drawer = false;
+      this.$router.push("about");
+    },
     ContactUs() {
       this.drawer = false;
       this.$router.push("logout");
     },
-        LogOut() {
+    LogOut() {
       this.drawer = false;
       this.$router.push("contactUs");
     }

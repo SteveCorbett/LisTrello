@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import About from "../components/About"
 import ContactUs from "../components/ContactUs"
 import Home from "../components/Home";
 import Login from "../components/Login";
@@ -30,6 +31,10 @@ export default new VueRouter({
       path: "/",
       component: Home,
       props: (route) => ({ token: route.hash })
+    },
+    {
+      path: "/about",
+      component: About
     },
     {
       path: "/contactUs",

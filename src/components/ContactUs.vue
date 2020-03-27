@@ -38,7 +38,7 @@
                   :disabled="comment.length == 0"
                   @click="onSubmit"
                 >Send Comment</v-btn>
-                <v-btn block rounded @click.native="ListBoards" class="button__full">Cancel</v-btn>
+                <v-btn block rounded @click.native="DoCancel" class="button__full">Cancel</v-btn>
               </v-form>
             </div>
           </v-card-text>
@@ -71,8 +71,13 @@ export default {
   },
   methods: {
     ...mapActions(["IS_SUBMITTING_FORM", "LOADTOKEN"]),
-    ListBoards() {
-      this.$router.push("listcards");
+    DoCancel() {
+      this.LOADTOKEN();
+      if (this.trelloUserToken == null) {
+        this.$router.push("login");
+      } else {
+        this.$router.push("listcards");
+      }
     },
     onSubmit() {
       this.IS_SUBMITTING_FORM("true");

@@ -4,6 +4,7 @@ import store from "../store";
 
 const Unauthorized = 401;
 const onUnauthorized = () => {
+  store.dispatch("LOGOUT");
   router.push(`/login`);
   return "";
 };
