@@ -4,7 +4,21 @@
       <v-list dense>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-list-item link v-on="on" @click="LogOut">
+            <v-list-item link v-on="on" @click="Home">
+              <v-list-item-action>
+                <v-icon>mdi-home-outline</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Home</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+          <p>Back to your lists.</p>
+        </v-tooltip>
+
+        <v-tooltip bottom :disabled="!isAuthenticated">
+          <template v-slot:activator="{ on }">
+            <v-list-item link v-on="on" @click="LogOut" :disabled="!isAuthenticated">
               <v-list-item-action>
                 <v-icon>mdi-repeat</v-icon>
               </v-list-item-action>
@@ -25,7 +39,7 @@
 
         <v-tooltip bottom class="noprint">
           <template v-slot:activator="{ on }">
-            <v-list-item link v-on="on" @click="LogOut">
+            <v-list-item link v-on="on" @click="ContactUs">
               <v-list-item-action>
                 <v-icon>mdi-email-outline</v-icon>
               </v-list-item-action>
@@ -70,13 +84,14 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   data: () => ({
     drawer: false
   }),
   computed: {
+    ...mapGetters(["isAuthenticated"]),
     ...mapState({
       background: "background"
     })
@@ -88,11 +103,15 @@ export default {
     },
     ContactUs() {
       this.drawer = false;
-      this.$router.push("logout");
+      this.$router.push("contactUs");
+    },
+    Home() {
+      this.drawer = false;
+      this.$router.push("home");
     },
     LogOut() {
       this.drawer = false;
-      this.$router.push("contactUs");
+      this.$router.push("logout");
     }
   }
 };

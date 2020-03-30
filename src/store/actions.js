@@ -4,18 +4,16 @@ const localStorageUserToken = "lisTrelloHash";
 
 const actions = {
   LOGIN({ commit }, token) {
-    //console.log("Action LOGIN: " + token);
     localStorage.setItem(localStorageUserToken, token);
     commit("LOGIN", token);
   },
   LOGOUT({ commit }) {
     commit("LOGOUT");
+    localStorage.removeItem(localStorageUserToken);
   },
   LOADTOKEN({ commit }) {
     var trelloUserToken = localStorage.getItem(localStorageUserToken);
-    if (trelloUserToken) {
-      commit("LOGIN", trelloUserToken);
-    }
+    commit("LOGIN", trelloUserToken);
   },
   GET_BOARDS({ commit }) {
     commit("SET_BOARDS", null);
@@ -30,7 +28,15 @@ const actions = {
     const inputBoard = this.getters["getBoardForId"](boardId);
     commit("SET_CURRENT_BOARD", inputBoard);
     commit("SET_LISTS", null);
-    return board.getLists(boardId).then(data => commit("SET_LISTS", data));
+    return board.getLists(boardId).then(data => {
+      console.log("GET_LISTS_FOR_BOARD", data);
+      data.forEach(list => {
+        list.cards.forEach(card => {
+          card.desc = card.desc.replace(/\n/g, "<br />");
+        });
+      });
+      commit("SET_LISTS", data);
+    });
   },
   IS_SUBMITTING_FORM({ commit }, value) {
     commit("SET_IS_SUBMITTING_FORM", value);

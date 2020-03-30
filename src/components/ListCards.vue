@@ -114,7 +114,7 @@
                   >{{label.name}}</div>
                 </div>
                 <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
-                  {{card.desc}}
+                  <span v-html="card.desc"></span>
                   <br />
                 </div>
               </div>
@@ -149,7 +149,7 @@
               >{{label.name}}</div>
             </div>
             <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
-              {{card.desc}}
+              <span v-html="card.desc"></span>
               <br />
             </div>
           </div>

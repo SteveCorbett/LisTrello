@@ -2,7 +2,7 @@
   <v-content>
     <v-container>
       <v-row align="center">
-        <v-card class="mx-auto" >
+        <v-card class="mx-auto">
           <v-card-text xs-12>
             <div>About LisTrello</div>
             <p class="display-1 text--primary">LisTrello</p>
@@ -35,10 +35,8 @@
               </p>
               <p>
                 You can send any comments, ideas, suggestions (good or bad)
-                from our "
-                <a
-                  href="/contactUs"
-                >Contact Us</a>" page.
+                from our 
+                <a href="/contactUs">Contact Us</a> page.
               </p>
               <p class="subtitle-1 font-weight-medium mb-0">References</p>
               <v-list dense rounded class="pa-0">
@@ -78,7 +76,7 @@
             </div>
           </v-card-text>
           <v-card-actions>
-            <v-btn block rounded @click.native="DoReturn" class="button__full">Return</v-btn>
+            <v-btn block rounded @click.native="DoReturn" class="button__full">Home</v-btn>
           </v-card-actions>
         </v-card>
       </v-row>
@@ -87,23 +85,11 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
 
 export default {
-  computed: {
-    ...mapState({
-      trelloUserToken: "trelloUserToken"
-    })
-  },
   methods: {
-    ...mapActions(["LOADTOKEN"]),
     DoReturn() {
-      this.LOADTOKEN();
-      if (this.trelloUserToken == null) {
-        this.$router.push("login");
-      } else {
-        this.$router.push("listcards");
-      }
+      this.$router.push("home");
     },
     OpenUrl(url) {
       window.open(url);

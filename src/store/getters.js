@@ -1,9 +1,8 @@
 const getters = {
   isAuthenticated(state) {
-    return !state.trelloUserToken;
+    return (state.trelloUserToken != null);
   },
   trelloUserToken(state) {
-    //console.log("getters: trelloUserToken", state);
     return state.trelloUserToken;
   },
   boards(state) {

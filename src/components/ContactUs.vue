@@ -35,7 +35,7 @@
                   rounded
                   type="submit"
                   class="button__full mb-4"
-                  :disabled="comment.length == 0"
+                  :disabled="comment.length < 10"
                   @click="onSubmit"
                 >Send Comment</v-btn>
                 <v-btn block rounded @click.native="DoCancel" class="button__full">Cancel</v-btn>
@@ -49,35 +49,20 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   mounted() {
     const isSubmittingForm = sessionStorage.getItem("isSubmittingForm");
     if (isSubmittingForm == "true") {
       this.IS_SUBMITTING_FORM("false");
-      this.LOADTOKEN();
-      if (this.trelloUserToken == null) {
-        this.$router.push("login");
-      } else {
-        this.$router.push("listcards");
-      }
+      this.$router.push("home");
     }
-  },
-  computed: {
-    ...mapState({
-      trelloUserToken: "trelloUserToken"
-    })
   },
   methods: {
     ...mapActions(["IS_SUBMITTING_FORM", "LOADTOKEN"]),
     DoCancel() {
-      this.LOADTOKEN();
-      if (this.trelloUserToken == null) {
-        this.$router.push("login");
-      } else {
-        this.$router.push("listcards");
-      }
+      this.$router.push("home");
     },
     onSubmit() {
       this.IS_SUBMITTING_FORM("true");
