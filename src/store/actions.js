@@ -29,7 +29,7 @@ const actions = {
     commit("SET_CURRENT_BOARD", inputBoard);
     commit("SET_LISTS", null);
     return board.getLists(boardId).then(data => {
-      console.log("GET_LISTS_FOR_BOARD", data);
+      //console.log("GET_LISTS_FOR_BOARD", data);
       data.forEach(list => {
         list.cards.forEach(card => {
           card.desc = card.desc.replace(/\n/g, "<br />");

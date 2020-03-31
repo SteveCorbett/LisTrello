@@ -28,7 +28,7 @@
         ></v-select>
 
         <v-card class="mx-auto">
-          <v-toolbar :color="background" dark>
+          <v-toolbar :color="background" dark dense>
             <v-toolbar-title>Options</v-toolbar-title>
           </v-toolbar>
 
@@ -37,7 +37,11 @@
               <v-list-item>
                 <template v-slot:default="{ }">
                   <v-list-item-action>
-                    <v-checkbox v-model="optionLabels" color="primary"></v-checkbox>
+                    <v-checkbox
+                      v-model="optionLabels"
+                      color="primary"
+                      @click.native="++updateSequence"
+                    ></v-checkbox>
                   </v-list-item-action>
                   <v-list-item-content>
                     <v-list-item-title>Show Labels</v-list-item-title>
@@ -48,18 +52,53 @@
               <v-list-item>
                 <template v-slot:default="{ }">
                   <v-list-item-action>
-                    <v-checkbox v-model="optionDescriptions" color="primary"></v-checkbox>
+                    <v-checkbox
+                      v-model="optionDescriptions"
+                      color="primary"
+                      @click.native="++updateSequence"
+                    ></v-checkbox>
                   </v-list-item-action>
                   <v-list-item-content>
                     <v-list-item-title>Show Card Descriptions</v-list-item-title>
                   </v-list-item-content>
                 </template>
               </v-list-item>
+
+              <v-list-item>
+                <template v-slot:default="{ }">
+                  <v-list-item-action>
+                    <v-checkbox
+                      v-model="optionNumberLists"
+                      color="primary"
+                      @click.native="doNumbering(trelloObj.lists)"
+                    ></v-checkbox>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>Number Lists</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-list-item>
+
+              <v-list-item>
+                <template v-slot:default="{ }">
+                  <v-list-item-action>
+                    <v-checkbox
+                      v-model="optionNumberCards"
+                      color="primary"
+                      @click.native="doNumbering(trelloObj.lists)"
+                    ></v-checkbox>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>Number Cards</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-list-item>
             </v-list-item-group>
           </v-list>
         </v-card>
+
         <v-card class="mt-3">
-          <v-toolbar :color="background" dark>
+          <v-toolbar :color="background" dark dense>
             <v-toolbar-title>Print Options</v-toolbar-title>
           </v-toolbar>
 
@@ -91,8 +130,8 @@
         </v-card>
       </v-col>
 
-      <v-col v-if="listAvailable" xs="12" sm="12" md="6" height="100%" class="noprint">
-        <v-card outlined class="pa-2 noprint" height="100%">
+      <v-col v-if="trelloObj" xs="12" sm="12" md="6" height="100%" class="noprint">
+        <v-card outlined class="pa-2 noprint" height="100%" :key="updateKey">
           <div id="trelloOutput">
             <h1>{{trelloObj.name}}</h1>
             <a :href="trelloObj.url">{{trelloObj.url}}</a>
@@ -101,10 +140,13 @@
               Last Updated: {{trelloObj.dateLastActivity}}
               <br />
             </span>
-            <div v-for="list in trelloObj.lists" v-bind:key="list.id">
-              <h2>{{list.name}}</h2>
-              <div v-for="card in list.cards" v-bind:key="card.id">
-                {{card.name}}
+            <div v-if="trelloObj.lists && trelloObj.lists.length == 0 && trelloObj.name > ''">
+              <h3>This board has no lists</h3>
+            </div>
+            <div v-for="list in trelloObj.lists" :key="list.id">
+              <h2>{{list.listNo}}{{list.name}}</h2>
+              <div v-for="card in list.cards" :key="card.id">
+                {{card.cardNo}}{{card.name}}
                 <br />
                 <div v-if="optionLabels">
                   <div
@@ -125,7 +167,7 @@
     </v-row>
 
     <v-row dense class="printonly">
-      <div v-if="trelloObj" id="trelloOutput" class="print">
+      <div v-if="trelloObj" id="trelloOutput" class="print" :key="updatePrintKey">
         <div v-if="optionTitles">
           <h1>{{trelloObj.name}}</h1>
           <a :href="trelloObj.url">{{trelloObj.url}}</a>
@@ -135,11 +177,14 @@
             <br />
           </span>
         </div>
+        <div v-if="trelloObj.lists && trelloObj.lists.length == 0 && trelloObj.name > ''">
+          <h3>This board has no lists</h3>
+        </div>
         <div v-for="(list, index) in trelloObj.lists" v-bind:key="list.id">
           <div v-if="optionNewPage && index > 0" style="page-break-before:always;" />
-          <h2>{{list.name}}</h2>
+          <h2>{{list.listNo}}{{list.name}}</h2>
           <div v-for="card in list.cards" v-bind:key="card.id">
-            {{card.name}}
+            {{card.cardNo}}{{card.name}}
             <br />
             <div v-if="optionLabels">
               <div
@@ -168,8 +213,11 @@ export default {
     selectAll: [{ name: "Select All", id: "0" }],
     optionLabels: true,
     optionDescriptions: true,
+    optionNumberLists: false,
+    optionNumberCards: false,
     optionTitles: true,
-    optionNewPage: false
+    optionNewPage: false,
+    updateSequence: 1,
   }),
   mounted() {
     this.LOADTOKEN();
@@ -186,7 +234,10 @@ export default {
       },
       function() {
         //console.log("currentLists changed: ", newVal, " | was: ", oldVal);
-        if (this.trelloObj) this.trelloObj.lists = this.currentLists;
+        if (this.trelloObj) {
+          this.trelloObj.lists = this.currentLists;
+          this.doNumbering(this.trelloObj.lists);
+        }
       }
     );
   },
@@ -204,9 +255,6 @@ export default {
         : "Select board";
     },
     listAvailable() {
-      // console.log(
-      //   "listAvailable: " + (this.trelloObj && this.currentLists.length > 0)
-      // );
       return this.trelloObj && this.currentLists.length > 0;
     },
     listSelectLabel() {
@@ -220,6 +268,12 @@ export default {
         default:
           return `Select All ${this.currentLists.length} Lists`;
       }
+    },
+    updateKey() {
+      return "UpdateKey" + this.updateSequence;
+    },
+    updatePrintKey() {
+      return "PrintKey" + this.updateSequence;
     }
   },
   methods: {
@@ -229,18 +283,33 @@ export default {
       "GET_BOARDS",
       "GET_LISTS_FOR_BOARD"
     ]),
+    doNumbering(boardList) {
+      if (boardList == null) return;
+      var listNo = 0;
+      boardList.forEach(list => {
+        list.listNo = this.optionNumberLists ? ++listNo + ". " : "";
+        var cardNo = 0;
+        list.cards.forEach(card => {
+          const cardNoPrefix = this.optionNumberLists ? listNo + "." : "";
+          card.cardNo = this.optionNumberCards
+            ? cardNoPrefix + ++cardNo + ". "
+            : "";
+        });
+      });
+      ++this.updateSequence;
+    },
     onSelectBoard(boardId) {
-      //console.log("onSelectBoard :", boardId);
       this.GET_LISTS_FOR_BOARD(boardId);
     },
     onSelectList(listId) {
       if (listId == "0") {
         this.trelloObj.lists = this.currentLists;
-      } else
+      } else {
         this.trelloObj.lists = this.currentLists.filter(list => {
           return list.id === listId;
         });
-      //console.log("onSelectList listId: " + listId, this.trelloObj);
+      }
+      this.doNumbering(this.trelloObj.lists);
     },
     boardsLists() {
       switch (this.currentLists.length) {
