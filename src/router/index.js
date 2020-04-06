@@ -24,7 +24,7 @@ const goHome = () => (from, to, next) => {
   store.dispatch("LOADTOKEN");
   if (store.getters.isAuthenticated == true) {
     next("/ListCards");
-  } else next("login");
+  } else next();
 };
 
 // Initial route checks if a token exists and if so,

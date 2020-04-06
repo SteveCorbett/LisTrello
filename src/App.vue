@@ -1,8 +1,13 @@
 <template>
   <v-app id="lisTrello">
-    <v-navigation-drawer v-model="drawer" app class="noprint d-print-none">
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      class="noprint d-print-none"
+      :mini-variant="miniVariant"
+    >
       <v-list dense>
-        <v-tooltip bottom>
+        <v-tooltip right nudge-left="170" nudge-bottom="20">
           <template v-slot:activator="{ on }">
             <v-list-item link v-on="on" @click="Home">
               <v-list-item-action>
@@ -13,10 +18,16 @@
               </v-list-item-content>
             </v-list-item>
           </template>
-          <p>Back to your lists.</p>
+          Back to your lists.
         </v-tooltip>
 
-        <v-tooltip bottom :disabled="!isAuthenticated">
+        <v-tooltip
+          right
+          nudge-left="170"
+          nudge-bottom="20"
+          max-width="500"
+          :disabled="!isAuthenticated"
+        >
           <template v-slot:activator="{ on }">
             <v-list-item link v-on="on" @click="LogOut" :disabled="!isAuthenticated">
               <v-list-item-action>
@@ -30,14 +41,25 @@
           <p>
             When you log in to Trello, we are given read only access to your account's boards
             for one hour only. Select this to log out immediately.
-          </p>
-          <p>
-            You may need to do this
-            to switch to using a different Trello account.
-          </p>
+          </p>You may need to do this
+          to switch to using a different Trello account.
         </v-tooltip>
 
-        <v-tooltip bottom class="noprint">
+        <v-tooltip right nudge-left="170" nudge-bottom="20" class="noprint">
+          <template v-slot:activator="{ on }">
+            <v-list-item link v-on="on" @click="miniVariant = !miniVariant">
+              <v-list-item-action>
+                <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Change menu size</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+          {{miniVariant ? "Show the menu text" : "Hide the menu text"}}
+        </v-tooltip>
+
+        <v-tooltip right nudge-left="170" nudge-bottom="20" class="noprint">
           <template v-slot:activator="{ on }">
             <v-list-item link v-on="on" @click="ContactUs">
               <v-list-item-action>
@@ -51,7 +73,7 @@
           Need to send us a comment, suggestion or idea? Click here.
         </v-tooltip>
 
-        <v-tooltip bottom class="noprint">
+        <v-tooltip right nudge-left="170" nudge-bottom="20" class="noprint">
           <template v-slot:activator="{ on }">
             <v-list-item link v-on="on" @click="About">
               <v-list-item-action>
@@ -88,7 +110,8 @@ import { mapGetters, mapState } from "vuex";
 
 export default {
   data: () => ({
-    drawer: false
+    drawer: false,
+    miniVariant: false
   }),
   computed: {
     ...mapGetters(["isAuthenticated"]),
