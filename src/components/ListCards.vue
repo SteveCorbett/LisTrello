@@ -171,14 +171,8 @@
               Last Updated: {{trelloObj.dateLastActivity | dateDisplay(optionLocalDateFormat)}}
               <br />
             </span>
-            <div
-              v-if="optionDescriptions && trelloObj.descLines != null && trelloObj.descLines.length > 0"
-            >
-              Description:
-              <span
-                v-for="(descLine, ix) in trelloObj.descLines"
-                :key="trelloObj.id + 'S' + ix"
-              >
+            <div v-if="optionDescriptions && trelloObj.desc != null && trelloObj.desc != ''">
+              <span v-for="(descLine, ix) in trelloObj.descLines" :key="trelloObj.id + 'S' + ix">
                 {{descLine}}
                 <br />
               </span>
@@ -229,14 +223,8 @@
             Last Updated: {{trelloObj.dateLastActivity | dateDisplay(optionLocalDateFormat)}}
             <br />
           </span>
-          <div
-            v-if="optionDescriptions && trelloObj.descLines != null && trelloObj.descLines.length > 0"
-          >
-            Description:
-            <span
-              v-for="(descLine, ix) in trelloObj.descLines"
-              :key="trelloObj.id + 'P' + ix"
-            >
+          <div v-if="optionDescriptions && trelloObj.desc != null && trelloObj.desc != ''">
+            <span v-for="(descLine, ix) in trelloObj.descLines" :key="trelloObj.id + 'P' + ix">
               {{descLine}}
               <br />
             </span>
