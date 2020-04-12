@@ -59,7 +59,7 @@
                     ></v-checkbox>
                   </v-list-item-action>
                   <v-list-item-content>
-                    <v-list-item-title>Show Card Descriptions</v-list-item-title>
+                    <v-list-item-title>Show Descriptions</v-list-item-title>
                   </v-list-item-content>
                 </template>
               </v-list-item>
@@ -93,11 +93,42 @@
                   </v-list-item-content>
                 </template>
               </v-list-item>
+
+              <v-list-item>
+                <template v-slot:default="{ }">
+                  <v-list-item-action>
+                    <v-checkbox
+                      v-model="optionShowDates"
+                      color="primary"
+                      @click.native="++updateSequence"
+                    ></v-checkbox>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>Show dates</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-list-item>
+
+              <v-list-item class="ml-6">
+                <template v-slot:default="{ }">
+                  <v-list-item-action class="mr-2">
+                    <v-checkbox
+                      v-model="optionLocalDateFormat"
+                      color="primary"
+                      @click.native="++updateSequence"
+                      :disabled="!optionShowDates"
+                    ></v-checkbox>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>Use local date format</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-list-item>
             </v-list-item-group>
           </v-list>
         </v-card>
 
-        <v-card class="mt-3">
+        <v-card class="mt-2">
           <v-toolbar :color="background" dark dense>
             <v-toolbar-title>Print Options</v-toolbar-title>
           </v-toolbar>
@@ -136,10 +167,22 @@
             <h1>{{trelloObj.name}}</h1>
             <a :href="trelloObj.url">{{trelloObj.url}}</a>
             <br />
-            <span v-if="trelloObj.dateLastActivity">
-              Last Updated: {{trelloObj.dateLastActivity}}
+            <span v-if="trelloObj.dateLastActivity && optionShowDates">
+              Last Updated: {{trelloObj.dateLastActivity | dateDisplay(optionLocalDateFormat)}}
               <br />
             </span>
+            <div
+              v-if="optionDescriptions && trelloObj.descLines != null && trelloObj.descLines.length > 0"
+            >
+              Description:
+              <span
+                v-for="(descLine, ix) in trelloObj.descLines"
+                :key="trelloObj.id + 'S' + ix"
+              >
+                {{descLine}}
+                <br />
+              </span>
+            </div>
             <div v-if="trelloObj.lists && trelloObj.lists.length == 0 && trelloObj.name > ''">
               <h3>This board has no lists</h3>
             </div>
@@ -147,7 +190,14 @@
               <h2>{{list.listNo}}{{list.name}}</h2>
               <div v-for="card in list.cards" :key="card.id">
                 {{card.cardNo}}{{card.name}}
-                <br />
+                <div
+                  v-if="optionShowDates && card.dateLastActivity"
+                  class="Text ml-5 indented"
+                >- Last Activity: {{card.dateLastActivity | dateDisplay(optionLocalDateFormat)}}</div>
+                <div
+                  v-if="optionShowDates && card.due"
+                  class="Text ml-5 indented"
+                >- Due Date: {{card.due | dateDisplay(optionLocalDateFormat)}}</div>
                 <div v-if="optionLabels">
                   <div
                     v-for="label in card.labels"
@@ -156,7 +206,10 @@
                   >{{label.name}}</div>
                 </div>
                 <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
-                  <span v-html="card.desc"></span>
+                  <span v-for="(descLine, ix) in card.descLines" :key="card.id + 'S' + ix">
+                    {{descLine}}
+                    <br />
+                  </span>
                   <br />
                 </div>
               </div>
@@ -172,10 +225,22 @@
           <h1>{{trelloObj.name}}</h1>
           <a :href="trelloObj.url">{{trelloObj.url}}</a>
           <br />
-          <span v-if="trelloObj.dateLastActivity">
-            Last Updated: {{trelloObj.dateLastActivity}}
+          <span v-if="trelloObj.dateLastActivity && optionShowDates">
+            Last Updated: {{trelloObj.dateLastActivity | dateDisplay(optionLocalDateFormat)}}
             <br />
           </span>
+          <div
+            v-if="optionDescriptions && trelloObj.descLines != null && trelloObj.descLines.length > 0"
+          >
+            Description:
+            <span
+              v-for="(descLine, ix) in trelloObj.descLines"
+              :key="trelloObj.id + 'P' + ix"
+            >
+              {{descLine}}
+              <br />
+            </span>
+          </div>
         </div>
         <div v-if="trelloObj.lists && trelloObj.lists.length == 0 && trelloObj.name > ''">
           <h3>This board has no lists</h3>
@@ -185,7 +250,14 @@
           <h2>{{list.listNo}}{{list.name}}</h2>
           <div v-for="card in list.cards" v-bind:key="card.id">
             {{card.cardNo}}{{card.name}}
-            <br />
+            <div
+              v-if="optionShowDates && card.dateLastActivity"
+              class="Text ml-5 indented"
+            >- Last Activity: {{card.dateLastActivity | dateDisplay(optionLocalDateFormat)}}</div>
+            <div
+              v-if="optionShowDates && card.due"
+              class="Text ml-5 indented"
+            >- Due Date: {{card.due | dateDisplay(optionLocalDateFormat)}}</div>
             <div v-if="optionLabels">
               <div
                 v-for="label in card.labels"
@@ -194,8 +266,10 @@
               >{{label.name}}</div>
             </div>
             <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
-              <span v-html="card.desc"></span>
-              <br />
+              <span v-for="(descLine, ix) in card.descLines" :key="card.id + 'P' + ix">
+                {{descLine}}
+                <br />
+              </span>
             </div>
           </div>
         </div>
@@ -204,20 +278,24 @@
   </v-container>
 </template>
 
+
 <script>
 import { mapActions, mapState } from "vuex";
+import moment from "moment";
 
 export default {
   data: () => ({
     listValue: null,
-    selectAll: [{ name: "Select All", id: "0" }],
-    optionLabels: true,
     optionDescriptions: true,
+    optionLabels: true,
+    optionLocalDateFormat: true,
     optionNumberLists: false,
     optionNumberCards: false,
+    optionShowDates: true,
     optionTitles: true,
     optionNewPage: false,
-    updateSequence: 1,
+    selectAll: [{ name: "Select All", id: "0" }],
+    updateSequence: 1
   }),
   mounted() {
     this.LOADTOKEN();
@@ -330,6 +408,21 @@ export default {
           this.listValue = "0";
           return this.selectAll.concat(this.currentLists);
       }
+    }
+  },
+  filters: {
+    dateDisplay: function(value, optionLocalDateFormat) {
+      if (!value) return "";
+      if (!moment().isValid(value)) {
+        return value;
+      }
+      if (optionLocalDateFormat) {
+        return moment
+          .utc(value)
+          .local()
+          .format("LLL");
+      }
+      return value;
     }
   }
 };

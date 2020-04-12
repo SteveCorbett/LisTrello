@@ -18,7 +18,13 @@ const actions = {
   GET_BOARDS({ commit }) {
     commit("SET_BOARDS", null);
     commit("SET_LISTS", null);
-    return boards.get().then(data => commit("SET_BOARDS", data));
+    return boards.get().then(data => {
+      console.log("GET_BOARDS", data);
+      data.forEach(board => {
+        board.descLines = board.desc.split("\n");
+      });
+      commit("SET_BOARDS", data);
+    });
   },
   CLEAR_CURRENT_BOARD({ commit }) {
     commit("SET_CURRENT_BOARD", null);
@@ -26,13 +32,13 @@ const actions = {
   },
   GET_LISTS_FOR_BOARD({ commit }, boardId) {
     const inputBoard = this.getters["getBoardForId"](boardId);
+    console.log("GET_LISTS_FOR_BOARD", inputBoard);
     commit("SET_CURRENT_BOARD", inputBoard);
     commit("SET_LISTS", null);
     return board.getLists(boardId).then(data => {
-      //console.log("GET_LISTS_FOR_BOARD", data);
       data.forEach(list => {
         list.cards.forEach(card => {
-          card.desc = card.desc.replace(/\n/g, "<br />");
+          card.descLines = card.desc.split("\n");
         });
       });
       commit("SET_LISTS", data);

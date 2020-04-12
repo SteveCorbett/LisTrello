@@ -19,6 +19,8 @@ const mutations = {
         name: board.name,
         url: board.url,
         dateLastActivity: board.dateLastActivity,
+        desc: board.desc,
+        descLines: board.descLines,
         lists: []
       };
     }

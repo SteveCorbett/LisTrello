@@ -52,8 +52,8 @@ export const board = {
   getLists(id) {
     //console.log("board: " + id);
     return request
-      .get(`/boards/${id}/Lists`, "&cards=open&card_fields=id,name,desc,labels")
-      .then(({ data }) => data);
+    .get(`/boards/${id}/Lists`, "&cards=open&card_fields=id,name,desc,labels,dateLastActivity,due")
+    .then(({ data }) => data);
   }
 };
 
