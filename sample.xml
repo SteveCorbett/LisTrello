@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" 
+    xmlns:o="urn:schemas-microsoft-com:office:office" 
+    xmlns:x="urn:schemas-microsoft-com:office:excel" 
+    xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" 
+    xmlns:html="http://www.w3.org/TR/REC-html40">
+    <Styles>
+        <Style ss:ID="Default" ss:Name="Normal">
+            <Alignment ss:Vertical="Top"/>
+        </Style>
+        <Style ss:ID="styleBold">
+            <Font ss:Bold="1"/>
+        </Style>
+        <Style ss:ID="styleTableHeader">
+            <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="wrapText">
+            <Alignment ss:WrapText="1"/>
+        </Style>
+    </Styles>
+    <Worksheet ss:Name="My Trello Board">
+        <Table>
+            <Row >
+                <Cell ss:StyleID="styleBold">
+                    <Data ss:Type="String">My Trello Board Name</Data>
+                </Cell>
+            </Row>
+            <Row >
+                <Cell>
+                    <Data ss:Type="String">This is a description of my Trello board </Data>
+                </Cell>
+            </Row>
+            <Row />
+            <Row >
+                <Cell ss:StyleID="styleTableHeader">
+                    <Data ss:Type="String">List Name</Data>
+                </Cell>
+                <Cell ss:StyleID="styleTableHeader">
+                    <Data ss:Type="String">Card Name</Data>
+                </Cell>
+                <Cell ss:StyleID="styleTableHeader">
+                    <Data ss:Type="String">Description</Data>
+                </Cell>
+            </Row>
+            <Row>
+                <Cell>
+                    <Data ss:Type="String">list1</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Card 1</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Something about this card</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="68">
+                <Cell>
+                    <Data ss:Type="String">list1</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Card 2</Data>
+                </Cell>
+                <Cell ss:StyleID="wrapText">
+                    <Data ss:Type="String">Something about this card.&#10;&#10;It has multiple lines.&#10;</Data>
+                </Cell>
+            </Row>
+            <Row>
+                <Cell>
+                    <Data ss:Type="String">list1</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Card 3</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Something about card 3</Data>
+                </Cell>
+            </Row>
+            <Row>
+                <Cell>
+                    <Data ss:Type="String">list2</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Card 4</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Something about card 4</Data>
+                </Cell>
+            </Row>
+            <Row>
+                <Cell>
+                    <Data ss:Type="String">list2</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Card 5</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Something about card 5</Data>
+                </Cell>
+            </Row>
+            <Row>
+                <Cell>
+                    <Data ss:Type="String">list2</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Card 6</Data>
+                </Cell>
+                <Cell>
+                    <Data ss:Type="String">Something about card 6</Data>
+                </Cell>
+            </Row>
+        </Table>
+    </Worksheet>
+</Workbook>
