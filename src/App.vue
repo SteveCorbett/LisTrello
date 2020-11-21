@@ -100,7 +100,7 @@
       </v-container>
     </v-content>
     <v-footer :color="background" app class="noprint">
-      <span class="white--text">&copy; 2020 Corbett Technologies Pty Limited</span>
+      <span class="white--text"><a href="https://www.corbtech.com.au" target="_blank">&copy; 2020 Corbett Technologies Pty Limited</a></span>
     </v-footer>
   </v-app>
 </template>
@@ -139,3 +139,13 @@ export default {
   }
 };
 </script>
+
+<style>
+  a:link {
+   color: white !important;
+  }
+
+  a:visited {
+    color: white !important;
+  }
+</style>
