@@ -5,14 +5,14 @@
         <v-select
           :items="boardList"
           :label="boardSelectLabel"
-          :disabled="(boardList.length == 0)"
+          :disabled="boardList.length == 0"
           item-text="name"
           item-value="id"
           @change="onSelectBoard"
           solo
         >
           <template v-slot:item="{ item }">
-            <span v-if="item.desc != ''">{{ item.name }}: {{item.desc}}</span>
+            <span v-if="item.desc != ''">{{ item.name }}: {{ item.desc }}</span>
             <span v-else>{{ item.name }}</span>
           </template>
         </v-select>
@@ -35,7 +35,7 @@
           <v-list subheader flat>
             <v-list-item-group multiple>
               <v-list-item>
-                <template v-slot:default="{ }">
+                <template v-slot:default="{}">
                   <v-list-item-action>
                     <v-checkbox
                       v-model="optionLabels"
@@ -50,7 +50,7 @@
               </v-list-item>
 
               <v-list-item>
-                <template v-slot:default="{ }">
+                <template v-slot:default="{}">
                   <v-list-item-action>
                     <v-checkbox
                       v-model="optionDescriptions"
@@ -65,7 +65,7 @@
               </v-list-item>
 
               <v-list-item>
-                <template v-slot:default="{ }">
+                <template v-slot:default="{}">
                   <v-list-item-action>
                     <v-checkbox
                       v-model="optionNumberLists"
@@ -80,7 +80,7 @@
               </v-list-item>
 
               <v-list-item>
-                <template v-slot:default="{ }">
+                <template v-slot:default="{}">
                   <v-list-item-action>
                     <v-checkbox
                       v-model="optionNumberCards"
@@ -95,7 +95,7 @@
               </v-list-item>
 
               <v-list-item>
-                <template v-slot:default="{ }">
+                <template v-slot:default="{}">
                   <v-list-item-action>
                     <v-checkbox
                       v-model="optionShowDates"
@@ -110,7 +110,7 @@
               </v-list-item>
 
               <v-list-item class="ml-6">
-                <template v-slot:default="{ }">
+                <template v-slot:default="{}">
                   <v-list-item-action class="mr-2">
                     <v-checkbox
                       v-model="optionLocalDateFormat"
@@ -136,9 +136,12 @@
           <v-list subheader flat>
             <v-list-item-group multiple>
               <v-list-item>
-                <template v-slot:default="{ }">
+                <template v-slot:default="{}">
                   <v-list-item-action>
-                    <v-checkbox v-model="optionTitles" color="primary"></v-checkbox>
+                    <v-checkbox
+                      v-model="optionTitles"
+                      color="primary"
+                    ></v-checkbox>
                   </v-list-item-action>
                   <v-list-item-content>
                     <v-list-item-title>Print Title</v-list-item-title>
@@ -147,12 +150,17 @@
               </v-list-item>
 
               <v-list-item>
-                <template v-slot:default="{ }">
+                <template v-slot:default="{}">
                   <v-list-item-action>
-                    <v-checkbox v-model="optionNewPage" color="primary"></v-checkbox>
+                    <v-checkbox
+                      v-model="optionNewPage"
+                      color="primary"
+                    ></v-checkbox>
                   </v-list-item-action>
                   <v-list-item-content>
-                    <v-list-item-title>Start List on New Page</v-list-item-title>
+                    <v-list-item-title
+                      >Start List on New Page</v-list-item-title
+                    >
                   </v-list-item-content>
                 </template>
               </v-list-item>
@@ -161,47 +169,88 @@
         </v-card>
       </v-col>
 
-      <v-col v-if="trelloObj" xs="12" sm="12" md="6" height="100%" class="noprint">
+      <v-col
+        v-if="trelloObj"
+        xs="12"
+        sm="12"
+        md="6"
+        height="100%"
+        class="noprint"
+      >
         <v-card outlined class="pa-2 noprint" height="100%" :key="updateKey">
           <div id="trelloOutput">
-            <h1>{{trelloObj.name}}</h1>
-            <a :href="trelloObj.url">{{trelloObj.url}}</a>
+            <h1>{{ trelloObj.name }}</h1>
+            <a :href="trelloObj.url">{{ trelloObj.url }}</a>
             <br />
             <span v-if="trelloObj.dateLastActivity && optionShowDates">
-              Last Updated: {{trelloObj.dateLastActivity | dateDisplay(optionLocalDateFormat)}}
+              Last Updated:
+              {{
+                trelloObj.dateLastActivity | dateDisplay(optionLocalDateFormat)
+              }}
               <br />
             </span>
-            <div v-if="optionDescriptions && trelloObj.desc != null && trelloObj.desc != ''">
-              <span v-for="(descLine, ix) in trelloObj.descLines" :key="trelloObj.id + 'S' + ix">
-                {{descLine}}
+            <div
+              v-if="
+                optionDescriptions &&
+                trelloObj.desc != null &&
+                trelloObj.desc != ''
+              "
+            >
+              <span
+                v-for="(descLine, ix) in trelloObj.descLines"
+                :key="trelloObj.id + 'S' + ix"
+              >
+                {{ descLine }}
                 <br />
               </span>
             </div>
-            <div v-if="trelloObj.lists && trelloObj.lists.length == 0 && trelloObj.name > ''">
+            <div
+              v-if="
+                trelloObj.lists &&
+                trelloObj.lists.length == 0 &&
+                trelloObj.name > ''
+              "
+            >
               <h3>This board has no lists</h3>
             </div>
             <div v-for="list in trelloObj.lists" :key="list.id">
-              <h2>{{list.listNo}}{{list.name}}</h2>
+              <h2>{{ list.listNo }}{{ list.name }}</h2>
               <div v-for="card in list.cards" :key="card.id">
-                {{card.cardNo}}{{card.name}}
+                {{ card.cardNo }}{{ card.name }}
                 <div
                   v-if="optionShowDates && card.dateLastActivity"
                   class="Text ml-5 indented"
-                >- Last Activity: {{card.dateLastActivity | dateDisplay(optionLocalDateFormat)}}</div>
+                >
+                  - Last Activity:
+                  {{
+                    card.dateLastActivity | dateDisplay(optionLocalDateFormat)
+                  }}
+                </div>
                 <div
                   v-if="optionShowDates && card.due"
                   class="Text ml-5 indented"
-                >- Due Date: {{card.due | dateDisplay(optionLocalDateFormat)}}</div>
+                >
+                  - Due Date:
+                  {{ card.due | dateDisplay(optionLocalDateFormat) }}
+                </div>
                 <div v-if="optionLabels">
                   <div
                     v-for="label in card.labels"
                     v-bind:key="label.id"
                     :class="label.color + 'Text ml-4 indented'"
-                  >{{label.name}}</div>
+                  >
+                    {{ label.name }}
+                  </div>
                 </div>
-                <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
-                  <span v-for="(descLine, ix) in card.descLines" :key="card.id + 'S' + ix">
-                    {{descLine}}
+                <div
+                  v-if="optionDescriptions && card.desc != ''"
+                  class="ml-4 mb-3 indented"
+                >
+                  <span
+                    v-for="(descLine, ix) in card.descLines"
+                    :key="card.id + 'S' + ix"
+                  >
+                    {{ descLine }}
                     <br />
                   </span>
                   <br />
@@ -214,48 +263,84 @@
     </v-row>
 
     <v-row dense class="printonly">
-      <div v-if="trelloObj" id="trelloOutput" class="print" :key="updatePrintKey">
+      <div
+        v-if="trelloObj"
+        id="trelloOutput"
+        class="print"
+        :key="updatePrintKey"
+      >
         <div v-if="optionTitles">
-          <h1>{{trelloObj.name}}</h1>
-          <a :href="trelloObj.url">{{trelloObj.url}}</a>
+          <h1>{{ trelloObj.name }}</h1>
+          <a :href="trelloObj.url">{{ trelloObj.url }}</a>
           <br />
           <span v-if="trelloObj.dateLastActivity && optionShowDates">
-            Last Updated: {{trelloObj.dateLastActivity | dateDisplay(optionLocalDateFormat)}}
+            Last Updated:
+            {{
+              trelloObj.dateLastActivity | dateDisplay(optionLocalDateFormat)
+            }}
             <br />
           </span>
-          <div v-if="optionDescriptions && trelloObj.desc != null && trelloObj.desc != ''">
-            <span v-for="(descLine, ix) in trelloObj.descLines" :key="trelloObj.id + 'P' + ix">
-              {{descLine}}
+          <div
+            v-if="
+              optionDescriptions &&
+              trelloObj.desc != null &&
+              trelloObj.desc != ''
+            "
+          >
+            <span
+              v-for="(descLine, ix) in trelloObj.descLines"
+              :key="trelloObj.id + 'P' + ix"
+            >
+              {{ descLine }}
               <br />
             </span>
           </div>
         </div>
-        <div v-if="trelloObj.lists && trelloObj.lists.length == 0 && trelloObj.name > ''">
+        <div
+          v-if="
+            trelloObj.lists &&
+            trelloObj.lists.length == 0 &&
+            trelloObj.name > ''
+          "
+        >
           <h3>This board has no lists</h3>
         </div>
         <div v-for="(list, index) in trelloObj.lists" v-bind:key="list.id">
-          <div v-if="optionNewPage && index > 0" style="page-break-before:always;" />
-          <h2>{{list.listNo}}{{list.name}}</h2>
+          <div
+            v-if="optionNewPage && index > 0"
+            style="page-break-before: always"
+          />
+          <h2>{{ list.listNo }}{{ list.name }}</h2>
           <div v-for="card in list.cards" v-bind:key="card.id">
-            {{card.cardNo}}{{card.name}}
+            {{ card.cardNo }}{{ card.name }}
             <div
               v-if="optionShowDates && card.dateLastActivity"
               class="Text ml-5 indented"
-            >- Last Activity: {{card.dateLastActivity | dateDisplay(optionLocalDateFormat)}}</div>
-            <div
-              v-if="optionShowDates && card.due"
-              class="Text ml-5 indented"
-            >- Due Date: {{card.due | dateDisplay(optionLocalDateFormat)}}</div>
+            >
+              - Last Activity:
+              {{ card.dateLastActivity | dateDisplay(optionLocalDateFormat) }}
+            </div>
+            <div v-if="optionShowDates && card.due" class="Text ml-5 indented">
+              - Due Date: {{ card.due | dateDisplay(optionLocalDateFormat) }}
+            </div>
             <div v-if="optionLabels">
               <div
                 v-for="label in card.labels"
                 v-bind:key="label.id"
                 :class="label.color + 'Text ml-4 indented'"
-              >{{label.name}}</div>
+              >
+                {{ label.name }}
+              </div>
             </div>
-            <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
-              <span v-for="(descLine, ix) in card.descLines" :key="card.id + 'P' + ix">
-                {{descLine}}
+            <div
+              v-if="optionDescriptions && card.desc != ''"
+              class="ml-4 mb-3 indented"
+            >
+              <span
+                v-for="(descLine, ix) in card.descLines"
+                :key="card.id + 'P' + ix"
+              >
+                {{ descLine }}
                 <br />
               </span>
             </div>
@@ -283,7 +368,7 @@ export default {
     optionTitles: true,
     optionNewPage: false,
     selectAll: [{ name: "Select All", id: "0" }],
-    updateSequence: 1
+    updateSequence: 1,
   }),
   mounted() {
     this.LOADTOKEN();
@@ -295,11 +380,10 @@ export default {
   created() {
     this.CLEAR_CURRENT_BOARD();
     this.$watch(
-      function() {
+      function () {
         return this.currentLists;
       },
-      function() {
-        //console.log("currentLists changed: ", newVal, " | was: ", oldVal);
+      function () {
         if (this.trelloObj) {
           this.trelloObj.lists = this.currentLists;
           this.doNumbering(this.trelloObj.lists);
@@ -313,7 +397,7 @@ export default {
       trelloObj: "currentBoard",
       currentLists: "currentLists",
       background: "background",
-      trelloUserToken: "trelloUserToken"
+      trelloUserToken: "trelloUserToken",
     }),
     boardSelectLabel() {
       return this.boardList.length == 0
@@ -340,22 +424,22 @@ export default {
     },
     updatePrintKey() {
       return "PrintKey" + this.updateSequence;
-    }
+    },
   },
   methods: {
     ...mapActions([
       "LOADTOKEN",
       "CLEAR_CURRENT_BOARD",
       "GET_BOARDS",
-      "GET_LISTS_FOR_BOARD"
+      "GET_LISTS_FOR_BOARD",
     ]),
     doNumbering(boardList) {
       if (boardList == null) return;
       var listNo = 0;
-      boardList.forEach(list => {
+      boardList.forEach((list) => {
         list.listNo = this.optionNumberLists ? ++listNo + ". " : "";
         var cardNo = 0;
-        list.cards.forEach(card => {
+        list.cards.forEach((card) => {
           const cardNoPrefix = this.optionNumberLists ? listNo + "." : "";
           card.cardNo = this.optionNumberCards
             ? cardNoPrefix + ++cardNo + ". "
@@ -371,7 +455,7 @@ export default {
       if (listId == "0") {
         this.trelloObj.lists = this.currentLists;
       } else {
-        this.trelloObj.lists = this.currentLists.filter(list => {
+        this.trelloObj.lists = this.currentLists.filter((list) => {
           return list.id === listId;
         });
       }
@@ -396,23 +480,20 @@ export default {
           this.listValue = "0";
           return this.selectAll.concat(this.currentLists);
       }
-    }
+    },
   },
   filters: {
-    dateDisplay: function(value, optionLocalDateFormat) {
+    dateDisplay: function (value, optionLocalDateFormat) {
       if (!value) return "";
       if (!moment().isValid(value)) {
         return value;
       }
       if (optionLocalDateFormat) {
-        return moment
-          .utc(value)
-          .local()
-          .format("LLL");
+        return moment.utc(value).local().format("LLL");
       }
       return value;
-    }
-  }
+    },
+  },
 };
 </script>
 

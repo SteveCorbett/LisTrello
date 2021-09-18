@@ -34,7 +34,7 @@ const request = {
   put(path, data) {
     const apiUrl = store.state.trelloApiUrl;
     return axios.put(`${apiUrl + path}`, data);
-  }
+  },
 };
 
 export const boards = {
@@ -45,20 +45,22 @@ export const boards = {
         "&filter=open&fields=name,id,url,dateLastActivity,desc"
       )
       .then(({ data }) => data);
-  }
+  },
 };
 
 export const board = {
   getLists(id) {
-    //console.log("board: " + id);
     return request
-    .get(`/boards/${id}/Lists`, "&cards=open&card_fields=id,name,desc,labels,dateLastActivity,due")
-    .then(({ data }) => data);
-  }
+      .get(
+        `/boards/${id}/Lists`,
+        "&cards=open&card_fields=id,name,desc,labels,dateLastActivity,due"
+      )
+      .then(({ data }) => data);
+  },
 };
 
 export const list = {
   create(data) {
     return request.post(`/lists`, data);
-  }
+  },
 };

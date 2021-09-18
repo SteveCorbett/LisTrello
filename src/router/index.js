@@ -12,10 +12,7 @@ import store from "../store";
 Vue.use(VueRouter);
 
 const doDefault = () => (from, to, next) => {
-  console.log("DoDefault", from);
-  console.log(window.location);
   if (from.hash != null && from.hash.startsWith("#token=")) {
-    console.log("Set token = " + from.hash.substr(7));
     next("/ListCards");
   } else next();
 };
@@ -38,42 +35,42 @@ export default new VueRouter({
     {
       path: "/",
       component: Home,
-      props: route => ({ token: route.hash })
+      props: (route) => ({ token: route.hash }),
     },
     {
       path: "/about",
-      component: About
+      component: About,
     },
     {
       path: "/contactUs",
       name: "contactUs",
-      component: ContactUs
+      component: ContactUs,
     },
     {
       path: "/home",
       name: "home",
       component: Login,
-      beforeEnter: goHome()
+      beforeEnter: goHome(),
     },
     {
       path: "/login",
       name: "login",
-      component: Login
+      component: Login,
     },
     {
       path: "/logout",
       name: "logout",
-      component: Logout
+      component: Logout,
     },
     {
       path: "/ListCards",
       name: "listcards",
-      component: ListCards
+      component: ListCards,
     },
     {
       path: "*",
       component: Home,
-      beforeEnter: doDefault()
-    }
-  ]
+      beforeEnter: doDefault(),
+    },
+  ],
 });

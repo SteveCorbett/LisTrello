@@ -4,12 +4,11 @@
         height: auto;
     }
     main {
-        padding: 0 !important; 
+        padding: 0 !important;
     }
     .table-responsive {
         overflow-x: initial !important;
     }
-
     .container {
         margin: 0mm 4mm;
         padding: 3mm
@@ -23,7 +22,7 @@
         visibility: visible;
     }
     .row {
-        display: block ;
+        display: block;
     }
 }
 
@@ -33,10 +32,9 @@
 
 @media screen {
     .printonly {
-        visibility: hidden;
+        display: none;
     }
     main {
-        padding: 24px 0px !important; 
+        padding: 24px 0px !important;
     }
-
 }
