@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <v-container>
       <v-row align="center">
         <v-card class="mx-auto" max-width="500">
@@ -9,10 +9,10 @@
             <p>The Trello Card List Utility</p>
             <div class="text--primary">
               <p>
-                Thank you for looking at LisTrello. If you have any comments, ideas,
-                suggestions (good or bad) or find a bug please let us know.
-                Leave your email address if your would like me to reply, or just post
-                anonymously.
+                Thank you for looking at LisTrello. If you have any comments,
+                ideas, suggestions (good or bad) or find a bug please let us
+                know. Leave your email address if your would like me to reply,
+                or just post anonymously.
               </p>
               <v-form
                 name="LisTrello-comment"
@@ -20,8 +20,18 @@
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
               >
-                <input type="hidden" name="form-name" value="LisTrello-comment" />
-                <v-text-field outlined name="email" label="E-mail" placeholder="Optional" xs="12"></v-text-field>
+                <input
+                  type="hidden"
+                  name="form-name"
+                  value="LisTrello-comment"
+                />
+                <v-text-field
+                  outlined
+                  name="email"
+                  label="E-mail"
+                  placeholder="Optional"
+                  xs="12"
+                ></v-text-field>
                 <v-textarea
                   outlined
                   name="comments"
@@ -37,15 +47,22 @@
                   class="button__full mb-4"
                   :disabled="comment.length < 10"
                   @click="onSubmit"
-                >Send Comment</v-btn>
-                <v-btn block rounded @click.native="DoCancel" class="button__full">Cancel</v-btn>
+                  >Send Comment</v-btn
+                >
+                <v-btn
+                  block
+                  rounded
+                  @click.native="DoCancel"
+                  class="button__full"
+                  >Cancel</v-btn
+                >
               </v-form>
             </div>
           </v-card-text>
         </v-card>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -66,10 +83,10 @@ export default {
     },
     onSubmit() {
       this.IS_SUBMITTING_FORM("true");
-    }
+    },
   },
   data: () => ({
-    comment: ""
-  })
+    comment: "",
+  }),
 };
 </script>

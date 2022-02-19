@@ -118,7 +118,7 @@
     <v-footer :color="background" app class="noprint">
       <span class="white--text"
         ><a href="https://www.corbtech.com.au" target="_blank"
-          >&copy; 2020-2021 Corbett Technologies Pty Limited</a
+          >&copy; 2020-2022 Corbett Technologies Pty Limited</a
         ></span
       >
     </v-footer>
