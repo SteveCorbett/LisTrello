@@ -1,12 +1,6 @@
 <template>
   <v-app id="lisTrello">
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      class="noprint d-print-none"
-      :mini-variant="miniVariant"
-      temporary
-    >
+    <v-navigation-drawer v-model="drawer" app class="noprint d-print-none" :mini-variant="miniVariant" temporary>
       <template>
         <v-list dense>
           <v-tooltip right nudge-left="170" nudge-bottom="20">
@@ -23,20 +17,9 @@
             Back to your lists.
           </v-tooltip>
 
-          <v-tooltip
-            right
-            nudge-left="170"
-            nudge-bottom="20"
-            max-width="500"
-            :disabled="!isAuthenticated"
-          >
+          <v-tooltip right nudge-left="170" nudge-bottom="20" max-width="500" :disabled="!isAuthenticated">
             <template v-slot:activator="{ on }">
-              <v-list-item
-                link
-                v-on="on"
-                @click="LogOut"
-                :disabled="!isAuthenticated"
-              >
+              <v-list-item link v-on="on" @click="LogOut" :disabled="!isAuthenticated">
                 <v-list-item-action>
                   <custom-icon>{{ mdiRepeat }}</custom-icon>
                 </v-list-item-action>
@@ -59,8 +42,8 @@
               <v-list-item link v-on="on" @click="miniVariant = !miniVariant">
                 <v-list-item-action>
                   <custom-icon v-if="miniVariant">{{
-                    mdiChevronRight
-                  }}</custom-icon>
+    mdiChevronRight
+}}</custom-icon>
                   <custom-icon v-else>{{ mdiChevronLeft }}</custom-icon>
                 </v-list-item-action>
                 <v-list-item-content>
@@ -116,18 +99,15 @@
     </v-main>
 
     <v-footer :color="background" app class="noprint">
-      <span class="white--text"
-        ><a href="https://www.corbtech.com.au" target="_blank"
-          >&copy; 2020-2022 Corbett Technologies Pty Limited</a
-        ></span
-      >
+      <span class="white--text"><a href="https://www.corbtech.com.au" target="_blank">&copy; 2020-2022 Corbett
+          Technologies Pty Limited</a></span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import CustomIcon from "./components/CustomIcon";
+import CustomIcon from "./components/CustomIcon.vue";
 import {
   mdiChevronLeft,
   mdiChevronRight,

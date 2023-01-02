@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import About from "../components/About";
-import ContactUs from "../components/ContactUs";
-import Home from "../components/Home";
-import Login from "../components/Login";
-import Logout from "../components/Logout";
-import ListCards from "../components/ListCards";
+import About from "../components/About.vue";
+import ContactUs from "../components/ContactUs.vue";
+import Home from "../components/Home.vue";
+import Login from "../components/Login.vue";
+import Logout from "../components/Logout.vue";
+import ListCards from "../components/ListCards.vue";
 import store from "../store";
 
 Vue.use(VueRouter);
