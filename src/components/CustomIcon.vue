@@ -15,10 +15,10 @@ export default {
 
     methods: {
         updatePath() {
-            if (!this.$scopedSlots) return
-            if (typeof this.$scopedSlots.default !== 'function') return
+            if (!this.$slots) return
+            if (typeof this.$slots.default !== 'function') return
 
-            this.path = this.$scopedSlots
+            this.path = this.$slots
                 .default()
                 .map((n) => n.text)
                 .join('')

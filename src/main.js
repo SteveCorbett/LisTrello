@@ -1,18 +1,26 @@
-import Vue from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
-import vuetify from "./plugins/vuetify";
 import router from "./router";
 import store from "./store";
-import Print from "vue-print-nb";
-import "./assets/global.css";
+import vuetify from "./plugins/vuetify";
+import { loadFonts } from "./plugins/webfontloader";
+import moment from "moment";
 
-Vue.config.productionTip = false;
+loadFonts();
 
-Vue.use(Print);
+const app = createApp(App).use(router).use(store).use(vuetify);
 
-new Vue({
-  vuetify,
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+app.config.globalProperties.$filters = {
+  dateDisplay(value, optionLocalDateFormat) {
+    if (!value) return "";
+    if (!moment().isValid(value)) {
+      return value;
+    }
+    if (optionLocalDateFormat) {
+      return moment.utc(value).local().format("LLL");
+    }
+    return value;
+  },
+};
+
+app.mount("#app");

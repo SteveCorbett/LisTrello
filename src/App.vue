@@ -1,31 +1,27 @@
 <template>
-  <v-app id="lisTrello">
-    <v-navigation-drawer v-model="drawer" app class="noprint d-print-none" :mini-variant="miniVariant" temporary>
+  <v-app>
+    <v-navigation-drawer v-model="drawer" class="noprint d-print-none" temporary>
       <template>
         <v-list dense>
-          <v-tooltip right nudge-left="170" nudge-bottom="20">
+          <v-tooltip location="right" offset="[170, 20]">
             <template v-slot:activator="{ on }">
               <v-list-item link v-on="on" @click="Home">
                 <v-list-item-action>
                   <custom-icon>{{ mdiHomeOutline }}</custom-icon>
                 </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Home</v-list-item-title>
-                </v-list-item-content>
+                <v-list-item-title>Home</v-list-item-title>
               </v-list-item>
             </template>
             Back to your lists.
           </v-tooltip>
 
-          <v-tooltip right nudge-left="170" nudge-bottom="20" max-width="500" :disabled="!isAuthenticated">
+          <v-tooltip location="right" offset="[170, 20]" max-width="500" :disabled="!isAuthenticated">
             <template v-slot:activator="{ on }">
               <v-list-item link v-on="on" @click="LogOut" :disabled="!isAuthenticated">
                 <v-list-item-action>
                   <custom-icon>{{ mdiRepeat }}</custom-icon>
                 </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Log Out/Switch Account</v-list-item-title>
-                </v-list-item-content>
+                <v-list-item-title>Log Out/Switch Account</v-list-item-title>
               </v-list-item>
             </template>
             <p>
@@ -37,7 +33,7 @@
             account.
           </v-tooltip>
 
-          <v-tooltip right nudge-left="170" nudge-bottom="20" class="noprint">
+          <v-tooltip location="right" offset="[170, 20]" class="noprint">
             <template v-slot:activator="{ on }">
               <v-list-item link v-on="on" @click="miniVariant = !miniVariant">
                 <v-list-item-action>
@@ -46,37 +42,31 @@
 }}</custom-icon>
                   <custom-icon v-else>{{ mdiChevronLeft }}</custom-icon>
                 </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Change menu size</v-list-item-title>
-                </v-list-item-content>
+                <v-list-item-title>Change menu size</v-list-item-title>
               </v-list-item>
             </template>
             {{ miniVariant ? "Show the menu text" : "Hide the menu text" }}
           </v-tooltip>
 
-          <v-tooltip right nudge-left="170" nudge-bottom="20" class="noprint">
+          <v-tooltip location="right" offset="[170, 20]" class="noprint">
             <template v-slot:activator="{ on }">
               <v-list-item link v-on="on" @click="ContactUs">
                 <v-list-item-action>
                   <custom-icon>{{ mdiEmailOutline }}</custom-icon>
                 </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Contact Us</v-list-item-title>
-                </v-list-item-content>
+                <v-list-item-title>Contact Us</v-list-item-title>
               </v-list-item>
             </template>
             Need to send us a comment, suggestion or idea? Click here.
           </v-tooltip>
 
-          <v-tooltip right nudge-left="170" nudge-bottom="20" class="noprint">
+          <v-tooltip location="right" offset="[170, 20]" class="noprint">
             <template v-slot:activator="{ on }">
               <v-list-item link v-on="on" @click="About">
                 <v-list-item-action>
                   <custom-icon>{{ mdiInformationOutline }}</custom-icon>
                 </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>About</v-list-item-title>
-                </v-list-item-content>
+                <v-list-item-title>About</v-list-item-title>
               </v-list-item>
             </template>
             Wondering what LisTrello is all about? Click here..
@@ -85,7 +75,7 @@
       </template>
     </v-navigation-drawer>
 
-    <v-app-bar app :color="background" dark class="noprint d-print-none">
+    <v-app-bar :color="background" theme="dark" class="noprint d-print-none">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer">
         <custom-icon>{{ mdiMenu }}</custom-icon>
       </v-app-bar-nav-icon>
@@ -99,7 +89,7 @@
     </v-main>
 
     <v-footer :color="background" app class="noprint">
-      <span class="white--text"><a href="https://www.corbtech.com.au" target="_blank">&copy; 2020-2022 Corbett
+      <span class="text-white"><a href="https://www.corbtech.com.au" target="_blank">&copy; 2020-2022 Corbett
           Technologies Pty Limited</a></span>
     </v-footer>
   </v-app>
@@ -119,6 +109,7 @@ import {
 } from "@mdi/js";
 
 export default {
+  name: 'App',
   components: {
     CustomIcon,
   },

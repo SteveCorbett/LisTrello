@@ -4,7 +4,7 @@
       <v-card class="mx-auto" max-width="400">
         <v-card-text>
           <div>Welcome to</div>
-          <p class="display-1 text--primary">LisTrello</p>
+          <p class="text-h4 text--primary">LisTrello</p>
           <p>The Trello Card List Utility</p>
           <div class="text--primary">
             <p>
@@ -14,7 +14,7 @@
               to read your boards, lists and cards for one hour only.
             </p>
             <p>Selecting the button below will re-direct you to Trello.com.</p>
-            <p class="subtitle-1 font-weight-medium mb-0">Important!</p>
+            <p class="text-subtitle-1 font-weight-medium mb-0">Important!</p>
             <p>
               You will need to scroll down to the bottom of the Trello.com page
               to see the button to allow us to read your boards. Once you have
@@ -24,7 +24,7 @@
           </div>
         </v-card-text>
         <v-card-actions>
-          <v-btn block rounded @click.native="Login">Sign In To Trello</v-btn>
+          <v-btn block rounded @click="Login">Sign In To Trello</v-btn>
         </v-card-actions>
       </v-card>
     </v-container>

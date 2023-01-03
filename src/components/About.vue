@@ -5,7 +5,7 @@
         <v-card class="mx-auto">
           <v-card-text xs-12>
             <div>About LisTrello</div>
-            <p class="display-1 text--primary">LisTrello</p>
+            <p class="text-h4 text--primary">LisTrello</p>
             <p>The Trello Card List Utility</p>
             <div class="text--primary">
               <p>
@@ -41,72 +41,38 @@
                 our
                 <a href="/contactUs" class="normal">Contact Us</a> page.
               </p>
-              <p class="subtitle-1 font-weight-medium mb-0">References</p>
+              <p class="text-subtitle-1 font-weight-medium mb-0">References</p>
               <v-list dense rounded class="pa-0">
-                <v-list-item-group>
-                  <v-list-item @click="OpenUrl('https://www.trello.com')">
-                    <v-list-item-content>
-                      <v-list-item-title
-                        >The main Trello.com landing page</v-list-item-title
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-list-item
-                    @click="
-                      OpenUrl('https://en.wikipedia.org/wiki/Kanban_board')
-                    "
-                  >
-                    <v-list-item-content>
-                      <v-list-item-title
-                        >The explaination of Kanban boards on
-                        Wikipedia</v-list-item-title
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-list-item
-                    @click="
-                      OpenUrl('https://github.com/SteveCorbett/LisTrello')
-                    "
-                  >
-                    <v-list-item-content>
-                      <v-list-item-title
-                        >The source code for LisTrello on
-                        GitHub</v-list-item-title
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-list-item
-                    @click="OpenUrl('https://trello.com/b/VqWfpxIi/listrello')"
-                  >
-                    <v-list-item-content>
-                      <v-list-item-title
-                        >The Trello board we use to manage
-                        LisTrello</v-list-item-title
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-list-item @click="OpenUrl('https://vuejs.org/')">
-                    <v-list-item-content>
-                      <v-list-item-title
-                        >The landing page for Vue.js</v-list-item-title
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-list-item @click="OpenUrl('https://www.vuetifyjs.com')">
-                    <v-list-item-content>
-                      <v-list-item-title
-                        >The landing page for Vuetify</v-list-item-title
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
+                <v-list-item @click="OpenUrl('https://www.trello.com')">
+                  <v-list-item-title>The main Trello.com landing page</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="
+  OpenUrl('https://en.wikipedia.org/wiki/Kanban_board')
+">
+                  <v-list-item-title>The explaination of Kanban boards on
+                    Wikipedia</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="
+  OpenUrl('https://github.com/SteveCorbett/LisTrello')
+">
+                  <v-list-item-title>The source code for LisTrello on
+                    GitHub</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="OpenUrl('https://trello.com/b/VqWfpxIi/listrello')">
+                  <v-list-item-title>The Trello board we use to manage
+                    LisTrello</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="OpenUrl('https://vuejs.org/')">
+                  <v-list-item-title>The landing page for Vue.js</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="OpenUrl('https://www.vuetifyjs.com')">
+                  <v-list-item-title>The landing page for Vuetify</v-list-item-title>
+                </v-list-item>
               </v-list>
             </div>
           </v-card-text>
           <v-card-actions>
-            <v-btn block rounded @click.native="DoReturn" class="button__full"
-              >Home</v-btn
-            >
+            <v-btn block rounded @click="DoReturn()" class="button__full">Home</v-btn>
           </v-card-actions>
         </v-card>
       </v-row>
