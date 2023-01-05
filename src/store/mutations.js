@@ -1,4 +1,4 @@
-const mutations = {
+export const mutations = {
   LOGIN(state, payload) {
     state.trelloUserToken = payload;
   },
@@ -35,5 +35,3 @@ const mutations = {
     }
   },
 };
-
-export default mutations;

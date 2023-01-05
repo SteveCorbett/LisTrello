@@ -1,83 +1,58 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="drawer" class="noprint d-print-none" temporary>
-      <template>
-        <v-list dense>
-          <v-tooltip location="right" offset="[170, 20]">
-            <template v-slot:activator="{ on }">
-              <v-list-item link v-on="on" @click="Home">
-                <v-list-item-action>
-                  <custom-icon>{{ mdiHomeOutline }}</custom-icon>
-                </v-list-item-action>
-                <v-list-item-title>Home</v-list-item-title>
-              </v-list-item>
-            </template>
+      <v-list dense>
+        <v-list-item link @click="Home">
+          <v-icon icon="mdi-home-outline" size="large"></v-icon>
+          Home
+          <v-tooltip location="right" activator="parent" offset="-100">
             Back to your lists.
           </v-tooltip>
+        </v-list-item>
 
-          <v-tooltip location="right" offset="[170, 20]" max-width="500" :disabled="!isAuthenticated">
-            <template v-slot:activator="{ on }">
-              <v-list-item link v-on="on" @click="LogOut" :disabled="!isAuthenticated">
-                <v-list-item-action>
-                  <custom-icon>{{ mdiRepeat }}</custom-icon>
-                </v-list-item-action>
-                <v-list-item-title>Log Out/Switch Account</v-list-item-title>
-              </v-list-item>
-            </template>
+        <v-list-item link @click="LogOut" :disabled="!isAuthenticated">
+          <v-icon icon="mdi-repeat" size="large"></v-icon>
+          Log Out/Switch Account
+          <v-tooltip location="right" activator="parent" offset="-100">
             <p>
-              When you log in to Trello, we are given read only access to your
-              account's boards for one hour only. Select this to log out
-              immediately.
+              When you log in to Trello, we are given read only access to your account's
+              boards for one hour only. Select this to log out immediately.
             </p>
-            You may need to do this to switch to using a different Trello
-            account.
+            You may need to do this to switch to using a different Trello account.
           </v-tooltip>
+        </v-list-item>
 
-          <v-tooltip location="right" offset="[170, 20]" class="noprint">
-            <template v-slot:activator="{ on }">
-              <v-list-item link v-on="on" @click="miniVariant = !miniVariant">
-                <v-list-item-action>
-                  <custom-icon v-if="miniVariant">{{
-    mdiChevronRight
-}}</custom-icon>
-                  <custom-icon v-else>{{ mdiChevronLeft }}</custom-icon>
-                </v-list-item-action>
-                <v-list-item-title>Change menu size</v-list-item-title>
-              </v-list-item>
-            </template>
+
+        <v-list-item link @click="miniVariant = !miniVariant">
+          <v-icon v-if="miniVariant" icon="mdi-chevron-right" size="large"></v-icon>
+          <v-icon v-else icon="mdi-chevron-left" size="large"></v-icon>
+          Change menu size
+          <v-tooltip location="right" activator="parent" offset="-100">
             {{ miniVariant ? "Show the menu text" : "Hide the menu text" }}
           </v-tooltip>
+        </v-list-item>
 
-          <v-tooltip location="right" offset="[170, 20]" class="noprint">
-            <template v-slot:activator="{ on }">
-              <v-list-item link v-on="on" @click="ContactUs">
-                <v-list-item-action>
-                  <custom-icon>{{ mdiEmailOutline }}</custom-icon>
-                </v-list-item-action>
-                <v-list-item-title>Contact Us</v-list-item-title>
-              </v-list-item>
-            </template>
-            Need to send us a comment, suggestion or idea? Click here.
+        <v-list-item link @click="ContactUs">
+          <v-icon icon="mdi-email-outline" size="large"></v-icon>
+          Contact Us
+          <v-tooltip location="right" activator="parent" offset="-100">
+            Need to send us a comment, suggestion or idea? Click here...
           </v-tooltip>
+        </v-list-item>
 
-          <v-tooltip location="right" offset="[170, 20]" class="noprint">
-            <template v-slot:activator="{ on }">
-              <v-list-item link v-on="on" @click="About">
-                <v-list-item-action>
-                  <custom-icon>{{ mdiInformationOutline }}</custom-icon>
-                </v-list-item-action>
-                <v-list-item-title>About</v-list-item-title>
-              </v-list-item>
-            </template>
-            Wondering what LisTrello is all about? Click here..
+        <v-list-item link @click="About">
+          <v-icon icon="mdi-information-outline" size="large"></v-icon>
+          About
+          <v-tooltip location="right" activator="parent" offset="-100">
+            Wondering what LisTrello is all about? Click here...
           </v-tooltip>
-        </v-list>
-      </template>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
 
     <v-app-bar :color="background" theme="dark" class="noprint d-print-none">
-      <v-app-bar-nav-icon @click.stop="aaa()">
-        <custom-icon>{{ mdiMenu }}</custom-icon>XXX
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+        <v-icon icon="mdi-menu" color="white" size="large"></v-icon>
       </v-app-bar-nav-icon>
       <v-toolbar-title>LisTrello - List Trello Cards</v-toolbar-title>
     </v-app-bar>
@@ -109,7 +84,7 @@ import {
 } from "@mdi/js";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     CustomIcon,
   },
@@ -131,10 +106,6 @@ export default {
     }),
   },
   methods: {
-    aaa() {
-      this.drawer = !this.drawer;
-      console.log("atest: ", this.atest);
-    },
     About() {
       this.drawer = false;
       this.$router.push("about");

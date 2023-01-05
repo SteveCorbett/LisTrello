@@ -1,8 +1,5 @@
 export function getters() {
   return {
-    atest(state) {
-      return "ok";
-    },
     isAuthenticated(state) {
       return state.trelloUserToken != null;
     },

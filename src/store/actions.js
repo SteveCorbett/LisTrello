@@ -2,7 +2,7 @@ import { boards, board } from "../utils/httpApi";
 
 const localStorageUserToken = "lisTrelloHash";
 
-const actions = {
+export const actions = {
   LOGIN({ commit }, token) {
     localStorage.setItem(localStorageUserToken, token);
     commit("LOGIN", token);
@@ -46,5 +46,3 @@ const actions = {
     commit("SET_IS_SUBMITTING_FORM", value);
   },
 };
-
-export default actions;

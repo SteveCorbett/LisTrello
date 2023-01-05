@@ -8,7 +8,7 @@ import moment from "moment";
 
 loadFonts();
 
-const app = createApp(App).use(router).use(store).use(vuetify);
+const app = createApp(App).use(store).use(router).use(vuetify);
 
 app.config.globalProperties.$filters = {
   dateDisplay(value, optionLocalDateFormat) {
