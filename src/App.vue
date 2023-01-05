@@ -76,8 +76,8 @@
     </v-navigation-drawer>
 
     <v-app-bar :color="background" theme="dark" class="noprint d-print-none">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer">
-        <custom-icon>{{ mdiMenu }}</custom-icon>
+      <v-app-bar-nav-icon @click.stop="aaa()">
+        <custom-icon>{{ mdiMenu }}</custom-icon>XXX
       </v-app-bar-nav-icon>
       <v-toolbar-title>LisTrello - List Trello Cards</v-toolbar-title>
     </v-app-bar>
@@ -89,7 +89,7 @@
     </v-main>
 
     <v-footer :color="background" app class="noprint">
-      <span class="text-white"><a href="https://www.corbtech.com.au" target="_blank">&copy; 2020-2022 Corbett
+      <span class="text-white"><a href="https://www.corbtech.com.au" target="_blank">&copy; 2020-2023 Corbett
           Technologies Pty Limited</a></span>
     </v-footer>
   </v-app>
@@ -125,12 +125,16 @@ export default {
     mdiRepeat,
   }),
   computed: {
-    ...mapGetters(["isAuthenticated"]),
+    ...mapGetters({ isAuthenticated: "isAuthenticated", atest: "atest" }),
     ...mapState({
       background: "background",
     }),
   },
   methods: {
+    aaa() {
+      this.drawer = !this.drawer;
+      console.log("atest: ", this.atest);
+    },
     About() {
       this.drawer = false;
       this.$router.push("about");
