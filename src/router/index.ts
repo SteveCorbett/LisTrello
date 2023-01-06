@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import About from "../components/About.vue";
 import ContactUs from "../components/ContactUs.vue";
 import Home from "../components/Home.vue";
@@ -7,20 +7,20 @@ import Logout from "../components/Logout.vue";
 import ListCards from "../components/ListCards.vue";
 import store from "../store";
 
-const doDefault = () => (from, to, next) => {
+const doDefault = () => (from: any, to: any, next: any) => {
   if (from.hash != null && from.hash.startsWith("#token=")) {
     next("/ListCards");
   } else next();
 };
 
-const goHome = () => (from, to, next) => {
+const goHome = () => (from: any, to: any, next: any) => {
   store.dispatch("LOADTOKEN");
   if (store.getters.isAuthenticated == true) {
     next("/ListCards");
   } else next();
 };
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     path: "/",
     component: Home,

@@ -1,4 +1,5 @@
-import axios from "axios";
+import { Board } from "@/models/Board";
+import axios, { AxiosResponse } from "axios";
 import router from "../router";
 import store from "../store";
 
@@ -10,7 +11,7 @@ const onUnauthorized = () => {
 };
 
 const request = {
-  get(endpoint, query) {
+  get(endpoint: string, query?: string): Promise<string | AxiosResponse> {
     var apiUrl =
       store.state.trelloApiUrl +
       endpoint +
@@ -27,11 +28,11 @@ const request = {
       throw Error(response);
     });
   },
-  post(path, data) {
+  post(path: string, data: unknown) {
     const apiUrl = store.state.trelloApiUrl;
     return axios.post(`${apiUrl + path}`, data);
   },
-  put(path, data) {
+  put(path: string, data: unknown) {
     const apiUrl = store.state.trelloApiUrl;
     return axios.put(`${apiUrl + path}`, data);
   },
@@ -44,23 +45,23 @@ export const boards = {
         "/members/me/boards",
         "&filter=open&fields=name,id,url,dateLastActivity,desc"
       )
-      .then(({ data }) => data);
+      .then(({ data }: any) => data);
   },
 };
 
 export const board = {
-  getLists(id) {
+  getLists(id: string) {
     return request
       .get(
         `/boards/${id}/Lists`,
         "&cards=open&card_fields=id,name,desc,labels,dateLastActivity,due"
       )
-      .then(({ data }) => data);
+      .then(({ data }: any) => data);
   },
 };
 
 export const list = {
-  create(data) {
+  create(data: unknown) {
     return request.post(`/lists`, data);
   },
 };

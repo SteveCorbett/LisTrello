@@ -6,7 +6,7 @@ import { state } from "./state";
 
 export default createStore({
   state,
-  getters: getters(),
+  getters: getters,
   mutations: mutations,
   actions: actions,
 });
