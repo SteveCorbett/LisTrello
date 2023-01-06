@@ -22,13 +22,12 @@
           </v-tooltip>
         </v-list-item>
 
-
         <v-list-item link @click="miniVariant = !miniVariant">
           <v-icon v-if="miniVariant" icon="mdi-chevron-right" size="large"></v-icon>
           <v-icon v-else icon="mdi-chevron-left" size="large"></v-icon>
           Change menu size
           <v-tooltip location="right" activator="parent" offset="-100">
-            {{ miniVariant ? "Show the menu text" : "Hide the menu text" }}
+            {{ miniVariant? "Show the menu text": "Hide the menu text" }}
           </v-tooltip>
         </v-list-item>
 
@@ -47,6 +46,8 @@
             Wondering what LisTrello is all about? Click here...
           </v-tooltip>
         </v-list-item>
+
+        <Menu_Item :item="menuItems[0]"> </Menu_Item>
       </v-list>
     </v-navigation-drawer>
 
@@ -72,7 +73,6 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import CustomIcon from "./components/CustomIcon.vue";
 import {
   mdiChevronLeft,
   mdiChevronRight,
@@ -82,11 +82,12 @@ import {
   mdiMenu,
   mdiRepeat,
 } from "@mdi/js";
+import Menu_Item from "./components/menu_item";
 
 export default {
   name: "App",
   components: {
-    CustomIcon,
+    Menu_Item,
   },
   data: () => ({
     drawer: false,
@@ -98,6 +99,14 @@ export default {
     mdiInformationOutline,
     mdiMenu,
     mdiRepeat,
+    menuItems: [
+      {
+        target: "test",
+        title: "test Item",
+        tooltips: ["first line", "Second Line"],
+        iconName: "mdi-email-outline",
+      },
+    ],
   }),
   computed: {
     ...mapGetters({ isAuthenticated: "isAuthenticated", atest: "atest" }),
