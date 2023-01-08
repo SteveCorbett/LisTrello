@@ -2,6 +2,9 @@ import { Board } from "@/models/Board";
 import { State } from "./state";
 
 export const getters = {
+  drawerWidth(state: State): number {
+    return state.drawer.drawerWidth;
+  },
   isAuthenticated(state: State): boolean {
     return state.trelloUserToken != null;
   },

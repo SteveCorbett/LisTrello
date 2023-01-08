@@ -7,19 +7,19 @@ import { State } from "./state";
 const localStorageUserToken = "lisTrelloHash";
 
 export const actions = {
-  LOGIN({ commit }: ActionContext<State, State>, token: string) {
+  login({ commit }: ActionContext<State, State>, token: string) {
     localStorage.setItem(localStorageUserToken, token);
     commit("LOGIN", token);
   },
-  LOGOUT({ commit }: ActionContext<State, State>) {
+  logout({ commit }: ActionContext<State, State>) {
     commit("LOGOUT");
     localStorage.removeItem(localStorageUserToken);
   },
-  LOADTOKEN({ commit }: ActionContext<State, State>) {
+  loadToken({ commit }: ActionContext<State, State>) {
     var trelloUserToken = localStorage.getItem(localStorageUserToken);
     commit("LOGIN", trelloUserToken);
   },
-  GET_BOARDS({ commit }: ActionContext<State, State>) {
+  get_boards({ commit }: ActionContext<State, State>) {
     commit("SET_BOARDS", null);
     commit("SET_LISTS", null);
     boards.get().then((data: Board[]) => {
@@ -29,11 +29,11 @@ export const actions = {
       commit("SET_BOARDS", data);
     });
   },
-  CLEAR_CURRENT_BOARD({ commit }: ActionContext<State, State>) {
+  clear_current_board({ commit }: ActionContext<State, State>) {
     commit("SET_CURRENT_BOARD", null);
     commit("SET_LISTS", null);
   },
-  GET_LISTS_FOR_BOARD(
+  get_lists_for_board(
     { commit, getters }: ActionContext<State, State>,
     boardId: string
   ) {
@@ -49,7 +49,16 @@ export const actions = {
       commit("SET_LISTS", data);
     });
   },
-  IS_SUBMITTING_FORM({ commit }: ActionContext<State, State>, value: string) {
+  is_submitting_form({ commit }: ActionContext<State, State>, value: string) {
     commit("SET_IS_SUBMITTING_FORM", value);
+  },
+  setShowingTitle(
+    { commit }: ActionContext<State, State>,
+    value: { showTitle: boolean; drawerWidth: number }
+  ) {
+    commit("SET_SHOWING_TITLE", {
+      showTitle: value.showTitle,
+      drawerWidth: value.drawerWidth,
+    });
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" class="noprint d-print-none" temporary>
+    <v-navigation-drawer v-model="drawer" class="noprint d-print-none" temporary :width="drawerWidth">
       <v-list dense>
         <v-list-item link @click="Home">
           <v-icon icon="mdi-home-outline" size="large"></v-icon>
@@ -47,7 +47,7 @@
           </v-tooltip>
         </v-list-item>
 
-        <Menu_Item :item="menuItems[0]"> </Menu_Item>
+        <Menu_Items></Menu_Items>
       </v-list>
     </v-navigation-drawer>
 
@@ -73,21 +73,12 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import {
-  mdiChevronLeft,
-  mdiChevronRight,
-  mdiEmailOutline,
-  mdiHomeOutline,
-  mdiInformationOutline,
-  mdiMenu,
-  mdiRepeat,
-} from "@mdi/js";
-import Menu_Item from "./components/menu_item";
+import Menu_Items from "./components/menu-items";
 
 export default {
   name: "App",
   components: {
-    Menu_Item,
+    Menu_Items,
   },
   data: () => ({
     drawer: false,
@@ -99,17 +90,9 @@ export default {
     mdiInformationOutline,
     mdiMenu,
     mdiRepeat,
-    menuItems: [
-      {
-        target: "test",
-        title: "test Item",
-        tooltips: ["first line", "Second Line"],
-        iconName: "mdi-email-outline",
-      },
-    ],
   }),
   computed: {
-    ...mapGetters({ isAuthenticated: "isAuthenticated", atest: "atest" }),
+    ...mapGetters(["drawerWidth", "isAuthenticated"]),
     ...mapState({
       background: "background",
     }),

@@ -33,4 +33,10 @@ export const mutations = {
       state.currentLists = list;
     }
   },
+  SET_SHOWING_TITLE(
+    state: State,
+    value: { showTitle: boolean; drawerWidth: number }
+  ) {
+    state.drawer = Object.assign({}, state.drawer, value);
+  },
 };

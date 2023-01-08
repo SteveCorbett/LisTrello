@@ -1,10 +1,10 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import About from "../components/About.vue";
-import ContactUs from "../components/ContactUs.vue";
-import Home from "../components/Home.vue";
-import Login from "../components/Login.vue";
-import Logout from "../components/Logout.vue";
-import ListCards from "../components/ListCards.vue";
+import About from "../components/about.vue";
+import ContactUs from "../components/contact-us.vue";
+import Home from "../components/home.vue";
+import Login from "../components/login.vue";
+import Logout from "../components/logout.vue";
+import ListCards from "../components/list-cards.vue";
 import store from "../store";
 
 const doDefault = () => (from: any, to: any, next: any) => {
@@ -14,7 +14,7 @@ const doDefault = () => (from: any, to: any, next: any) => {
 };
 
 const goHome = () => (from: any, to: any, next: any) => {
-  store.dispatch("LOADTOKEN");
+  store.dispatch("loadToken");
   if (store.getters.isAuthenticated == true) {
     next("/ListCards");
   } else next();

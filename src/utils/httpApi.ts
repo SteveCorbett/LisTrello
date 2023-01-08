@@ -1,11 +1,10 @@
-import { Board } from "@/models/Board";
 import axios, { AxiosResponse } from "axios";
 import router from "../router";
 import store from "../store";
 
 const Unauthorized = 401;
 const onUnauthorized = () => {
-  store.dispatch("LOGOUT");
+  store.dispatch("logout");
   router.push(`/login`);
   return "";
 };

@@ -38,12 +38,12 @@ import { mapActions } from "vuex";
 
 export default {
   methods: {
-    ...mapActions(["LOGOUT"]),
+    ...mapActions(["logout"]),
     ListBoards() {
       this.$router.push("listcards");
     },
     LogOut() {
-      this.LOGOUT();
+      this.logout();
       this.$router.push("login");
     },
   },

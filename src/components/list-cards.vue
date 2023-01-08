@@ -112,7 +112,9 @@
             <br />
             <span v-if="trelloObj.dateLastActivity && optionShowDates">
               Last Updated:
-              {{ $filters.dateDisplay(trelloObj.dateLastActivity, optionLocalDateFormat) }}
+              {{
+                $filters.dateDisplay(trelloObj.dateLastActivity, optionLocalDateFormat)
+              }}
               <br />
             </span>
             <div v-if="optionDescriptions && trelloObj.desc != null && trelloObj.desc != ''">
@@ -224,14 +226,14 @@ export default {
     updateSequence: 1,
   }),
   mounted() {
-    this.LOADTOKEN();
+    this.loadToken();
     if (this.trelloUserToken == null) {
       this.$router.push("login");
     }
-    this.GET_BOARDS();
+    this.get_boards();
   },
   created() {
-    this.CLEAR_CURRENT_BOARD();
+    this.clear_current_board();
     this.$watch(
       function () {
         return this.currentLists;
@@ -279,10 +281,10 @@ export default {
   },
   methods: {
     ...mapActions([
-      "LOADTOKEN",
-      "CLEAR_CURRENT_BOARD",
-      "GET_BOARDS",
-      "GET_LISTS_FOR_BOARD",
+      "loadToken",
+      "clear_current_board",
+      "get_boards",
+      "get_lists_for_board",
     ]),
     doNumbering(boardList) {
       if (boardList == null) return;
@@ -298,7 +300,7 @@ export default {
       ++this.updateSequence;
     },
     onSelectBoard(boardId) {
-      this.GET_LISTS_FOR_BOARD(boardId);
+      this.get_lists_for_board(boardId);
     },
     onSelectList(listId) {
       if (listId == "0") {
