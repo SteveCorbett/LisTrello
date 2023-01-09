@@ -1,8 +1,20 @@
 {
-	"folders": [
-		{
-			"path": "../LisTrello"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "../LisTrello"
+    }
+  ],
+  "settings": {},
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Chrome (2)",
+        "request": "launch",
+        "type": "chrome",
+        "url": "http://localhost:8080",
+        "webRoot": "${workspaceFolder}"
+      }
+    ]
+  }
 }

@@ -1,55 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" class="noprint d-print-none" temporary :width="drawerWidth">
-      <v-list dense>
-        <v-list-item link @click="Home">
-          <v-icon icon="mdi-home-outline" size="large"></v-icon>
-          Home
-          <v-tooltip location="right" activator="parent" offset="-100">
-            Back to your lists.
-          </v-tooltip>
-        </v-list-item>
 
-        <v-list-item link @click="LogOut" :disabled="!isAuthenticated">
-          <v-icon icon="mdi-repeat" size="large"></v-icon>
-          Log Out/Switch Account
-          <v-tooltip location="right" activator="parent" offset="-100">
-            <p>
-              When you log in to Trello, we are given read only access to your account's
-              boards for one hour only. Select this to log out immediately.
-            </p>
-            You may need to do this to switch to using a different Trello account.
-          </v-tooltip>
-        </v-list-item>
-
-        <v-list-item link @click="miniVariant = !miniVariant">
-          <v-icon v-if="miniVariant" icon="mdi-chevron-right" size="large"></v-icon>
-          <v-icon v-else icon="mdi-chevron-left" size="large"></v-icon>
-          Change menu size
-          <v-tooltip location="right" activator="parent" offset="-100">
-            {{ miniVariant? "Show the menu text": "Hide the menu text" }}
-          </v-tooltip>
-        </v-list-item>
-
-        <v-list-item link @click="ContactUs">
-          <v-icon icon="mdi-email-outline" size="large"></v-icon>
-          Contact Us
-          <v-tooltip location="right" activator="parent" offset="-100">
-            Need to send us a comment, suggestion or idea? Click here...
-          </v-tooltip>
-        </v-list-item>
-
-        <v-list-item link @click="About">
-          <v-icon icon="mdi-information-outline" size="large"></v-icon>
-          About
-          <v-tooltip location="right" activator="parent" offset="-100">
-            Wondering what LisTrello is all about? Click here...
-          </v-tooltip>
-        </v-list-item>
-
-        <Menu_Items></Menu_Items>
-      </v-list>
-    </v-navigation-drawer>
 
     <v-app-bar :color="background" theme="dark" class="noprint d-print-none">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer">
@@ -60,6 +11,11 @@
 
     <v-main dense>
       <v-container>
+        <v-navigation-drawer v-model="drawer" class="noprint d-print-none" temporary :width="drawerWidth">
+          <v-list dense>
+            <Menu_Items></Menu_Items>
+          </v-list>
+        </v-navigation-drawer>
         <router-view class="pt-xs-0 pt-md-8 mt-xs-0 mt-sm-4" />
       </v-container>
     </v-main>
@@ -73,7 +29,16 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import Menu_Items from "./components/menu-items";
+import Menu_Items from "./components/side-menu/menu-items.vue";
+import {
+  mdiChevronLeft,
+  mdiChevronRight,
+  mdiEmailOutline,
+  mdiHomeOutline,
+  mdiInformationOutline,
+  mdiMenu,
+  mdiRepeat,
+} from "@mdi/js";
 
 export default {
   name: "App",
@@ -82,38 +47,12 @@ export default {
   },
   data: () => ({
     drawer: false,
-    miniVariant: false,
-    mdiChevronLeft,
-    mdiChevronRight,
-    mdiEmailOutline,
-    mdiHomeOutline,
-    mdiInformationOutline,
-    mdiMenu,
-    mdiRepeat,
   }),
   computed: {
-    ...mapGetters(["drawerWidth", "isAuthenticated"]),
+    ...mapGetters(["drawerWidth"]),
     ...mapState({
       background: "background",
     }),
-  },
-  methods: {
-    About() {
-      this.drawer = false;
-      this.$router.push("about");
-    },
-    ContactUs() {
-      this.drawer = false;
-      this.$router.push("contactUs");
-    },
-    Home() {
-      this.drawer = false;
-      this.$router.push("home");
-    },
-    LogOut() {
-      this.drawer = false;
-      this.$router.push("logout");
-    },
   },
 };
 </script>
@@ -127,18 +66,7 @@ a:visited {
   color: white !important;
 }
 
-header.v-app-bar {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  z-index: 99999 !important;
-}
-
 footer {
-  z-index: 99999 !important;
-}
-
-nav {
-  margin-top: 4rem !important;
+  z-index: 1020 !important;
 }
 </style>

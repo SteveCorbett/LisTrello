@@ -23,11 +23,13 @@ const goHome = () => (from: any, to: any, next: any) => {
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
+    name: "home",
     component: Home,
     props: (route) => ({ token: route.hash }),
   },
   {
     path: "/about",
+    name: "about",
     component: About,
   },
   {
@@ -58,6 +60,7 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/:pathMatch(.*)*",
+    name: "home",
     component: Home,
     beforeEnter: doDefault(),
   },

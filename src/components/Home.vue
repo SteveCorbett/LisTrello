@@ -16,8 +16,8 @@ export default {
     ...mapActions(["login", "loadToken"]),
     ...mapGetters(["trelloUserToken"]),
     TokenHandler(route) {
-      if (route.hash != null && route.hash.startsWith("#token=")) {
-        const token = route.hash.substr(7);
+      if (route.path != null && route.path.startsWith("/token=")) {
+        const token = route.path.substr(7);
         this.login(token);
       } else {
         this.loadToken();
