@@ -4,7 +4,9 @@
       "path": "../LisTrello"
     }
   ],
-  "settings": {},
+  "settings": {
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true
+  },
   "launch": {
     "version": "0.2.0",
     "configurations": [
@@ -13,7 +15,13 @@
         "request": "launch",
         "type": "chrome",
         "url": "http://localhost:8080",
-        "webRoot": "${workspaceFolder}"
+        "webRoot": "${workspaceFolder}/src",
+        "sourceMapPathOverrides": {
+          "webpack:///./~/*": "${webRoot}/node_modules/*",
+          "webpack:///./*": "${webRoot}/*",
+          "webpack:///*": "*",
+          "webpack:///src/*": "${webRoot}/*"
+        }
       }
     ]
   }

@@ -26,10 +26,9 @@ export const mutations = {
   SET_IS_SUBMITTING_FORM(state: State, value: string) {
     sessionStorage.setItem("isSubmittingForm", value);
   },
-  SET_LISTS(state: State, list: List[]) {
+  SET_CURRENT_LISTS(state: State, list: List[]) {
     if (!list) state.currentLists = [];
     else {
-      // state.currentLists = list.map((list) => list);
       state.currentLists = list;
     }
   },

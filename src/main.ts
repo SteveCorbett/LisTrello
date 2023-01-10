@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import moment from "moment";
+import "@/assets/global.css";
 
 const app = createApp(App).use(store).use(router).use(vuetify);
 

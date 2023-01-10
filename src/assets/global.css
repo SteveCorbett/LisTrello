@@ -1,26 +1,23 @@
 @media print {
     body {
         margin: 0mm 6mm 1mm 3mm;
-        height: auto;
     }
-    main {
-        padding: 0 !important;
-    }
-    .table-responsive {
-        overflow-x: initial !important;
-    }
+
     .container {
         margin: 0mm 4mm;
         padding: 3mm
     }
+
     .noprint {
         visibility: hidden;
         height: 0;
         max-height: mm;
     }
+
     .print, .printonly {
         visibility: visible;
     }
+
     .row {
         display: block;
     }
@@ -33,8 +30,5 @@
 @media screen {
     .printonly {
         display: none;
-    }
-    main {
-        padding: 24px 0px !important;
     }
 }

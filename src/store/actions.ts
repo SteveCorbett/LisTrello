@@ -21,17 +21,19 @@ export const actions = {
   },
   get_boards({ commit }: ActionContext<State, State>) {
     commit("SET_BOARDS", null);
-    commit("SET_LISTS", null);
+    commit("SET_CURRENT_LISTS", []);
     boards.get().then((data: Board[]) => {
-      data.forEach((board) => {
-        board.descLines = board.desc.split("\n");
-      });
-      commit("SET_BOARDS", data);
+      if (data) {
+        data.forEach((board) => {
+          board.descLines = board.desc.split("\n");
+        });
+        commit("SET_BOARDS", data);
+      }
     });
   },
   clear_current_board({ commit }: ActionContext<State, State>) {
     commit("SET_CURRENT_BOARD", null);
-    commit("SET_LISTS", null);
+    commit("SET_CURRENT_LISTS", []);
   },
   get_lists_for_board(
     { commit, getters }: ActionContext<State, State>,
@@ -39,14 +41,14 @@ export const actions = {
   ) {
     const inputBoard = getters["getBoardForId"](boardId);
     commit("SET_CURRENT_BOARD", inputBoard);
-    commit("SET_LISTS", null);
+    commit("SET_CURRENT_LISTS", []);
     board.getLists(boardId).then((data: List[]) => {
       data.forEach((list) => {
         list.cards.forEach((card) => {
           card.descLines = card.desc.split("\n");
         });
       });
-      commit("SET_LISTS", data);
+      commit("SET_CURRENT_LISTS", data);
     });
   },
   is_submitting_form({ commit }: ActionContext<State, State>, value: string) {

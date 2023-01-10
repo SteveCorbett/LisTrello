@@ -4,100 +4,88 @@
       <v-col xd="12" sm="12" md="6">
         <v-select :items="boardList" :label="boardSelectLabel" :disabled="boardList.length == 0" item-title="name"
           item-value="id" @update:model-value="onSelectBoard" variant="solo">
-          <template v-slot:item="{ item }">
+          <template v-slot :item="{ item }">
             <span v-if="item.desc != ''">{{ item.name }}: {{ item.desc }}</span>
             <span v-else>{{ item.name }}</span>
           </template>
         </v-select>
-        <v-select :disabled="!listAvailable" :items="boardsLists()" :label="listSelectLabel" :model-value="listValue"
-          item-title="name" item-value="id" @update:model-value="onSelectList" variant="solo"></v-select>
+
+        <v-select :disabled="!listAvailable" :items="boardsLists()" :label="listSelectLabel" item-title="name"
+          item-value="id" @update:model-value="onSelectList" variant="solo">
+          <template v-slot :item="{ item }">
+            {{ item.name }}!
+          </template>
+        </v-select>
 
         <v-card class="mx-auto">
-          <v-toolbar :color="background" dark dense>
-            <v-toolbar-title>Options</v-toolbar-title>
+          <v-toolbar :color="background" theme="dark" density="compact">
+            <v-toolbar-title density="compact">Options</v-toolbar-title>
           </v-toolbar>
 
           <v-list>
-            <v-list-item>
+            <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionLabels" color="primary" @click="++updateSequence"></v-checkbox>
-                </v-list-item-action>
-                <v-list-item-title>Show Labels</v-list-item-title>
+                <v-checkbox-btn v-model="optionLabels" :color="background" @click="++updateSequence" label="Show Labels"
+                  density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
 
-            <v-list-item>
+            <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionDescriptions" color="primary" @click="++updateSequence"></v-checkbox>
-                </v-list-item-action>
-                <v-list-item-title>Show Descriptions</v-list-item-title>
+                <v-checkbox-btn v-model="optionDescriptions" :color="background" @click="++updateSequence"
+                  label="Show Descriptions" density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
 
-            <v-list-item>
+            <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionNumberLists" color="primary"
-                    @click="doNumbering(trelloObj.lists)"></v-checkbox>
-                </v-list-item-action>
-                <v-list-item-title>Number Lists</v-list-item-title>
+                <v-checkbox-btn v-model="optionNumberLists" :color="background" @click="doNumbering(trelloObj.lists)"
+                  label="Number Lists" density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
 
-            <v-list-item>
+            <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionNumberCards" color="primary"
-                    @click="doNumbering(trelloObj.lists)"></v-checkbox>
-                </v-list-item-action>
-                <v-list-item-title>Number Cards</v-list-item-title>
+                <v-checkbox-btn v-model="optionNumberCards" :color="background" @click="doNumbering(trelloObj.lists)"
+                  label="Number Cards" density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
 
-            <v-list-item>
+            <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionShowDates" color="primary" @click="++updateSequence"></v-checkbox>
-                </v-list-item-action>
-                <v-list-item-title>Show dates</v-list-item-title>
+                <v-checkbox-btn v-model="optionShowDates" :color="background" @click="++updateSequence"
+                  label="Show dates" density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
 
-            <v-list-item class="ml-6">
+            <v-list-item class="ml-6" density="compact">
               <template v-slot:default="{}">
                 <v-list-item-action class="mr-2">
-                  <v-checkbox v-model="optionLocalDateFormat" color="primary" @click="++updateSequence"
-                    :disabled="!optionShowDates"></v-checkbox>
+                  <v-checkbox-btn v-model="optionLocalDateFormat" :color="background" @click="++updateSequence"
+                    :disabled="!optionShowDates" label="Use local date format" density="compact"></v-checkbox-btn>
                 </v-list-item-action>
-                <v-list-item-title>Use local date format</v-list-item-title>
               </template>
             </v-list-item>
           </v-list>
         </v-card>
 
         <v-card class="mt-2">
-          <v-toolbar :color="background" dark dense>
+          <v-toolbar :color="background" theme="dark" density="compact">
             <v-toolbar-title>Print Options</v-toolbar-title>
           </v-toolbar>
 
           <v-list>
-            <v-list-item>
+            <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionTitles" color="primary"></v-checkbox>
-                </v-list-item-action>
-                <v-list-item-title>Print Title</v-list-item-title>
+                <v-checkbox-btn v-model="optionTitles" :color="background" density="compact"
+                  label="Print Title"></v-checkbox-btn>
               </template>
             </v-list-item>
 
-            <v-list-item>
+            <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-list-item-action>
-                  <v-checkbox v-model="optionNewPage" color="primary"></v-checkbox>
-                </v-list-item-action>
-                <v-list-item-title>Start List on New Page</v-list-item-title>
+                <v-checkbox-btn v-model="optionNewPage" :color="background" density="compact"
+                  label="Start List on New Page"></v-checkbox-btn>
               </template>
             </v-list-item>
           </v-list>
@@ -303,7 +291,7 @@ export default {
       this.get_lists_for_board(boardId);
     },
     onSelectList(listId) {
-      if (listId == "0") {
+      if (listId === "0") {
         this.trelloObj.lists = this.currentLists;
       } else {
         this.trelloObj.lists = this.currentLists.filter((list) => {
@@ -315,7 +303,7 @@ export default {
     boardsLists() {
       switch (this.currentLists.length) {
         case 0:
-          this.listValue = null;
+          this.listValue = '';
           return [];
         case 1:
           this.listValue = this.currentLists[0].id;
