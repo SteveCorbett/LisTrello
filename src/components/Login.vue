@@ -35,11 +35,15 @@
 import store from "../store";
 
 export default {
+  mounted() {
+    console.log('mode: ', process.env);
+  },
   methods: {
     Login() {
+      const expiration = process.env.NODE_ENV === "development" ? "1day" : "1hour";
       window.location =
         "https://trello.com/1" +
-        "/authorize?expiration=1hour&name=" +
+        "/authorize?expiration=" + expiration + "&name=" +
         store.state.appName +
         "&scope=read&response_type=token&key=" +
         store.state.trelloKey +

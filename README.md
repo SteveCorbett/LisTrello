@@ -11,6 +11,8 @@ I use it for generating set lists for my band, I'm sure you can find many applic
 This application is available for use at https://listrello.netlify.app
 
 I used a Trello board during the development of this application. The link to it is https://trello.com/b/VqWfpxIi/listrello
+
+Trello API documentation can be found at https://developer.atlassian.com/cloud/trello/
 ## Potential enhancements
 I've had some ideas for enhancements to LisTrello that I may or may not implement. These are listed on the project Trello board mentioned above. If you have any others then let me know via the issues page or message me directly.
 ## Yarn Usage

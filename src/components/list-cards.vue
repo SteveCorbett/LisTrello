@@ -12,9 +12,7 @@
 
         <v-select :disabled="!listAvailable" :items="boardsLists()" :label="listSelectLabel" item-title="name"
           item-value="id" @update:model-value="onSelectList" variant="solo">
-          <template v-slot :item="{ item }">
-            {{ item.name }}!
-          </template>
+          <template v-slot :item="{ item }"> {{ item.name }}! </template>
         </v-select>
 
         <v-card class="mx-auto">
@@ -25,14 +23,14 @@
           <v-list>
             <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-checkbox-btn v-model="optionLabels" :color="background" @click="++updateSequence" label="Show Labels"
+                <v-checkbox-btn v-model="optionLabels" :color="background" @click="setCardOptions()" label="Show Labels"
                   density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
 
             <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-checkbox-btn v-model="optionDescriptions" :color="background" @click="++updateSequence"
+                <v-checkbox-btn v-model="optionDescriptions" :color="background" @click="setCardOptions()"
                   label="Show Descriptions" density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
@@ -53,7 +51,7 @@
 
             <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-checkbox-btn v-model="optionShowDates" :color="background" @click="++updateSequence"
+                <v-checkbox-btn v-model="optionShowDates" :color="background" @click="setCardOptions()"
                   label="Show dates" density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
@@ -61,7 +59,7 @@
             <v-list-item class="ml-6" density="compact">
               <template v-slot:default="{}">
                 <v-list-item-action class="mr-2">
-                  <v-checkbox-btn v-model="optionLocalDateFormat" :color="background" @click="++updateSequence"
+                  <v-checkbox-btn v-model="optionLocalDateFormat" :color="background" @click="setCardOptions()"
                     :disabled="!optionShowDates" label="Use local date format" density="compact"></v-checkbox-btn>
                 </v-list-item-action>
               </template>
@@ -93,6 +91,8 @@
       </v-col>
 
       <v-col v-if="trelloObj" xs="12" sm="12" md="6" height="100%" class="noprint">
+        <CardView v-bind:board="trelloObj" v-bind:options="cardOptions" :key="updateKey + 'X'"></CardView>
+
         <v-card variant="outlined" class="pa-2 noprint" height="100%" :key="updateKey">
           <div id="trelloOutput">
             <h1>{{ trelloObj.name }}</h1>
@@ -198,8 +198,10 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
+import CardView from "./cards-view.vue";
 
 export default {
+  components: { CardView },
   data: () => ({
     listValue: null,
     optionDescriptions: true,
@@ -212,6 +214,7 @@ export default {
     optionNewPage: false,
     selectAll: [{ name: "Select All", id: "0" }],
     updateSequence: 1,
+    cardOptions: {},
   }),
   mounted() {
     this.loadToken();
@@ -285,7 +288,7 @@ export default {
           card.cardNo = this.optionNumberCards ? cardNoPrefix + ++cardNo + ". " : "";
         });
       });
-      ++this.updateSequence;
+      this.setCardOptions();
     },
     onSelectBoard(boardId) {
       this.get_lists_for_board(boardId);
@@ -303,7 +306,7 @@ export default {
     boardsLists() {
       switch (this.currentLists.length) {
         case 0:
-          this.listValue = '';
+          this.listValue = "";
           return [];
         case 1:
           this.listValue = this.currentLists[0].id;
@@ -319,6 +322,19 @@ export default {
           this.listValue = "0";
           return this.selectAll.concat(this.currentLists);
       }
+    },
+    setCardOptions() {
+      this.updateSequence++;
+      this.cardOptions = new Object({
+        showDescriptions: this.optionDescriptions,
+        showLabels: this.optionLabels,
+        useLocalDateFormat: this.optionLocalDateFormat,
+        numberLists: this.optionNumberLists,
+        numberCards: this.optionNumberCards,
+        showDates: this.optionShowDates,
+        showTitles: this.optionTitles,
+        newPagePerList: this.optionNewPage
+      })
     },
   },
 };
