@@ -1,3 +1,5 @@
+import { Label } from "./Label";
+
 export interface Card {
   id: string;
   name: string;
@@ -5,5 +7,6 @@ export interface Card {
   descLines?: string[];
   due: Date | null;
   dateLastActivity: Date;
-  labels: [];
+  labels: Label[];
+  cardNo?: string;
 }

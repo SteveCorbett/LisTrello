@@ -53,13 +53,3 @@ export default {
   },
 };
 </script>
-
-<style>
-a:link {
-  color: white !important;
-}
-
-a:visited {
-  color: white !important;
-}
-</style>

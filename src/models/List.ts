@@ -4,4 +4,5 @@ export interface List {
   cloased: boolean;
   id: string;
   name: string;
+  listNo?: string;
 }

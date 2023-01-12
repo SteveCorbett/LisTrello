@@ -37,15 +37,17 @@
 
             <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-checkbox-btn v-model="optionNumberLists" :color="background" @click="doNumbering(trelloObj.lists)"
-                  label="Number Lists" density="compact"></v-checkbox-btn>
+                <v-checkbox-btn v-model="optionNumberLists" :color="background"
+                  @click="doNumbering(trelloObj ? trelloObj.lists : [])" label="Number Lists"
+                  density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
 
             <v-list-item density="compact">
               <template v-slot:default="{}">
-                <v-checkbox-btn v-model="optionNumberCards" :color="background" @click="doNumbering(trelloObj.lists)"
-                  label="Number Cards" density="compact"></v-checkbox-btn>
+                <v-checkbox-btn v-model="optionNumberCards" :color="background"
+                  @click="doNumbering(trelloObj ? trelloObj.lists : [])" label="Number Cards"
+                  density="compact"></v-checkbox-btn>
               </template>
             </v-list-item>
 
@@ -91,62 +93,12 @@
       </v-col>
 
       <v-col v-if="trelloObj" xs="12" sm="12" md="6" height="100%" class="noprint">
-        <CardView v-bind:board="trelloObj" v-bind:options="cardOptions" :key="updateKey + 'X'"></CardView>
-
-        <v-card variant="outlined" class="pa-2 noprint" height="100%" :key="updateKey">
-          <div id="trelloOutput">
-            <h1>{{ trelloObj.name }}</h1>
-            <a :href="trelloObj.url">{{ trelloObj.url }}</a>
-            <br />
-            <span v-if="trelloObj.dateLastActivity && optionShowDates">
-              Last Updated:
-              {{
-                $filters.dateDisplay(trelloObj.dateLastActivity, optionLocalDateFormat)
-              }}
-              <br />
-            </span>
-            <div v-if="optionDescriptions && trelloObj.desc != null && trelloObj.desc != ''">
-              <span v-for="(descLine, ix) in trelloObj.descLines" :key="trelloObj.id + 'S' + ix">
-                {{ descLine }}
-                <br />
-              </span>
-            </div>
-            <div v-if="trelloObj.lists && trelloObj.lists.length == 0 && trelloObj.name > ''">
-              <h3>This board has no lists</h3>
-            </div>
-            <div v-for="list in trelloObj.lists" :key="list.id">
-              <h2>{{ list.listNo }}{{ list.name }}</h2>
-              <div v-for="card in list.cards" :key="card.id">
-                {{ card.cardNo }}{{ card.name }}
-                <div v-if="optionShowDates && card.dateLastActivity" class="Text ml-5 indented">
-                  - Last Activity:
-                  {{ $filters.dateDisplay(card.dateLastActivity, optionLocalDateFormat) }}
-                </div>
-                <div v-if="optionShowDates && card.due" class="Text ml-5 indented">
-                  - Due Date:
-                  {{ $filters.dateDisplay(card.due, optionLocalDateFormat) }}
-                </div>
-                <div v-if="optionLabels">
-                  <div v-for="label in card.labels" v-bind:key="label.id" :class="label.color + 'Text ml-4 indented'">
-                    {{ label.name }}
-                  </div>
-                </div>
-                <div v-if="optionDescriptions && card.desc != ''" class="ml-4 mb-3 indented">
-                  <span v-for="(descLine, ix) in card.descLines" :key="card.id + 'S' + ix">
-                    {{ descLine }}
-                    <br />
-                  </span>
-                  <br />
-                </div>
-              </div>
-            </div>
-          </div>
-        </v-card>
+        <CardView v-bind:board="trelloObj" :options="cardOptions" :key="updateKey + 'X'"></CardView>
       </v-col>
     </v-row>
 
     <v-row dense class="printonly">
-      <div v-if="trelloObj" id="trelloOutput" class="print" :key="updatePrintKey">
+      <div v-if="trelloObj" class="print" :key="updatePrintKey">
         <div v-if="optionTitles">
           <h1>{{ trelloObj.name }}</h1>
           <a :href="trelloObj.url">{{ trelloObj.url }}</a>
@@ -280,15 +232,17 @@ export default {
     doNumbering(boardList) {
       if (boardList == null) return;
       var listNo = 0;
-      boardList.forEach((list) => {
-        list.listNo = this.optionNumberLists ? ++listNo + ". " : "";
-        var cardNo = 0;
-        list.cards.forEach((card) => {
-          const cardNoPrefix = this.optionNumberLists ? listNo + "." : "";
-          card.cardNo = this.optionNumberCards ? cardNoPrefix + ++cardNo + ". " : "";
+      setTimeout(() => {
+        boardList.forEach((list) => {
+          list.listNo = this.optionNumberLists ? ++listNo + ". " : "";
+          var cardNo = 0;
+          list.cards.forEach((card) => {
+            const cardNoPrefix = this.optionNumberLists ? listNo + "." : "";
+            card.cardNo = this.optionNumberCards ? cardNoPrefix + ++cardNo + ". " : "";
+          });
         });
-      });
-      this.setCardOptions();
+        this.setCardOptions();
+      }, 0);
     },
     onSelectBoard(boardId) {
       this.get_lists_for_board(boardId);
@@ -325,16 +279,18 @@ export default {
     },
     setCardOptions() {
       this.updateSequence++;
-      this.cardOptions = new Object({
-        showDescriptions: this.optionDescriptions,
-        showLabels: this.optionLabels,
-        useLocalDateFormat: this.optionLocalDateFormat,
-        numberLists: this.optionNumberLists,
-        numberCards: this.optionNumberCards,
-        showDates: this.optionShowDates,
-        showTitles: this.optionTitles,
-        newPagePerList: this.optionNewPage
-      })
+      setTimeout(() => {
+        this.cardOptions = {
+          showDescriptions: this.optionDescriptions,
+          showLabels: this.optionLabels,
+          useLocalDateFormat: this.optionLocalDateFormat,
+          numberLists: this.optionNumberLists,
+          numberCards: this.optionNumberCards,
+          showDates: this.optionShowDates,
+          showTitles: this.optionTitles,
+          newPagePerList: this.optionNewPage
+        }
+      }, 0);
     },
   },
 };
