@@ -4,15 +4,10 @@
       <v-col xd="12" sm="12" md="6">
         <v-select :items="boardList" :label="boardSelectLabel" :disabled="boardList.length == 0" item-title="name"
           item-value="id" @update:model-value="onSelectBoard" variant="solo">
-          <template v-slot :item="{ item }">
-            <span v-if="item.desc != ''">{{ item.name }}: {{ item.desc }}</span>
-            <span v-else>{{ item.name }}</span>
-          </template>
         </v-select>
 
         <v-select :disabled="!listAvailable" :items="boardsLists()" :label="listSelectLabel" item-title="name"
-          item-value="id" @update:model-value="onSelectList" variant="solo">
-          <template v-slot :item="{ item }"> {{ item.name }}! </template>
+          item-value="id" v-model="listValue" @update:model-value="onSelectList" variant="solo">
         </v-select>
 
         <v-card class="mx-auto">
