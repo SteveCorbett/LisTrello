@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import About from "../components/about.vue";
+import About from "../components/about-component.vue";
 import ContactUs from "../components/contact-us.vue";
-import Home from "../components/home.vue";
-import Login from "../components/login.vue";
-import Logout from "../components/logout.vue";
+import Home from "../components/home-component.vue";
+import Login from "../components/login-component.vue";
+import Logout from "../components/logout-component.vue";
 import ListCards from "../components/list-cards.vue";
 import store from "../store";
 
