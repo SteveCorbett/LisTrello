@@ -1,3 +1,7 @@
+html {
+    overflow-y: hidden;
+}
+
 @media print {
     body {
         margin: 0mm 6mm 1mm 3mm;

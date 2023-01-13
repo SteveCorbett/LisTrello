@@ -1,15 +1,16 @@
 <template>
   <v-app>
-    <v-layout>
-      <v-app-bar :color="background" theme="dark" class="noprint d-print-none" app>
+    <v-layout style="height: 100vh;">
+      <v-app-bar :color="background" theme="dark" class="noprint d-print-none" app density="compact">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer">
           <v-icon icon="mdi-menu" color="white" size="large"></v-icon>
         </v-app-bar-nav-icon>
         <v-toolbar-title>LisTrello - List Trello Cards</v-toolbar-title>
       </v-app-bar>
 
-      <v-app-bar location="bottom" :color="background" class="noprint" app>
-        <span class="text-white ml-6"><a href="https://www.corbtech.com.au" target="_blank">&copy; 2020-2023 Corbett
+      <v-app-bar location="bottom" :color="background" class="noprint" app density="compact">
+        <span class="text-white ml-6"><a href="https://www.corbtech.com.au" target="_blank" class="footer">&copy;
+            2020-2023 Corbett
             Technologies Pty Limited</a></span>
       </v-app-bar>
 
@@ -53,3 +54,13 @@ export default {
   },
 };
 </script>
+
+<style>
+a.footer:link {
+  color: white !important;
+}
+
+a.footer:visited {
+  color: white !important;
+}
+</style>

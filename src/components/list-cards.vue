@@ -1,7 +1,7 @@
 <template>
-  <v-container>
-    <v-row class="noprint d-print-none">
-      <v-col xd="12" sm="12" md="6">
+  <v-container class="fill-height">
+    <v-row class="noprint d-print-none fill-height phoneScroll">
+      <v-col xs="12" sm="12" md="6" class="screenScroll">
         <v-select :items="boardList" :label="boardSelectLabel" :disabled="boardList.length == 0" item-title="name"
           item-value="id" @update:model-value="onSelectBoard" variant="solo">
         </v-select>
@@ -87,7 +87,7 @@
         </v-card>
       </v-col>
 
-      <v-col v-if="trelloObj" xs="12" sm="12" md="6" height="100%" class="noprint">
+      <v-col v-if="trelloObj" xs="12" sm="12" md="6" class="noprint screenScroll">
         <CardView v-bind:board="trelloObj" :options="cardOptions" :key="updateKey + 'X'"></CardView>
       </v-col>
     </v-row>
@@ -292,6 +292,19 @@ export default {
 </script>
 
 <style>
+@media screen and (max-device-width: 960px) {
+  .phoneScroll {
+    overflow-y: auto;
+  }
+}
+
+@media screen and (min-device-width: 961px) {
+  .screenScroll {
+    overflow-y: auto;
+    height: 100%;
+  }
+}
+
 @media print {
   h2 {
     margin-top: 4mm;
