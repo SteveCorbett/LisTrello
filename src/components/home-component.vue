@@ -13,17 +13,17 @@ export default {
     this.TokenHandler(this.$route);
   },
   methods: {
-    ...mapActions(["LOGIN", "LOADTOKEN"]),
+    ...mapActions(["login", "loadToken"]),
     ...mapGetters(["trelloUserToken"]),
     TokenHandler(route) {
-      if (route.hash != null && route.hash.startsWith("#token=")) {
-        const token = route.hash.substr(7);
-        this.LOGIN(token);
+      if (route.path != null && route.path.startsWith("/token=")) {
+        const token = route.path.substr(7);
+        this.login(token);
       } else {
-        this.LOADTOKEN();
+        this.loadToken();
       }
       var token = this.trelloUserToken();
-      
+
       if (!token) {
         this.$router.push("login");
       } else {

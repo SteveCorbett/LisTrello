@@ -5,7 +5,7 @@
         <v-card class="mx-auto" max-width="400">
           <v-card-text xs-12>
             <div>Log Out</div>
-            <p class="display-1 text--primary">LisTrello</p>
+            <p class="text-h4 text--primary">LisTrello</p>
             <p>The Trello Card List Utility</p>
             <div class="text--primary">
               <p>
@@ -22,20 +22,8 @@
           <v-card-actions>
             <v-container>
               <v-row>
-                <v-btn
-                  block
-                  rounded
-                  @click.native="LogOut"
-                  class="button__full mb-4"
-                  >Log out from your Trello account</v-btn
-                >
-                <v-btn
-                  block
-                  rounded
-                  @click.native="ListBoards"
-                  class="button__full"
-                  >Oops, don't log me out</v-btn
-                >
+                <v-btn block rounded @click="LogOut" class="button__full mb-4">Log out from your Trello account</v-btn>
+                <v-btn block rounded @click="ListBoards" class="button__full">Oops, don't log me out</v-btn>
               </v-row>
             </v-container>
           </v-card-actions>
@@ -50,12 +38,12 @@ import { mapActions } from "vuex";
 
 export default {
   methods: {
-    ...mapActions(["LOGOUT"]),
+    ...mapActions(["logout"]),
     ListBoards() {
       this.$router.push("listcards");
     },
     LogOut() {
-      this.LOGOUT();
+      this.logout();
       this.$router.push("login");
     },
   },
