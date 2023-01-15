@@ -1,6 +1,6 @@
 <template>
   <v-container class="fill-height">
-    <v-row class="noprint d-print-none fill-height phoneScroll">
+    <v-row class="noprint d-print-none fill-height phoneScroll d-block d-md-flex">
       <v-col xs="12" sm="12" md="6" class="screenScroll">
         <v-select :items="boardList" :label="boardSelectLabel" :disabled="boardList.length == 0" item-title="name"
           item-value="id" @update:model-value="onSelectBoard" variant="solo">
@@ -87,8 +87,8 @@
         </v-card>
       </v-col>
 
-      <v-col v-if="trelloObj" xs="12" sm="12" md="6" class="noprint screenScroll">
-        <CardView v-bind:board="trelloObj" :options="cardOptions" :key="updateKey + 'X'"></CardView>
+      <v-col xs="12" sm="12" md="6" class="noprint screenScroll">
+        <CardView v-if="trelloObj" v-bind:board="trelloObj" :options="cardOptions" :key="updateKey + 'X'"></CardView>
       </v-col>
     </v-row>
 
