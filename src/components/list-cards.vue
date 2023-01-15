@@ -88,9 +88,7 @@
       </v-col>
 
       <v-col xs="12" sm="12" md="6" class="noprint screenScroll">
-        <div>
-          <CardView v-if="trelloObj" v-bind:board="trelloObj" :options="cardOptions" :key="updateKey + 'X'"></CardView>
-        </div>
+        <CardView v-if="trelloObj" v-bind:board="trelloObj" :options="cardOptions" :key="updateKey + 'X'"></CardView>
       </v-col>
     </v-row>
 
