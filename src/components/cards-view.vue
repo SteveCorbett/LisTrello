@@ -1,9 +1,9 @@
 <template>
     <v-card variant="outlined" class="pa-2 noprint" ref="root">
         <div class="justify-end d-none d-md-flex">
-            <v-btn @click="copyLists" density="compact" width="24px" min-width="24px">
+            <v-btn @click="copyLists" density="compact" width="24px" min-width="24px"
+                v-tooltip="{ content: copyToolTip, triggers: ['hover'] }">
                 <v-icon icon="mdi-content-copy" size="small"></v-icon>
-                <v-tooltip activator="parent" location="start">Copy the visible board to the clipboard</v-tooltip>
             </v-btn>
         </div>
 
@@ -78,6 +78,9 @@ export default defineComponent({
         const app = getCurrentInstance()
         const filters = app!.appContext.config.globalProperties.$filters;
 
+        const dfltTip = 'Copy the visible board to the clipboard';
+        const copyToolTip = ref(dfltTip);
+
         const copyLists = () => {
             let rootAny: any = root!.value;
             if (rootAny) {
@@ -92,13 +95,19 @@ export default defineComponent({
                 document.addEventListener("copy", listener);
                 document.execCommand("copy");
                 document.removeEventListener("copy", listener);
+
+                copyToolTip.value = 'Copied to clipboard'
+                setTimeout(() => {
+                    copyToolTip.value = dfltTip
+                }, 1600);
             }
         }
 
         return {
             copyLists,
+            copyToolTip,
             filters,
-            root
+            root,
         }
     }
 })
