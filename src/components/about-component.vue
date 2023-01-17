@@ -39,22 +39,22 @@
               <p>
                 You can send any comments, ideas, suggestions (good or bad) from
                 our
-                <a href="/contactUs" class="normal">Contact Us</a> page.
+                <a href="/#/contactUs" class="normal">Contact Us</a> page.
               </p>
-              <p class="text-subtitle-1 font-weight-medium mb-0">References</p>
+              <p class="text-subtitle-1 font-weight-medium">References</p>
               <v-list dense rounded class="pa-0">
                 <v-list-item @click="OpenUrl('https://www.trello.com')">
                   <v-list-item-title>The main Trello.com landing page</v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="
-  OpenUrl('https://en.wikipedia.org/wiki/Kanban_board')
-">
+                  OpenUrl('https://en.wikipedia.org/wiki/Kanban_board')
+                ">
                   <v-list-item-title>The explaination of Kanban boards on
                     Wikipedia</v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="
-  OpenUrl('https://github.com/SteveCorbett/LisTrello')
-">
+                  OpenUrl('https://github.com/SteveCorbett/LisTrello')
+                ">
                   <v-list-item-title>The source code for LisTrello on
                     GitHub</v-list-item-title>
                 </v-list-item>
@@ -93,8 +93,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 a.normal {
   color: #1976d2 !important;
+}
+
+p {
+  margin-top: 0.8rem;
 }
 </style>

@@ -5,6 +5,7 @@ import Home from "../components/home-component.vue";
 import Login from "../components/login-component.vue";
 import Logout from "../components/logout-component.vue";
 import ListCards from "../components/list-cards.vue";
+import WhatsNew from "../components/whats-new.vue";
 import store from "../store";
 
 const doDefault = () => (from: any, to: any, next: any) => {
@@ -57,6 +58,11 @@ const routes: RouteRecordRaw[] = [
     path: "/ListCards",
     name: "listcards",
     component: ListCards,
+  },
+  {
+    path: "/whatsnew",
+    name: "whatsnew",
+    component: WhatsNew,
   },
   {
     path: "/:pathMatch(.*)*",
