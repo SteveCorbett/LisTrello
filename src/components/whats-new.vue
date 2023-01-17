@@ -1,5 +1,5 @@
 <template>
-    <v-container class="d-flex align-center flex-column fill-height ">
+    <v-container class="d-flex align-center flex-column fill-height">
         <p class="flex-row text-h4 text--primary mb-2">What's New</p>
         <div class="flex-row overflow-y-auto">
             <v-card v-for="(release, index) in releases" :key="index" class="release mb-2 py-1"

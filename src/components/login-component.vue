@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-container>
-      <v-card class="mx-auto" max-width="400">
+      <v-card class="mx-auto" max-width="400" border>
         <v-card-text>
           <div>Welcome to</div>
           <p class="text-h4 text--primary">LisTrello</p>

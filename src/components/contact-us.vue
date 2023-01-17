@@ -2,11 +2,13 @@
   <v-main>
     <v-container>
       <v-row align="center">
-        <v-card class="mx-auto" max-width="500">
+        <v-card class="mx-auto overflow-y-auto" max-width="500" border>
           <v-card-text xs-12>
-            <div>Contact Us</div>
-            <p class="text-h4 text--primary">LisTrello</p>
-            <p>The Trello Card List Utility</p>
+            <div>
+              Contact Us
+              <p class="text-h4 text--primary">LisTrello</p>
+              The Trello Card List Utility
+            </div>
             <div class="text--primary">
               <p>
                 Thank you for looking at LisTrello. If you have any comments,
@@ -16,9 +18,11 @@
               </p>
               <v-form name="LisTrello-comment" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="LisTrello-comment" />
-                <v-text-field variant="outlined" name="email" label="E-mail" placeholder="Optional" xs="12"></v-text-field>
-                <v-textarea variant="outlined" name="comments" label="Comments" xs="12" v-model="comment" required></v-textarea>
-                <v-btn block rounded type="submit" class="button__full mb-4" :disabled="comment.length < 10"
+                <v-text-field variant="outlined" name="email" label="E-mail" placeholder="Optional" density="compact"
+                  class="mt-2" xs="12"></v-text-field>
+                <v-textarea variant="outlined" name="comments" label="Comments" xs="12" v-model="comment"
+                  density="compact" required></v-textarea>
+                <v-btn block rounded type="submit" class="button__full mb-3" :disabled="comment.length < 10"
                   @click="onSubmit">Send Comment</v-btn>
                 <v-btn block rounded v-on:click="DoCancel" class="button__full">Cancel</v-btn>
               </v-form>
