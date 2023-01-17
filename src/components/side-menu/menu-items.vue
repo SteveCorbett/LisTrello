@@ -48,6 +48,13 @@ export default defineComponent({
                     type: MenuItemTypes.CHANGE_SIZE,
                 },
                 {
+                    target: "whatsnew",
+                    title: "What's New?",
+                    tooltips: ["Looking for a history of chanegs, click here..."],
+                    iconName: "mdi-help",
+                    type: MenuItemTypes.LINK,
+                },
+                {
                     target: "contactUs",
                     title: "Contact Us",
                     tooltips: ["Need to send us a comment, suggestion or idea? Click here..."],
