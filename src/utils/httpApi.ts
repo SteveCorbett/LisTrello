@@ -1,3 +1,4 @@
+import { Organization } from "./../models/Organization";
 import axios, { AxiosResponse } from "axios";
 import router from "../router";
 import store from "../store";
@@ -9,18 +10,22 @@ const onUnauthorized = () => {
   return "";
 };
 
+const getEndpoint = (endpoint: string, query?: string): string => {
+  let result =
+    store.state.trelloApiUrl +
+    endpoint +
+    "/?key=" +
+    store.state.trelloKey +
+    "&token=" +
+    store.state.trelloUserToken;
+  if (query) {
+    result += query;
+  }
+  return result;
+};
 const request = {
   get(endpoint: string, query?: string): Promise<string | AxiosResponse> {
-    var apiUrl =
-      store.state.trelloApiUrl +
-      endpoint +
-      "/?key=" +
-      store.state.trelloKey +
-      "&token=" +
-      store.state.trelloUserToken;
-    if (query) {
-      apiUrl = apiUrl + query;
-    }
+    let apiUrl = getEndpoint(endpoint, query);
     return axios.get(apiUrl).catch(({ response }) => {
       const { status } = response;
       if (status === Unauthorized) return onUnauthorized();
@@ -38,10 +43,10 @@ const request = {
 };
 
 export const boards = {
-  get() {
+  get(organizationId: string) {
     return request
       .get(
-        "/members/me/boards",
+        `/organizations/${organizationId}/boards`,
         "&filter=open&fields=name,id,url,dateLastActivity,desc"
       )
       .then(({ data }: any) => data);
@@ -62,5 +67,19 @@ export const board = {
 export const list = {
   create(data: unknown) {
     return request.post(`/lists`, data);
+  },
+};
+
+export const organizations = {
+  get() {
+    return request
+      .get("/members/me/organizations")
+      .then(({ data }: any) => data);
+  },
+};
+
+export const user = {
+  get() {
+    return request.get("/members/me").then(({ data }: any) => data);
   },
 };

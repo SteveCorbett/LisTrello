@@ -168,7 +168,7 @@ export default {
     if (this.trelloUserToken == null) {
       this.$router.push("login");
     }
-    this.get_boards();
+    this.get_user_orgs();
   },
   created() {
     this.clear_current_board();
@@ -223,6 +223,7 @@ export default {
       "clear_current_board",
       "get_boards",
       "get_lists_for_board",
+      "get_user_orgs",
     ]),
     doNumbering(boardList) {
       if (boardList == null) return;

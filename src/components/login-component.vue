@@ -35,9 +35,6 @@
 import store from "../store";
 
 export default {
-  mounted() {
-    console.log('mode: ', process.env);
-  },
   methods: {
     Login() {
       const expiration = process.env.NODE_ENV === "development" ? "1day" : "1hour";

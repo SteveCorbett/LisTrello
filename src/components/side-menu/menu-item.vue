@@ -1,12 +1,8 @@
 <template>
-    <v-list-item link @click="doIt()" :disabled="getDisabled()">
+    <v-list-item link @click="doIt()" :disabled="getDisabled()" v-tooltip.top-end="{content: tooltips[0]}">
         <v-icon :icon="iconName()" size="large"></v-icon>
         <span v-if="showTitle()" class="ml-3">{{ item.title }}</span>
-        <v-tooltip location="right" activator="parent" :offset="showTitle() ? -100 : -10">
-            <p v-for="tooltip in tooltips" class="menuHint">
-                {{ tooltip }}
-            </p>
-        </v-tooltip>
+
     </v-list-item>
 </template>
 

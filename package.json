@@ -16,7 +16,7 @@
     "floating-vue": "^2.0.0-beta.20",
     "moment": "^2.29.4",
     "roboto-fontface": "*",
-    "vue": "^3.0.0-beta.1",
+    "vue": "^3.2.45",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.3",
     "vuetify": "^3.1.0",
@@ -24,19 +24,20 @@
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.8",
     "@vue/compiler-sfc": "^3.0.0-beta.1",
+    "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
+    "@vue/tsconfig": "^0.1.3",
     "babel-eslint-parser": "^7.13.10",
-    "eslint": "^7.32.0",
+    "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.6.0",
     "eslint-plugin-vuetify": "^2.0.0-beta.2",
+    "prettier": "^2.7.1",
     "sass": "^1.41.1",
     "sass-loader": "^10.2.0",
     "typescript": "~4.5.5",
@@ -54,9 +55,6 @@
       "eslint:recommended",
       "@vue/typescript"
     ],
-    "parserOptions": {
-      "parser": "@typescript-eslint/parser"
-    },
     "rules": {}
   },
   "browserslist": [
