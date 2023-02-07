@@ -50,7 +50,7 @@ export default defineComponent({
                 {
                     target: "whatsnew",
                     title: "What's New?",
-                    tooltips: ["Looking for a history of chanegs, click here..."],
+                    tooltips: ["Looking for a history of changes, click here..."],
                     iconName: "mdi-help",
                     type: MenuItemTypes.LINK,
                 },
