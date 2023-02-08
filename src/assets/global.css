@@ -35,4 +35,8 @@ html {
     .printonly {
         display: none;
     }
+
+    .vh100 {
+        height: 100vh
+    }
 }
