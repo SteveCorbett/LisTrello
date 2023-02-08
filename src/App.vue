@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-layout style="height: 100vh;">
+    <v-layout class="vh100">
       <v-app-bar :color="background" theme="dark" class="noprint d-print-none" app density="compact">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer">
           <v-icon icon="mdi-menu" color="white" size="large"></v-icon>
@@ -62,5 +62,23 @@ a.footer:link {
 
 a.footer:visited {
   color: white !important;
+}
+
+@media print {
+  .v-main {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .v-container {
+    width: 100%;
+    padding: 16px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .v-row + .v-row--dense {
+    margin-top: 0;
+  }
 }
 </style>
