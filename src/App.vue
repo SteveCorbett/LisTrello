@@ -1,81 +1,103 @@
 <template>
-  <v-app id="lisTrello">
-    <v-navigation-drawer v-model="drawer" app class="noprint d-print-none">
-      <v-list dense>
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <v-list-item link v-on="on" @click="LogOut">
-              <v-list-item-action>
-                <v-icon>mdi-repeat</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Log Out/Switch Account</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </template>
-          <p>
-            When you log in to Trello, we are given read only access to your account's boards
-            for one hour only. Select this to log out immediately.
-          </p>
-          <p>
-            You may need to do this
-            to switch to using a different Trello account.
-          </p>
-        </v-tooltip>
+  <v-app>
+    <v-layout class="vh100">
+      <v-app-bar
+        :color="background"
+        theme="dark"
+        class="noprint d-print-none"
+        app
+        density="compact"
+      >
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+          <v-icon icon="mdi-menu" color="white" size="large"></v-icon>
+        </v-app-bar-nav-icon>
+        <v-toolbar-title>LisTrello - List Trello Cards</v-toolbar-title>
+      </v-app-bar>
 
-        <v-tooltip bottom  class="noprint">
-          <template v-slot:activator="{ on }">
-            <v-list-item link v-on="on" @click="LogOut">
-              <v-list-item-action>
-                <v-icon>mdi-email-outline</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Contact Us</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </template>
-          Need to send us a comment, suggestion or idea? Click here.
-        </v-tooltip>
-      </v-list>
-    </v-navigation-drawer>
+      <v-app-bar
+        location="bottom"
+        :color="background"
+        class="noprint"
+        app
+        density="compact"
+      >
+        <span class="text-white ml-6">
+          <a href="https://www.corbtech.com.au" target="_blank" class="footer">
+            2020-2023 Corbett Technologies Pty Limited
+          </a>
+        </span>
+      </v-app-bar>
 
-    <v-app-bar app :color="background" dark class="noprint d-print-none">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>LisTrello - List Trello Cards</v-toolbar-title>
-    </v-app-bar>
+      <v-navigation-drawer
+        v-model="drawer"
+        class="noprint d-print-none"
+        temporary
+        :width="drawerWidth"
+        app
+      >
+        <Menu_Items></Menu_Items>
+      </v-navigation-drawer>
 
-    <v-content dense>
-      <v-container>
-        <router-view class="pt-xs-0 pt-md-8 mt-xs-0 mt-sm-4" />
-      </v-container>
-    </v-content>
-    <v-footer :color="background"  app class="noprint">
-      <span class="white--text">&copy; 2020 Corbett Technologies Pty Limited</span>
-    </v-footer>
+      <v-main app>
+        <router-view class="pt-xs-0 pt-md-0 mt-xs-0 mt-sm-4" />
+      </v-main>
+    </v-layout>
   </v-app>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
+import Menu_Items from "./components/side-menu/menu-items.vue";
 
 export default {
-  data: () => ({
-    drawer: false
-  }),
-  computed:{
-    ...mapState({
-      background: "background"
-    })
+  name: "App",
+  components: {
+    Menu_Items,
   },
-  methods: {
-    ContactUs() {
-      this.drawer = false;
-      this.$router.push("logout");
-    },
-        LogOut() {
-      this.drawer = false;
-      this.$router.push("contactUs");
-    }
-  }
+  data: () => ({
+    drawer: false,
+  }),
+  computed: {
+    ...mapGetters(["drawerWidth"]),
+    ...mapState({
+      background: "background",
+    }),
+  },
 };
 </script>
+
+<style scoped>
+@media print and (min-width: 600px) {
+  .mt-sm-4 {
+    margin-top: 0 !important;
+  }
+}
+</style>
+
+<style>
+a.footer:link {
+  color: white !important;
+}
+
+a.footer:visited {
+  color: white !important;
+}
+
+@media print {
+  .v-main {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .v-container {
+    width: 100%;
+    padding: 16px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .v-row + .v-row--dense {
+    margin-top: 0;
+  }
+}
+</style>
