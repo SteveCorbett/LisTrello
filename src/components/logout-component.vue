@@ -2,7 +2,7 @@
   <v-main>
     <v-container>
       <v-row align="center">
-        <v-card class="mx-auto" max-width="400">
+        <v-card class="mx-auto" max-width="400" border>
           <v-card-text xs-12>
             <div>Log Out</div>
             <p class="text-h4 text--primary">LisTrello</p>
@@ -22,8 +22,12 @@
           <v-card-actions>
             <v-container>
               <v-row>
-                <v-btn block rounded @click="LogOut" class="button__full mb-4">Log out from your Trello account</v-btn>
-                <v-btn block rounded @click="ListBoards" class="button__full">Oops, don't log me out</v-btn>
+                <v-btn block rounded @click="LogOut" class="button__full mb-4"
+                  >Log out from your Trello account</v-btn
+                >
+                <v-btn block rounded @click="ListBoards" class="button__full"
+                  >Oops, don't log me out</v-btn
+                >
               </v-row>
             </v-container>
           </v-card-actions>

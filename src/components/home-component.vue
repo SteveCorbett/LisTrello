@@ -7,7 +7,7 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   props: {
-    token: String
+    token: String,
   },
   mounted() {
     this.TokenHandler(this.$route);
@@ -29,7 +29,7 @@ export default {
       } else {
         this.$router.push("listcards");
       }
-    }
-  }
+    },
+  },
 };
 </script>

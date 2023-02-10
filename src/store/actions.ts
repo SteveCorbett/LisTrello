@@ -1,10 +1,17 @@
-import { Board } from "@/models/Board";
-import { List } from "@/models/List";
-import { ActionContext } from "vuex";
-import { boards, board } from "../utils/httpApi";
-import { State } from "./state";
+import type { User } from "./../models/User";
+import { Organization } from "./../models/Organization";
+import type { Board } from "@/models/Board";
+import type { List } from "@/models/List";
+import type { ActionContext } from "vuex";
+import { boards, board, organizations, user } from "../utils/httpApi";
+import type { State } from "./state";
 
 const localStorageUserToken = "lisTrelloHash";
+
+const clearCurrentBoard = (commit: any): void => {
+  commit("SET_CURRENT_BOARD", null);
+  commit("SET_CURRENT_LISTS", []);
+};
 
 export const actions = {
   login({ commit }: ActionContext<State, State>, token: string) {
@@ -16,24 +23,27 @@ export const actions = {
     localStorage.removeItem(localStorageUserToken);
   },
   loadToken({ commit }: ActionContext<State, State>) {
-    var trelloUserToken = localStorage.getItem(localStorageUserToken);
+    const trelloUserToken = localStorage.getItem(localStorageUserToken);
     commit("LOGIN", trelloUserToken);
   },
-  get_boards({ commit }: ActionContext<State, State>) {
-    commit("SET_BOARDS", null);
-    commit("SET_CURRENT_LISTS", []);
-    boards.get().then((data: Board[]) => {
+  get_boards(context: ActionContext<State, State>, organizationId: string) {
+    context.commit("SET_BOARDS", null);
+    context.commit("SET_CURRENT_BOARD", null);
+    context.commit("SET_CURRENT_LISTS", []);
+    boards.get(organizationId).then((data: Board[]) => {
       if (data) {
         data.forEach((board) => {
           board.descLines = board.desc.split("\n");
         });
-        commit("SET_BOARDS", data);
+        context.commit("SET_BOARDS", data);
+        if (data.length > 0) {
+          actions.get_lists_for_board(context, data[0].id);
+        }
       }
     });
   },
   clear_current_board({ commit }: ActionContext<State, State>) {
-    commit("SET_CURRENT_BOARD", null);
-    commit("SET_CURRENT_LISTS", []);
+    clearCurrentBoard(commit);
   },
   get_lists_for_board(
     { commit, getters }: ActionContext<State, State>,
@@ -62,5 +72,34 @@ export const actions = {
       showTitle: value.showTitle,
       drawerWidth: value.drawerWidth,
     });
+  },
+  get_user_orgs(context: ActionContext<State, State>) {
+    Promise.all([user.get(), organizations.get()]).then(
+      (values: [user: User, orgs: Organization[]]) => {
+        if (values) {
+          const user: User = values[0];
+          let orgs: Organization[] = values[1];
+          if (!orgs || typeof orgs === undefined) {
+            orgs = [];
+          }
+
+          context.commit("SET_USER", user);
+          context.commit("SET_ORGANIZATIONS", orgs);
+
+          const currentOrg: Organization =
+            orgs.find((org) => org.creationMethod === "teamify-auto") ||
+            orgs.find((org) => org.idMemberCreator !== null) ||
+            new Organization();
+          const currentOrgId = currentOrg.id;
+
+          if (currentOrgId !== "") {
+            context.commit("SET_CURRENT_ORGANIZATION", currentOrg);
+            actions.get_boards(context, currentOrgId);
+          } else {
+            clearCurrentBoard(context);
+          }
+        }
+      }
+    );
   },
 };

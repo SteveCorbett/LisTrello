@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-container>
-      <v-card class="mx-auto" max-width="400">
+      <v-card class="mx-auto" max-width="400" border>
         <v-card-text>
           <div>Welcome to</div>
           <p class="text-h4 text--primary">LisTrello</p>
@@ -35,15 +35,14 @@
 import store from "../store";
 
 export default {
-  mounted() {
-    console.log('mode: ', process.env);
-  },
   methods: {
     Login() {
-      const expiration = process.env.NODE_ENV === "development" ? "1day" : "1hour";
+      const expiration = import.meta.env.DEV ? "1day" : "1hour";
       window.location =
         "https://trello.com/1" +
-        "/authorize?expiration=" + expiration + "&name=" +
+        "/authorize?expiration=" +
+        expiration +
+        "&name=" +
         store.state.appName +
         "&scope=read&response_type=token&key=" +
         store.state.trelloKey +

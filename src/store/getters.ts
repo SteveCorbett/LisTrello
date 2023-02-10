@@ -1,5 +1,5 @@
-import { Board } from "@/models/Board";
-import { State } from "./state";
+import type { Board } from "@/models/Board";
+import type { State } from "./state";
 
 export const getters = {
   drawerWidth(state: State): number {

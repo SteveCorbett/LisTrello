@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="description"
@@ -14,14 +15,13 @@
     content="Print formatted lists of cards from a Trello.com Kanban board on mobile, tablet, laptop and desktops." />
   <meta property="og:url" content="https://listrello.netlify.app/" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="<%= BASE_URL %>apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>favicon-16x16.png">
-  <link rel="manifest" href="<%= BASE_URL %>site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
   <title>List Trello Cards</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CYBRB9WEZ3"></script>
   <script>
@@ -49,6 +49,7 @@
     </div>
   </noscript>
   <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>

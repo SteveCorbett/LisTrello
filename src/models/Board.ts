@@ -1,4 +1,4 @@
-import { List } from "./List";
+import type { List } from "./List";
 export interface Board {
   id: string;
   desc: string;

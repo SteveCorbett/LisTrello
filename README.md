@@ -1,34 +1,46 @@
-# <b><i>LisTrello</i></b>
-LisTrello is a Vue.js web application that produces formatted lists of Trello cards suitable for printing or forwarding from a mobile or desktop device. Also, the formatted cards may be copied and pasted into another application (such as Word) for additional manipulation. 
+# LisTrello3
 
-The code demonstrates various techniques, including:
-* how to obtain and use authorisation tokens from Trello.com
-* how to format output for printing
-* how to submit a form when running on Netlify.com 
+This template should help get you started developing with Vue 3 in Vite.
 
-I use it for generating set lists for my band, I'm sure you can find many applications for it!
+## Recommended IDE Setup
 
-This application is available for use at https://listrello.netlify.app
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-I used a Trello board during the development of this application. The link to it is https://trello.com/b/VqWfpxIi/listrello
+## Type Support for `.vue` Imports in TS
 
-Trello API documentation can be found at https://developer.atlassian.com/cloud/trello/
-## Potential enhancements
-I've had some ideas for enhancements to LisTrello that I may or may not implement. These are listed on the project Trello board mentioned above. If you have any others then let me know via the issues page or message me directly.
-## Yarn Usage
-Install required packages:
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+
+1. Disable the built-in TypeScript Extension
+    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
 ```
-yarn install
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
 ```
-Compile for development, with hot-reload capability:
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
 ```
-yarn serve
-```
-Compile and minify for production
-```
-yarn build
-```
-Lint and fix files:
-```
-yarn lint
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
 ```

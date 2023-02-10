@@ -1,6 +1,8 @@
-import { Board } from "@/models/Board";
-import { List } from "./../models/List";
-import { State } from "./state";
+import type { Organization } from "./../models/Organization";
+import type { User } from "./../models/User";
+import type { Board } from "@/models/Board";
+import type { List } from "./../models/List";
+import type { State } from "./state";
 
 export const mutations = {
   LOGIN(state: State, payload: string) {
@@ -32,10 +34,19 @@ export const mutations = {
       state.currentLists = list;
     }
   },
+  SET_CURRENT_ORGANIZATION(state: State, value: Organization) {
+    state.currentOrganisation = value;
+  },
+  SET_ORGANIZATIONS(state: State, value: Organization[]) {
+    state.organizations = value;
+  },
   SET_SHOWING_TITLE(
     state: State,
     value: { showTitle: boolean; drawerWidth: number }
   ) {
     state.drawer = Object.assign({}, state.drawer, value);
+  },
+  SET_USER(state: State, value: User) {
+    state.user = value;
   },
 };

@@ -1,5 +1,7 @@
-import { List } from "./../models/List";
-import { Board } from "@/models/Board";
+import type { Organization } from "./../models/Organization";
+import type { User } from "./../models/User";
+import type { List } from "./../models/List";
+import type { Board } from "@/models/Board";
 
 export interface State {
   appName: string;
@@ -15,6 +17,9 @@ export interface State {
   background: string;
   currentBoard: Board | null;
   currentLists: List[];
+  organizations: Organization[];
+  currentOrganisation: Organization | null;
+  user: User | null;
 }
 
 // Yes, I know my Trello API key is here but any web jockey could find
@@ -34,5 +39,8 @@ export function state(): State {
     background: "#2238c9",
     currentBoard: null,
     currentLists: [],
+    organizations: [],
+    currentOrganisation: null,
+    user: null,
   };
 }
