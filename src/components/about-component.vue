@@ -39,66 +39,95 @@
             You can send any comments, ideas, suggestions (good or bad) from our
             <a href="/#/contactUs" class="normal">Contact Us</a> page.
           </p>
-          <p class="text-subtitle-1 font-weight-medium">References</p>
-          <v-list density="compact" rounded class="pa-0">
-            <v-list-item @click="OpenUrl('https://www.trello.com')">
-              <v-list-item-title
-                >The main Trello.com landing page</v-list-item-title
-              >
-            </v-list-item>
+          <p class="text-subtitle-1 font-weight-medium">References:</p>
+          <v-list density="compact" class="pa-0">
             <v-list-item
-              @click="OpenUrl('https://en.wikipedia.org/wiki/Kanban_board')"
+              v-for="(link, ix) in links"
+              :key="'link' + ix"
+              class="rounded-pill"
+              @click="openUrl(link.url)"
+              v-tooltip="{
+                content: link.hint,
+                delay: { show: 500, hide: 500 },
+              }"
+              v-close-popper
             >
-              <v-list-item-title
-                >The explaination of Kanban boards on
-                Wikipedia</v-list-item-title
-              >
-            </v-list-item>
-            <v-list-item
-              @click="OpenUrl('https://github.com/SteveCorbett/LisTrello')"
-            >
-              <v-list-item-title
-                >The source code for LisTrello on GitHub</v-list-item-title
-              >
-            </v-list-item>
-            <v-list-item
-              @click="OpenUrl('https://trello.com/b/VqWfpxIi/listrello')"
-            >
-              <v-list-item-title
-                >The Trello board we use to manage LisTrello</v-list-item-title
-              >
-            </v-list-item>
-            <v-list-item @click="OpenUrl('https://vuejs.org/')">
-              <v-list-item-title>The landing page for Vue.js</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="OpenUrl('https://www.vuetifyjs.com')">
-              <v-list-item-title
-                >The landing page for Vuetify</v-list-item-title
-              >
+              <v-list-item-title>{{ link.text }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </div>
       </v-card-text>
-      <v-card-actions flex-row>
-        <v-btn block rounded @click="DoReturn()" class="button__full"
-          >Home</v-btn
-        >
+      <v-card-actions flex-row class="mx-4 mb-4">
+        <v-btn block rounded @click="goHome()" class="button__full">Home</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
 </template>
 
-<script>
-export default {
-  methods: {
-    DoReturn() {
-      this.$router.push("home");
-    },
-    OpenUrl(url) {
-      window.open(url);
-    },
+<script lang="ts">
+import router from "@/router";
+import { defineComponent } from "vue";
+
+interface Link {
+  text: string;
+  hint: string;
+  url: string;
+}
+
+export default defineComponent({
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "About",
+  setup() {
+    const goHome = () => {
+      console.log("Go home!");
+      router.push("home");
+    };
+    const openUrl = (url: string) => {
+      // hideHint = true;
+      setTimeout(() => {
+        hideHint = false;
+        window.open(url, "_blank");
+      }, 2500);
+    };
+
+    var hideHint: boolean = false;
+
+    const links: Link[] = [
+      {
+        text: "The main Trello.com landing page!!",
+        hint: "You can sign up here for a free or subscription account.",
+        url: "https://www.trello.com",
+      },
+      {
+        text: "The explaination of Kanban boards on Wikipedia",
+        hint: "This is a good resourcs to find out more about Kanban boards.",
+        url: "https://en.wikipedia.org/wiki/Kanban_board",
+      },
+      {
+        text: "The source code for LisTrello on GitHub",
+        hint: "Here's where you'll find all the juicy coding stuff that makes LisTrello tick!",
+        url: "https://github.com/SteveCorbett/LisTrello",
+      },
+      {
+        text: "The Trello board we use to manage LisTrello",
+        hint: "Here's where we store our ideas on how to improve LisTrello and keep track of any issues we know about.",
+        url: "https://trello.com/b/VqWfpxIi/listrello",
+      },
+      {
+        text: "The landing page for Vue.Js, the framework we use to develop LisTrello",
+        hint: "If you want to know about Vue.js, here's the place to start.",
+        url: "https://vuejs.org/",
+      },
+      {
+        text: "The landing page for Vuetify 3",
+        hint: "We use Vuetify to implement the Material Design visual theme.",
+        url: "https://next.vuetifyjs.com/",
+      },
+    ];
+
+    return { goHome, hideHint, links, openUrl };
   },
-};
+});
 </script>
 
 <style scoped>

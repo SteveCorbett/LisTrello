@@ -1,7 +1,9 @@
 {
   "name": "listrello3",
-  "version": "0.0.0",
+  "version": "3.0.1",
+  "license": "MIT",
   "private": true,
+  "author": "Stephen Corbett",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -9,7 +11,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
-    "lint-fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint-fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "postinstall": "license-checker --production --json  --excludePackages 'listrello3@3.0.1' > ./src/assets/licences.json"
   },
   "dependencies": {
     "@mdi/font": "^7.1.96",
@@ -39,5 +42,9 @@
   },
   "engines": {
     "node": ">=16.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SteveCorbett/LisTrello"
   }
 }
