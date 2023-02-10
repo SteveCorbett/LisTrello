@@ -1,7 +1,9 @@
 <template>
-  <v-container class="d-flex align-center flex-column fill-height">
-    <p class="flex-row text-h4 text--primary mb-2">What's New</p>
-    <div class="flex-row overflow-y-auto">
+  <div class="d-flex align-center flex-column fill-height">
+    <div class="text-h4 text--primary mb-2 mt-3 mt-md-0 align-content-center">
+      What's New?
+    </div>
+    <div class="overflow-y-auto mx-4 mx-md-0">
       <v-card
         v-for="(release, index) in releases"
         :key="index"
@@ -22,7 +24,7 @@
         </v-card-text>
       </v-card>
     </div>
-  </v-container>
+  </div>
 </template>
 
 <script lang="ts">
@@ -47,6 +49,7 @@ export default defineComponent({
           "Workspaces can now be selected",
           "Fixed printing a large gap on the first page on OSX Safari",
           "Fixed issue with only printing the first page (introduced in 3.0.1)",
+          "Fixed various display issues introduced in 3.0.1",
           "Technical Improvement: Replace Webpack with Vite",
         ],
       },
