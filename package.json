@@ -36,5 +36,8 @@
     "vite": "^4.0.0",
     "vite-plugin-vuetify": "^1.0.2",
     "vue-tsc": "^1.0.12"
+  },
+  "engines": {
+    "node": ">=16.19.0"
   }
 }
