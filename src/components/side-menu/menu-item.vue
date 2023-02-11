@@ -1,9 +1,9 @@
 <template>
   <v-list-item
-    link
-    @click="doIt()"
-    :disabled="getDisabled()"
     v-tooltip.top-end="{ content: tooltips[0] }"
+    link
+    :disabled="getDisabled()"
+    @click="doIt()"
   >
     <v-icon :icon="iconName()" size="large"></v-icon>
     <span v-if="showTitle()" class="ml-3">{{ item.title }}</span>

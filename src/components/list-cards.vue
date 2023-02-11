@@ -5,38 +5,38 @@
     >
       <v-col xs="12" sm="12" md="6" class="screenScroll">
         <v-select
+          v-model="currentOrgId"
           :items="organizations"
           :label="organisationSelectLabel"
           :disabled="organizations.length == 0"
           item-title="displayName"
           item-value="id"
-          v-model="currentOrgId"
-          @update:model-value="onSelectOrg"
           variant="solo"
+          @update:model-value="onSelectOrg"
         >
         </v-select>
 
         <v-select
+          v-model="currentBoardId"
           :items="boardList"
           :label="boardSelectLabel"
           :disabled="boardList.length == 0"
           item-title="name"
           item-value="id"
-          v-model="currentBoardId"
-          @update:model-value="onSelectBoard"
           variant="solo"
+          @update:model-value="onSelectBoard"
         >
         </v-select>
 
         <v-select
+          v-model="listValue"
           :disabled="!listAvailable"
           :items="boardsLists()"
           :label="listSelectLabel"
           item-title="name"
           item-value="id"
-          v-model="listValue"
-          @update:model-value="onSelectList"
           variant="solo"
+          @update:model-value="onSelectList"
         >
         </v-select>
 
@@ -47,75 +47,75 @@
 
           <v-list>
             <v-list-item density="compact">
-              <template v-slot:default="{}">
+              <template #default="{}">
                 <v-checkbox-btn
                   v-model="optionLabels"
                   :color="background"
-                  @click="setCardOptions()"
                   label="Show Labels"
                   density="compact"
+                  @click="setCardOptions()"
                 ></v-checkbox-btn>
               </template>
             </v-list-item>
 
             <v-list-item density="compact">
-              <template v-slot:default="{}">
+              <template #default="{}">
                 <v-checkbox-btn
                   v-model="optionDescriptions"
                   :color="background"
-                  @click="setCardOptions()"
                   label="Show Descriptions"
                   density="compact"
+                  @click="setCardOptions()"
                 ></v-checkbox-btn>
               </template>
             </v-list-item>
 
             <v-list-item density="compact">
-              <template v-slot:default="{}">
+              <template #default="{}">
                 <v-checkbox-btn
                   v-model="optionNumberLists"
                   :color="background"
-                  @click="doNumbering(currentBoard ? currentBoard.lists : [])"
                   label="Number Lists"
                   density="compact"
+                  @click="doNumbering(currentBoard ? currentBoard.lists : [])"
                 ></v-checkbox-btn>
               </template>
             </v-list-item>
 
             <v-list-item density="compact">
-              <template v-slot:default="{}">
+              <template #default="{}">
                 <v-checkbox-btn
                   v-model="optionNumberCards"
                   :color="background"
-                  @click="doNumbering(currentBoard ? currentBoard.lists : [])"
                   label="Number Cards"
                   density="compact"
+                  @click="doNumbering(currentBoard ? currentBoard.lists : [])"
                 ></v-checkbox-btn>
               </template>
             </v-list-item>
 
             <v-list-item density="compact">
-              <template v-slot:default="{}">
+              <template #default="{}">
                 <v-checkbox-btn
                   v-model="optionShowDates"
                   :color="background"
-                  @click="setCardOptions()"
                   label="Show dates"
                   density="compact"
+                  @click="setCardOptions()"
                 ></v-checkbox-btn>
               </template>
             </v-list-item>
 
             <v-list-item class="ml-6" density="compact">
-              <template v-slot:default="{}">
+              <template #default="{}">
                 <v-list-item-action class="mr-2">
                   <v-checkbox-btn
                     v-model="optionLocalDateFormat"
                     :color="background"
-                    @click="setCardOptions()"
                     :disabled="!optionShowDates"
                     label="Use local date format"
                     density="compact"
+                    @click="setCardOptions()"
                   ></v-checkbox-btn>
                 </v-list-item-action>
               </template>
@@ -130,7 +130,7 @@
 
           <v-list>
             <v-list-item density="compact">
-              <template v-slot:default="{}">
+              <template #default="{}">
                 <v-checkbox-btn
                   v-model="optionTitles"
                   :color="background"
@@ -141,7 +141,7 @@
             </v-list-item>
 
             <v-list-item density="compact">
-              <template v-slot:default="{}">
+              <template #default="{}">
                 <v-checkbox-btn
                   v-model="optionNewPage"
                   :color="background"
@@ -157,9 +157,9 @@
       <v-col xs="12" sm="12" md="6" class="noprint screenScroll">
         <CardView
           v-if="currentBoard"
-          v-bind:board="currentBoard"
-          :options="cardOptions"
           :key="updateKey"
+          :board="currentBoard"
+          :options="cardOptions"
         ></CardView>
       </v-col>
     </v-row>
@@ -205,13 +205,13 @@
         >
           <h3>This board has no lists</h3>
         </div>
-        <div v-for="(list, index) in currentBoard.lists" v-bind:key="list.id">
+        <div v-for="(list, index) in currentBoard.lists" :key="list.id">
           <div
             v-if="optionNewPage && index > 0"
             style="page-break-before: always"
           />
           <h2>{{ list.listNo }}{{ list.name }}</h2>
-          <div v-for="card in list.cards" v-bind:key="card.id">
+          <div v-for="card in list.cards" :key="card.id">
             {{ card.cardNo }}{{ card.name }}
             <div
               v-if="optionShowDates && card.dateLastActivity"
@@ -232,7 +232,7 @@
             <div v-if="optionLabels">
               <div
                 v-for="label in card.labels"
-                v-bind:key="label.id"
+                :key="label.id"
                 :class="label.color + 'Text ml-4 indented'"
               >
                 {{ label.name }}
@@ -282,6 +282,23 @@ export default {
     updateSequence: 1,
     cardOptions: {},
   }),
+  computed: {
+    ...mapState({
+      boardList: "boards",
+      currentBoard: "currentBoard",
+      currentLists: "currentLists",
+      currentOrganisation: "currentOrganisation",
+      background: "background",
+      organizations: "organizations",
+      trelloUserToken: "trelloUserToken",
+    }),
+    listAvailable() {
+      return this.currentBoard && this.currentLists.length > 0;
+    },
+    updateKey() {
+      return "UKey" + this.updateSequence;
+    },
+  },
   mounted() {
     this.loadToken();
     if (this.trelloUserToken == null) {
@@ -333,23 +350,6 @@ export default {
         this.currentBoardId = "";
       }
     });
-  },
-  computed: {
-    ...mapState({
-      boardList: "boards",
-      currentBoard: "currentBoard",
-      currentLists: "currentLists",
-      currentOrganisation: "currentOrganisation",
-      background: "background",
-      organizations: "organizations",
-      trelloUserToken: "trelloUserToken",
-    }),
-    listAvailable() {
-      return this.currentBoard && this.currentLists.length > 0;
-    },
-    updateKey() {
-      return "UKey" + this.updateSequence;
-    },
   },
   methods: {
     ...mapActions([

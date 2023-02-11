@@ -1,12 +1,12 @@
 <template>
-  <v-card variant="outlined" class="pa-2 noprint" ref="root">
+  <v-card ref="root" variant="outlined" class="pa-2 noprint">
     <div class="justify-end d-none d-md-flex">
       <v-btn
-        @click="copyLists"
+        v-tooltip="{ content: copyToolTip, triggers: ['hover'] }"
         density="compact"
         width="24px"
         min-width="24px"
-        v-tooltip="{ content: copyToolTip, triggers: ['hover'] }"
+        @click="copyLists"
       >
         <v-icon icon="mdi-content-copy" size="small"></v-icon>
       </v-btn>
@@ -68,7 +68,7 @@
           <div v-if="options.showLabels">
             <div
               v-for="label in card.labels"
-              v-bind:key="label.id"
+              :key="label.id"
               :class="label.color + 'Text ml-4 indented'"
             >
               {{ label.name }}

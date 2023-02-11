@@ -5,8 +5,8 @@ import { useStore } from "vuex";
 import MenuItem from "./menu-item.vue";
 
 export default {
-  extends: MenuItem,
   name: "MenuLogoutItem",
+  extends: MenuItem,
   setup(props: any) {
     const store = useStore<State>();
     const showTitle = () => store.state.drawer.showTitle;

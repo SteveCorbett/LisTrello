@@ -37,11 +37,11 @@
                   xs="12"
                 ></v-text-field>
                 <v-textarea
+                  v-model="comment"
                   variant="outlined"
                   name="comments"
                   label="Comments"
                   xs="12"
-                  v-model="comment"
                   density="compact"
                   required
                 ></v-textarea>
@@ -54,7 +54,7 @@
                   @click="onSubmit"
                   >Send Comment</v-btn
                 >
-                <v-btn block rounded v-on:click="DoCancel" class="button__full"
+                <v-btn block rounded class="button__full" @click="DoCancel"
                   >Cancel</v-btn
                 >
               </v-form>
@@ -70,6 +70,9 @@
 import { mapActions } from "vuex";
 
 export default {
+  data: () => ({
+    comment: "",
+  }),
   mounted() {
     const isSubmittingForm = sessionStorage.getItem("isSubmittingForm");
     if (isSubmittingForm == "true") {
@@ -86,8 +89,5 @@ export default {
       this.IS_SUBMITTING_FORM("true");
     },
   },
-  data: () => ({
-    comment: "",
-  }),
 };
 </script>

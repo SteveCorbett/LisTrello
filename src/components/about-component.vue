@@ -44,21 +44,22 @@
             <v-list-item
               v-for="(link, ix) in links"
               :key="'link' + ix"
-              class="rounded-pill"
-              @click="openUrl(link.url)"
               v-tooltip="{
                 content: link.hint,
                 delay: { show: 500, hide: 500 },
               }"
               v-close-popper
+              class="rounded-pill"
+              @click="openUrl(link.url)"
             >
               <v-list-item-title>{{ link.text }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </div>
       </v-card-text>
+      <hr class="mx-4" />
       <v-card-actions flex-row class="mx-4 mb-4">
-        <v-btn block rounded @click="goHome()" class="button__full">Home</v-btn>
+        <v-btn block rounded class="button__full" @click="goHome()">Home</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>

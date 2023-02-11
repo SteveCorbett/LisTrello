@@ -13,8 +13,8 @@ const getToolTips = (showTitle: boolean): string => {
 };
 
 export default {
-  extends: MenuItem,
   name: "MenuChangeSizeItem",
+  extends: MenuItem,
   setup() {
     const store = useStore<State>();
     const showTitle = () => store.state.drawer.showTitle;

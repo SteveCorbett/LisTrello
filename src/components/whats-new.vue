@@ -15,8 +15,8 @@
         <v-card-text>
           <ul>
             <li
-              v-for="(detail, index) in release.details"
-              :key="'rel' + release.version + index"
+              v-for="(detail, ix) in release.details"
+              :key="'rel' + release.version + ix"
             >
               {{ detail }}
             </li>
