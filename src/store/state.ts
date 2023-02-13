@@ -2,7 +2,7 @@ import type { Organization } from "./../models/Organization";
 import type { User } from "./../models/User";
 import type { List } from "./../models/List";
 import type { Board } from "@/models/Board";
-import { useMobileDetection } from "vue3-mobile-detection";
+import { isMobile } from "is-mobile";
 
 export interface State {
   appName: string;
@@ -24,7 +24,7 @@ export interface State {
   user: User | null;
 }
 
-const isMobile: boolean = useMobileDetection().isMobile();
+const mobile: boolean = isMobile();
 // Yes, I know my Trello API key is here but any web jockey could find
 // it in 2 seconds by examining the API calls from the browser!
 export function state(): State {
@@ -42,7 +42,7 @@ export function state(): State {
     background: "#2238c9",
     currentBoard: null,
     currentLists: [],
-    isMobile: isMobile,
+    isMobile: mobile,
     organizations: [],
     currentOrganisation: null,
     user: null,
