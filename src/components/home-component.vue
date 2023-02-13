@@ -6,9 +6,6 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-  props: {
-    token: String,
-  },
   mounted() {
     this.TokenHandler(this.$route);
   },

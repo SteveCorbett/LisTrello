@@ -13,22 +13,22 @@ const getToolTips = (showTitle: boolean): string => {
 };
 
 export default {
-  extends: MenuItem,
   name: "MenuChangeSizeItem",
+  extends: MenuItem,
   setup() {
-    const store = useStore<State>();
-    const showTitle = () => store.state.drawer.showTitle;
-    let tooltips: string[] = [getToolTips(store.state.drawer.showTitle)];
+    const { dispatch, state } = useStore<State>();
+    const showTitle = () => state.drawer.showTitle;
+    let tooltips: string[] = [getToolTips(state.drawer.showTitle)];
 
     watch(
-      () => store.state.drawer.showTitle,
+      () => state.drawer.showTitle,
       (newValue) => {
         tooltips[0] = getToolTips(newValue);
       }
     );
 
     const doIt = () => {
-      store.dispatch("setShowingTitle", {
+      dispatch("setShowingTitle", {
         showTitle: !showTitle(),
         drawerWidth: showTitle() ? 60 : 256,
       });
@@ -38,8 +38,7 @@ export default {
       return false;
     };
 
-    const iconName = (): string =>
-      getChangeSizeMenu(store.state.drawer.showTitle);
+    const iconName = (): string => getChangeSizeMenu(state.drawer.showTitle);
 
     return {
       doIt,

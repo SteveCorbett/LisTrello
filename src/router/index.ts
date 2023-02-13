@@ -26,7 +26,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "home",
     component: Home,
-    props: (route) => ({ token: route.hash }),
   },
   {
     path: "/about",
