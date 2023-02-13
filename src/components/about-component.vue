@@ -1,5 +1,8 @@
 <template>
-  <v-container class="d-flex align-center flex-column fill-height">
+  <v-container
+    id="about-view"
+    class="d-flex align-center flex-column fill-height"
+  >
     <v-card class="mx-auto fill-height mb-3 pb-13" border>
       <v-card-text flex-row xs-12 class="d-flex flex-column fill-height">
         <div flex-row class="mb-2">
@@ -43,6 +46,7 @@
           <v-list density="compact" class="pa-0">
             <v-list-item
               v-for="(link, ix) in links"
+              :id="'link' + ix"
               :key="'link' + ix"
               v-tooltip="{
                 content: link.hint,
@@ -55,6 +59,7 @@
             </v-list-item>
             <v-list-item
               v-for="(link, ix) in links"
+              :id="'link' + ix"
               :key="'link' + ix"
               v-tooltip="{
                 content: link.hint,
@@ -70,7 +75,12 @@
       </v-card-text>
       <hr class="mx-4" />
       <v-card-actions flex-row class="mx-2 mb-2 mb-sm-4">
-        <v-btn block rounded class="button__full lt-grey" @click="goHome()"
+        <v-btn
+          id="home-btn"
+          block
+          rounded
+          class="button__full lt-grey"
+          @click="goHome()"
           >Home</v-btn
         >
       </v-card-actions>
@@ -96,7 +106,6 @@ export default defineComponent({
   setup() {
     const { state } = useStore<State>();
     const goHome = () => {
-      console.log("Go home!");
       router.push("home");
     };
     const openUrl = (url: string) => {

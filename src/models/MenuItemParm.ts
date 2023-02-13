@@ -4,6 +4,7 @@ export enum MenuItemTypes {
   LOGOUT,
 }
 export interface MenuItemParm {
+  id: string;
   target: string;
   title: string;
   tooltips: string[];
