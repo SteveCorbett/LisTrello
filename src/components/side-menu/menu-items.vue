@@ -28,6 +28,7 @@ export default defineComponent({
     const { state } = useStore<State>();
     const menuItems: MenuItemParm[] = [
       {
+        id: "id-home",
         target: "home",
         title: "Home",
         tooltips: ["Back to your lists."],
@@ -35,6 +36,7 @@ export default defineComponent({
         type: MenuItemTypes.LINK,
       },
       {
+        id: "id-logout",
         target: "logout",
         title: "Log Out/Switch Account",
         tooltips: [
@@ -45,6 +47,7 @@ export default defineComponent({
         type: MenuItemTypes.LOGOUT,
       },
       {
+        id: "id-change-size",
         target: "",
         title: "Change menu size",
         tooltips: ["Show the menu text"],
@@ -52,6 +55,7 @@ export default defineComponent({
         type: MenuItemTypes.CHANGE_SIZE,
       },
       {
+        id: "id-whatsnew",
         target: "whatsnew",
         title: "What's New?",
         tooltips: ["Looking for a history of changes, click here..."],
@@ -59,6 +63,7 @@ export default defineComponent({
         type: MenuItemTypes.LINK,
       },
       {
+        id: "id-contactUs",
         target: "contactUs",
         title: "Contact Us",
         tooltips: [
@@ -68,6 +73,7 @@ export default defineComponent({
         type: MenuItemTypes.LINK,
       },
       {
+        id: "id-about",
         target: "about",
         title: "About",
         tooltips: ["Wondering what LisTrello is all about? Click here..."],
@@ -78,7 +84,7 @@ export default defineComponent({
 
     if (state.isMobile) {
       menuItems.forEach((link) => (link.tooltips = []));
-      const ix = menuItems.findIndex((link) => link.target === "");
+      const ix = menuItems.findIndex((link) => link.id === "id-change-size");
       if (ix > -1) {
         menuItems.splice(ix, 1);
       }
