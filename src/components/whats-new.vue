@@ -3,11 +3,11 @@
     <div class="text-h4 text--primary mb-2 mt-3 mt-md-0 align-content-center">
       What's New?
     </div>
-    <div class="overflow-y-auto mx-4 mx-md-0">
+    <div class="overflow-y-auto d-flex flex-column align-center">
       <v-card
         v-for="(release, index) in releases"
         :key="index"
-        class="release mb-2 py-1"
+        class="w-75 mb-2 py-1 flex-shrink-0"
         :title="release.description"
         :subtitle="release.date + ' ' + release.version"
         border

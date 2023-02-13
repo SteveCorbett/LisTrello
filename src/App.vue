@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-layout class="vh100">
+    <v-layout class="vh100 flex-grow-0">
       <v-app-bar
         :color="background"
         theme="dark"

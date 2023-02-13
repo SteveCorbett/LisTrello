@@ -1,34 +1,34 @@
 <template>
-  <v-main>
-    <v-container>
-      <v-card class="mx-auto" max-width="400" border>
-        <v-card-text>
-          <div>Welcome to</div>
-          <p class="text-h4 text--primary">LisTrello</p>
-          <p>The Trello Card List Utility</p>
-          <div class="text--primary">
-            <p>
-              So that we can list your cards you will need to sign in to your
-              Trello account and grant us read only access. Your details are not
-              available to us apart from a unique token that Trello provides us
-              to read your boards, lists and cards for one hour only.
-            </p>
-            <p>Selecting the button below will re-direct you to Trello.com.</p>
-            <p class="text-subtitle-1 font-weight-medium mb-0">Important!</p>
-            <p>
-              You will need to scroll down to the bottom of the Trello.com page
-              to see the button to allow us to read your boards. Once you have
-              signed in to Trello and granted us access you will be re-directed
-              back to the goodies awaiting you here.
-            </p>
-          </div>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn block rounded @click="Login">Sign In To Trello</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-container>
-  </v-main>
+  <div class="d-flex align-center flex-column fill-height mx-4 my-4">
+    <v-card class="mx-auto" max-width="400" border>
+      <v-card-text class="d-flex flex-column w-100">
+        <div>Welcome to</div>
+        <div class="text-h4 text--primary">LisTrello</div>
+        <div>The Trello Card List Utility</div>
+        <div class="text--primary overflow-y-auto">
+          <p>
+            So that we can list your cards you will need to sign in to your
+            Trello account and grant us read only access. Your details are not
+            available to us apart from a unique token that Trello provides us to
+            read your boards, lists and cards for one hour only.
+          </p>
+          <p>Selecting the button below will re-direct you to Trello.com.</p>
+          <p class="text-subtitle-1 font-weight-medium mb-0">Important!</p>
+          <p>
+            You will need to scroll down to the bottom of the Trello.com page to
+            see the button to allow us to read your boards. Once you have signed
+            in to Trello and granted us access you will be re-directed back to
+            the goodies awaiting you here.
+          </p>
+        </div>
+      </v-card-text>
+      <v-card-actions class="w-100">
+        <v-btn block class="button__full rounded-pill lt-grey" @click="Login"
+          >Sign In To Trello</v-btn
+        >
+      </v-card-actions>
+    </v-card>
+  </div>
 </template>
 
 <script>

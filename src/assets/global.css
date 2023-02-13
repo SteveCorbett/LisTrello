@@ -6,6 +6,10 @@ p {
     margin-top: 0.6rem;
 }
 
+.lt-grey {
+    background-color: rgba(0, 0, 35, 0.06);
+}
+
 @media print {
     body {
         margin: 0mm 6mm 1mm 3mm;

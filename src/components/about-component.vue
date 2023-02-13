@@ -46,10 +46,21 @@
               :key="'link' + ix"
               v-tooltip="{
                 content: link.hint,
-                delay: { show: 500, hide: 500 },
               }"
               v-close-popper
-              class="rounded-pill"
+              class="rounded-pill lt-grey mb-2 d-none d-sm-block"
+              @click="openUrl(link.url)"
+            >
+              <v-list-item-title>{{ link.text }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item
+              v-for="(link, ix) in links"
+              :key="'link' + ix"
+              v-tooltip="{
+                content: link.hint,
+              }"
+              v-close-popper
+              class="rounded lt-grey mb-1 d-sm-none"
               @click="openUrl(link.url)"
             >
               <v-list-item-title>{{ link.text }}</v-list-item-title>
@@ -58,8 +69,10 @@
         </div>
       </v-card-text>
       <hr class="mx-4" />
-      <v-card-actions flex-row class="mx-4 mb-4">
-        <v-btn block rounded class="button__full" @click="goHome()">Home</v-btn>
+      <v-card-actions flex-row class="mx-2 mb-2 mb-sm-4">
+        <v-btn block rounded class="button__full lt-grey" @click="goHome()"
+          >Home</v-btn
+        >
       </v-card-actions>
     </v-card>
   </v-container>
@@ -67,7 +80,9 @@
 
 <script lang="ts">
 import router from "@/router";
+import type { State } from "@/store/state";
 import { defineComponent } from "vue";
+import { useStore } from "vuex";
 
 interface Link {
   text: string;
@@ -79,29 +94,24 @@ export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "About",
   setup() {
+    const { state } = useStore<State>();
     const goHome = () => {
       console.log("Go home!");
       router.push("home");
     };
     const openUrl = (url: string) => {
-      // hideHint = true;
-      setTimeout(() => {
-        hideHint = false;
-        window.open(url, "_blank");
-      }, 2500);
+      window.open(url, "_blank");
     };
-
-    var hideHint: boolean = false;
 
     const links: Link[] = [
       {
-        text: "The main Trello.com landing page!!",
+        text: "The main Trello.com landing page",
         hint: "You can sign up here for a free or subscription account.",
         url: "https://www.trello.com",
       },
       {
-        text: "The explaination of Kanban boards on Wikipedia",
-        hint: "This is a good resourcs to find out more about Kanban boards.",
+        text: "Wikipedia's explaination of Kanban boards",
+        hint: "This is a good resource to find out more about Kanban boards.",
         url: "https://en.wikipedia.org/wiki/Kanban_board",
       },
       {
@@ -125,8 +135,11 @@ export default defineComponent({
         url: "https://next.vuetifyjs.com/",
       },
     ];
+    if (state.isMobile) {
+      links.forEach((link) => (link.hint = ""));
+    }
 
-    return { goHome, hideHint, links, openUrl };
+    return { goHome, links, openUrl };
   },
 });
 </script>
@@ -134,5 +147,10 @@ export default defineComponent({
 <style scoped>
 a.normal {
   color: #1976d2 !important;
+}
+
+.v-list-item-title {
+  white-space: normal;
+  text-overflow: initial;
 }
 </style>

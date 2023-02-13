@@ -22,10 +22,18 @@
           <v-card-actions>
             <v-container>
               <v-row>
-                <v-btn block rounded class="button__full mb-4" @click="LogOut"
+                <v-btn
+                  block
+                  class="button__full mb-4 rounded-pill lt-grey"
+                  @click="LogOut"
                   >Log out from your Trello account</v-btn
-                >
-                <v-btn block rounded class="button__full" @click="ListBoards"
+                ></v-row
+              >
+              <v-row>
+                <v-btn
+                  block
+                  class="button__full rounded-pill lt-grey"
+                  @click="ListBoards"
                   >Oops, don't log me out</v-btn
                 >
               </v-row>
