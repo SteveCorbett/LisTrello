@@ -46,8 +46,8 @@
           <v-list density="compact" class="pa-0">
             <v-list-item
               v-for="(link, ix) in links"
-              :id="'link' + ix"
-              :key="'link' + ix"
+              :key="'link1-' + ix"
+              :data-cy="'link1-' + ix"
               v-tooltip="{
                 content: link.hint,
               }"
@@ -59,8 +59,8 @@
             </v-list-item>
             <v-list-item
               v-for="(link, ix) in links"
-              :id="'link' + ix"
-              :key="'link' + ix"
+              :key="'link2-' + ix"
+              :data-cy="'link2-' + ix"
               v-tooltip="{
                 content: link.hint,
               }"
