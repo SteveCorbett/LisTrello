@@ -3,7 +3,6 @@
 describe("About view", () => {
   beforeEach(() => {
     cy.visit("/#/about");
-    // cy.wait(500);
   });
 
   it("should display the about page", () => {

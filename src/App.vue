@@ -34,11 +34,12 @@
         temporary
         :width="drawerWidth"
         app
+        data-cy="nav-drawer"
       >
         <Menu_Items></Menu_Items>
       </v-navigation-drawer>
 
-      <v-main app>
+      <v-main app data-cy="main-outlet">
         <router-view class="pt-xs-0 pt-md-0 mt-xs-0 mt-sm-4" />
       </v-main>
     </v-layout>
