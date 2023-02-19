@@ -9,23 +9,37 @@ context("Menu SlideOut", () => {
     cy.get("[data-cy=nav-drawer]").should("not.be.visible");
     cy.get("#nav-bar-icon")
       .click()
-      .then(() => {
-        cy.get("[data-cy=nav-drawer]").should("be.visible");
-      });
-    cy.wait(20);
-    cy.get("#nav-bar-icon")
+      .get("[data-cy=nav-drawer]")
+      .should("be.visible")
+      .get("#nav-bar-icon")
       .click()
       .get("[data-cy=nav-drawer]")
-      .should("not.be.visible");
-    cy.wait(20);
-    cy.get("#nav-bar-icon")
+      .should("not.be.visible")
+      .get("#nav-bar-icon")
       .click()
       .get("[data-cy=nav-drawer]")
       .should("be.visible")
       .get(".v-navigation-drawer__scrim")
       .click()
-      //   .wait(20)
       .get("[data-cy=nav-drawer]")
       .should("not.be.visible");
+  });
+
+  it("the menu should resize", () => {
+    cy.get("#nav-bar-icon")
+      .click()
+      .get("[data-cy=nav-drawer]")
+      .invoke("outerWidth")
+      .should("be.eq", 256)
+      .get("#id-change-size")
+      .click()
+      .get("[data-cy=nav-drawer]")
+      .invoke("outerWidth")
+      .should("be.eq", 60)
+      .get("#id-change-size")
+      .click()
+      .get("[data-cy=nav-drawer]")
+      .invoke("outerWidth")
+      .should("be.eq", 256);
   });
 });

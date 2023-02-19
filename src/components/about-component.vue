@@ -47,11 +47,11 @@
             <v-list-item
               v-for="(link, ix) in links"
               :key="'link1-' + ix"
-              :data-cy="'link1-' + ix"
               v-tooltip="{
                 content: link.hint,
               }"
               v-close-popper
+              :data-cy="'link1-' + ix"
               class="rounded-pill lt-grey mb-2 d-none d-sm-block"
               @click="openUrl(link.url)"
             >
@@ -60,11 +60,11 @@
             <v-list-item
               v-for="(link, ix) in links"
               :key="'link2-' + ix"
-              :data-cy="'link2-' + ix"
               v-tooltip="{
                 content: link.hint,
               }"
               v-close-popper
+              :data-cy="'link2-' + ix"
               class="rounded lt-grey mb-1 d-sm-none"
               @click="openUrl(link.url)"
             >
