@@ -4,6 +4,7 @@
     v-tooltip.top-end="{ content: tooltips[0] }"
     link
     :disabled="getDisabled()"
+    class="vListMenuItem"
     @click="doIt()"
   >
     <v-icon :icon="iconName()" size="large"></v-icon>

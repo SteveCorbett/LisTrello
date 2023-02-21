@@ -42,4 +42,15 @@ context("Menu SlideOut", () => {
       .invoke("outerWidth")
       .should("be.eq", 256);
   });
+
+  it("should be reactive on mobile devices", () => {
+    cy.viewport("iphone-6+")
+      .visit("/#")
+      .get("#nav-bar-icon")
+      .click()
+      .get("#id-change-size")
+      .should("not.be.visible")
+      .get("#id-logout")
+      .should("be.visible");
+  });
 });
