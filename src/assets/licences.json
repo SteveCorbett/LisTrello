@@ -1251,7 +1251,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/webpack-sources",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/webpack-sources/LICENSE"
   },
-  "webpack@5.75.0": {
+  "webpack@5.76.1": {
     "licenses": "MIT",
     "repository": "https://github.com/webpack/webpack",
     "publisher": "Tobias Koppers @sokra",

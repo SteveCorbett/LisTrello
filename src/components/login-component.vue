@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="d-flex align-center flex-column fill-height mx-4 my-4"
-    data-cy="view-login"
-  >
+  <div class="d-flex align-center flex-column mx-4 my-4" data-cy="view-login">
     <v-card class="mx-auto" max-width="400" border>
       <v-card-text class="d-flex flex-column w-100">
         <div>Welcome to</div>
@@ -19,9 +16,9 @@
           <p class="text-subtitle-1 font-weight-medium mb-0">Important!</p>
           <p>
             You will need to scroll down to the bottom of the Trello.com page to
-            see the button to allow us to read your boards. Once you have signed
-            in to Trello and granted us access you will be re-directed back to
-            the goodies awaiting you here.
+            see the see the see the button to allow us to read your boards. Once
+            you have signed in to Trello and granted us access you will be
+            re-directed back to the goodies awaiting you here.
           </p>
         </div>
       </v-card-text>
