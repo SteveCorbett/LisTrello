@@ -4,10 +4,11 @@
     v-tooltip.top-end="{ content: tooltips[0] }"
     link
     :disabled="getDisabled()"
+    role="menuitem"
     class="vListMenuItem"
     @click="doIt()"
   >
-    <v-icon :icon="iconName()" size="large"></v-icon>
+    <v-icon :icon="iconName()" size="large" alt="{{ item.alt }}"></v-icon>
     <span v-if="showTitle()" class="ml-3">{{ item.title }}</span>
   </v-list-item>
 </template>

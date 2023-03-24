@@ -8,7 +8,11 @@
         app
         density="compact"
       >
-        <v-app-bar-nav-icon id="nav-bar-icon" @click.stop="drawer = !drawer">
+        <v-app-bar-nav-icon
+          id="nav-bar-icon"
+          aria-label="Open or close the menu"
+          @click.stop="drawer = !drawer"
+        >
           <v-icon icon="mdi-menu" color="white" size="large"></v-icon>
         </v-app-bar-nav-icon>
         <v-toolbar-title>LisTrello - List Trello Cards</v-toolbar-title>
@@ -34,6 +38,8 @@
         temporary
         :width="drawerWidth"
         app
+        aria-label="Menu"
+        role="menu"
         data-cy="nav-drawer"
       >
         <Menu_Items></Menu_Items>

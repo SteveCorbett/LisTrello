@@ -35,10 +35,11 @@ export default {
     };
 
     const getDisplay = (): string => {
-      return window.innerWidth < 768 ? "none" : "auto";
+      return window.innerWidth < 768 ? "none" : "grid";
     };
 
-    let display = ref(getDisplay());
+    let display = ref("");
+    display.value = getDisplay();
 
     const handleResize = () => {
       display.value = getDisplay();
@@ -70,7 +71,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .vListMenuItem {
   display: v-bind(display);
 }

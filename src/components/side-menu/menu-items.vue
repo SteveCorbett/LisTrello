@@ -33,6 +33,7 @@ export default defineComponent({
         title: "Home",
         tooltips: ["Back to your lists."],
         iconName: "mdi-home-outline",
+        iconAlt: "Home icon",
         type: MenuItemTypes.LINK,
       },
       {
@@ -44,6 +45,7 @@ export default defineComponent({
           "You may need to do this to switch to using a different Trello account.",
         ],
         iconName: "mdi-repeat",
+        iconAlt: "Log out icon",
         type: MenuItemTypes.LOGOUT,
       },
       {
@@ -52,6 +54,7 @@ export default defineComponent({
         title: "Change menu size",
         tooltips: ["Show the menu text"],
         iconName: "mdi-email-outline",
+        iconAlt: "Email icon",
         type: MenuItemTypes.CHANGE_SIZE,
       },
       {
@@ -60,6 +63,7 @@ export default defineComponent({
         title: "What's New?",
         tooltips: ["Looking for a history of changes, click here..."],
         iconName: "mdi-help",
+        iconAlt: "Help icon",
         type: MenuItemTypes.LINK,
       },
       {
@@ -70,6 +74,7 @@ export default defineComponent({
           "Need to send us a comment, suggestion or idea? Click here...",
         ],
         iconName: "mdi-email-outline",
+        iconAlt: "Contact us icon",
         type: MenuItemTypes.LINK,
       },
       {
@@ -78,6 +83,7 @@ export default defineComponent({
         title: "About",
         tooltips: ["Wondering what LisTrello is all about? Click here..."],
         iconName: "mdi-information-outline",
+        iconAlt: "About icon",
         type: MenuItemTypes.LINK,
       },
     ];
