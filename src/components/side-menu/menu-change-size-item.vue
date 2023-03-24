@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { State } from "@/store/state";
-import { watch } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import MenuItem from "./menu-item.vue";
 
@@ -34,6 +34,25 @@ export default {
       });
     };
 
+    const getDisplay = (): string => {
+      return window.innerWidth < 768 ? "none" : "grid";
+    };
+
+    let display = ref("");
+    display.value = getDisplay();
+
+    const handleResize = () => {
+      display.value = getDisplay();
+    };
+
+    onMounted(() => {
+      window.addEventListener("resize", handleResize);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("resize", handleResize);
+    });
+
     const getDisabled = (): boolean => {
       return false;
     };
@@ -41,6 +60,7 @@ export default {
     const iconName = (): string => getChangeSizeMenu(state.drawer.showTitle);
 
     return {
+      display,
       doIt,
       getDisabled,
       showTitle,
@@ -50,3 +70,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.vListMenuItem {
+  display: v-bind(display);
+}
+</style>

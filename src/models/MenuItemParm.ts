@@ -9,5 +9,6 @@ export interface MenuItemParm {
   title: string;
   tooltips: string[];
   iconName: string;
+  iconAlt: string;
   type: MenuItemTypes;
 }

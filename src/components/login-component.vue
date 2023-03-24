@@ -1,5 +1,8 @@
 <template>
-  <div class="d-flex align-center flex-column fill-height mx-4 my-4">
+  <div
+    class="d-flex align-center flex-column fill-height mx-4 my-4"
+    data-cy="view-login"
+  >
     <v-card class="mx-auto" max-width="400" border>
       <v-card-text class="d-flex flex-column w-100">
         <div>Welcome to</div>

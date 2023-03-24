@@ -16,7 +16,7 @@ const doDefault = () => (from: any, to: any, next: any) => {
 
 const goHome = () => (from: any, to: any, next: any) => {
   store.dispatch("loadToken");
-  if (store.getters.isAuthenticated == true) {
+  if (store.getters.isAuthenticated === true) {
     next("/ListCards");
   } else next();
 };

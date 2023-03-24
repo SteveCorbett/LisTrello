@@ -752,6 +752,15 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/is-glob",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/is-glob/LICENSE"
   },
+  "is-mobile@3.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/juliangruber/is-mobile",
+    "publisher": "Julian Gruber",
+    "email": "julian@juliangruber.com",
+    "url": "http://juliangruber.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/is-mobile",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/is-mobile/README.md"
+  },
   "is-number@7.0.0": {
     "licenses": "MIT",
     "repository": "https://github.com/jonschlinkert/is-number",
