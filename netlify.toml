@@ -7,9 +7,9 @@ package = "netlify-plugin-csp-generator"
   reportTo = "csp-violations-group"
 
   [plugins.inputs.policies]
-    defaultSrc = "'self' https://www.google-analytics.com"
-    connectSrc="https://api.trello.com"
+    defaultSrc = "'self'"
+    connectSrc="https://api.trello.com https://www.google-analytics.com"
     fontSrc = "'self' https://fonts.gstatic.com"
     scriptSrc ="'unsafe-eval'"
     scriptSrcElem = "'self' 'unsafe-inline' 'unsafe-hashes' 'unsafe-eval' https://www.googletagmanager.com"
-    styleSrc = "'self' https://fonts.googleapis.com"
+    styleSrc = "'self' 'unsafe-inline' 'unsafe-hashes' https://fonts.googleapis.com"
