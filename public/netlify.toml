@@ -1,0 +1,14 @@
+[[plugins]]
+package = "netlify-plugin-csp-generator"
+
+  [plugins.inputs]
+  buildDir = "dist"
+  reportOnly = true
+  reportTo = "csp-violations-group"
+
+  [plugins.inputs.policies]
+    defaultSrc = "'self' https://www.google-analytics.com"
+    fontSrc = "'self' https://fonts.gstatic.com"
+    scriptSrc ="'unsafe-eval'"
+    scriptSrcElem = "'self' 'unsafe-inline' 'unsafe-hashes' 'unsafe-eval' https://www.googletagmanager.com"
+    styleSrc = "'self' 'unsafe-inline' https://fonts.googleapis.com"
