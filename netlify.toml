@@ -8,7 +8,8 @@ package = "netlify-plugin-csp-generator"
 
   [plugins.inputs.policies]
     defaultSrc = "'self' https://www.google-analytics.com"
+    connectSrc="https://api.trello.com"
     fontSrc = "'self' https://fonts.gstatic.com"
     scriptSrc ="'unsafe-eval'"
     scriptSrcElem = "'self' 'unsafe-inline' 'unsafe-hashes' 'unsafe-eval' https://www.googletagmanager.com"
-    styleSrc = "'self' 'unsafe-inline' https://fonts.googleapis.com"
+    styleSrc = "'self' https://fonts.googleapis.com"
