@@ -4,8 +4,6 @@ package = "netlify-plugin-csp-generator"
   [plugins.inputs]
   buildDir = "dist"
   disablePolicies = "styleSrc"
-  reportOnly = true
-  reportTo = "csp-violations-group"
 
   [plugins.inputs.policies]
     defaultSrc = "'self'"
