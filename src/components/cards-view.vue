@@ -126,7 +126,7 @@ export default defineComponent({
     const app = getCurrentInstance();
     const filters = app!.appContext.config.globalProperties.$filters;
 
-    const dfltTip = "Copy the visible board to the clipboard";
+    const dfltTip = "Copy the selected text to the clipboard";
     const copyToolTip = ref(dfltTip);
 
     const copyLists = () => {
