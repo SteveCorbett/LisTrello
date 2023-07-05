@@ -95,8 +95,8 @@
 </template>
 
 <script lang="ts">
-import type { Board } from "@/models/Board";
-import type { CardViewOptions } from "@/models/CardViewOptions";
+import type { Board } from "../models/Board";
+import type { CardViewOptions } from "../models/CardViewOptions";
 import { defineComponent, getCurrentInstance, ref } from "vue";
 import type { PropType } from "vue";
 
@@ -114,9 +114,10 @@ export default defineComponent({
   },
   setup() {
     function listener(e: any) {
-      const rootAny: any = ref(null).value;
+      const rootAny: any = root!.value;
       let htmlStr = rootAny.$el.innerHTML;
       let plainStr = rootAny.$el.innerText;
+      e.clipboardData.setData("cf_html", htmlStr);
       e.clipboardData.setData("text/html", htmlStr);
       e.clipboardData.setData("text/plain", plainStr);
       e.preventDefault();
@@ -126,7 +127,7 @@ export default defineComponent({
     const app = getCurrentInstance();
     const filters = app!.appContext.config.globalProperties.$filters;
 
-    const dfltTip = "Copy the selected text to the clipboard";
+    const dfltTip = "Copy the visible board to the clipboard";
     const copyToolTip = ref(dfltTip);
 
     const copyLists = () => {
