@@ -42,7 +42,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@mdi/font",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@mdi/font/LICENSE"
   },
-  "@types/node@18.16.19": {
+  "@types/node@18.18.4": {
     "licenses": "MIT",
     "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@types/node",
@@ -370,7 +370,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/license"
   },
-  "postcss@8.4.24": {
+  "postcss@8.4.31": {
     "licenses": "MIT",
     "repository": "https://github.com/postcss/postcss",
     "publisher": "Andrey Sitnik",
@@ -394,9 +394,10 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/rollup",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/rollup/LICENSE.md"
   },
-  "semver@6.3.0": {
+  "semver@6.3.1": {
     "licenses": "ISC",
     "repository": "https://github.com/npm/node-semver",
+    "publisher": "GitHub Inc.",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/make-dir/node_modules/semver",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/make-dir/node_modules/semver/LICENSE"
   },
