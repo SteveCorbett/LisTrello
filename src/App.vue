@@ -27,7 +27,7 @@
       >
         <span class="text-white ml-6">
           <a href="https://www.corbtech.com.au" target="_blank" class="footer">
-            2020-2023 Corbett Technologies Pty Limited
+            © 2020-{new Date().getFullYear()} Corbett Technologies Pty Limited
           </a>
         </span>
       </v-app-bar>
@@ -88,6 +88,10 @@ a.footer:link {
 
 a.footer:visited {
   color: white !important;
+}
+
+a.footer:hover {
+  scale: 1.04;
 }
 
 @media print {

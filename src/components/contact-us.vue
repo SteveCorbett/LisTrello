@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row align="center">
-      <v-card class="mx-auto overflow-y-auto" max-width="500" border>
+      <v-card class="mx-auto overflow-y-auto mt-6" max-width="500" border>
         <v-card-text xs-12>
           <div>
             Contact Us
@@ -10,10 +10,9 @@
           </div>
           <div class="text--primary">
             <p>
-              Thank you for looking at LisTrello. If you have any comments,
-              ideas, suggestions (good or bad) or find a bug please let us know.
-              Leave your email address if your would like me to reply, or just
-              post anonymously.
+              Thank you for looking at LisTrello. If you have any comments, ideas,
+              suggestions (good or bad) or find a bug please let us know. Leave your email
+              address if your would like me to reply, or just post anonymously.
             </p>
             <v-form
               name="LisTrello-comment"
@@ -49,9 +48,7 @@
                 @click="onSubmit"
                 >Send Comment</v-btn
               >
-              <v-btn block rounded class="button__full" @click="DoCancel"
-                >Cancel</v-btn
-              >
+              <v-btn block rounded class="button__full" @click="DoCancel">Cancel</v-btn>
             </v-form>
           </div>
         </v-card-text>
