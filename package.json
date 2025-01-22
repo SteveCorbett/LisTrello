@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.1.96",
-    "axios": "^1.6.2",
+    "axios": "^1.7.7",
     "floating-vue": "^2.0.0-beta.20",
     "is-mobile": "^3.1.1",
     "moment": "^2.29.4",
@@ -43,7 +43,7 @@
     "netlify-plugin-csp-generator": "^1.5.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
-    "start-server-and-test": "^1.15.4",
+    "start-server-and-test": "^2.0.8",
     "typescript": "~4.7.4",
     "vite": "^4.5.9",
     "vite-plugin-vuetify": "^1.0.2",
