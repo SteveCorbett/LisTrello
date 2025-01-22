@@ -7,7 +7,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/parser",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/parser/LICENSE"
   },
-  "@esbuild/darwin-x64@0.17.19": {
+  "@esbuild/darwin-x64@0.18.20": {
     "licenses": "MIT",
     "repository": "https://github.com/evanw/esbuild",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@esbuild/darwin-x64",
@@ -139,7 +139,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/asynckit",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/asynckit/LICENSE"
   },
-  "axios@1.4.0": {
+  "axios@1.7.2": {
     "licenses": "MIT",
     "repository": "https://github.com/axios/axios",
     "publisher": "Matt Zabriskie",
@@ -189,7 +189,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/delayed-stream",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/delayed-stream/License"
   },
-  "esbuild@0.17.19": {
+  "esbuild@0.18.20": {
     "licenses": "MIT",
     "repository": "https://github.com/evanw/esbuild",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/esbuild",
@@ -225,7 +225,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/floating-vue",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/floating-vue/LICENSE"
   },
-  "follow-redirects@1.15.2": {
+  "follow-redirects@1.15.6": {
     "licenses": "MIT",
     "repository": "https://github.com/follow-redirects/follow-redirects",
     "publisher": "Ruben Verborgh",
@@ -243,7 +243,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/form-data",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/form-data/License"
   },
-  "fsevents@2.3.2": {
+  "fsevents@2.3.3": {
     "licenses": "MIT",
     "repository": "https://github.com/fsevents/fsevents",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/fsevents",
@@ -310,7 +310,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/ms",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/ms/license.md"
   },
-  "nanoid@3.3.6": {
+  "nanoid@3.3.8": {
     "licenses": "MIT",
     "repository": "https://github.com/ai/nanoid",
     "publisher": "Andrey Sitnik",
@@ -387,7 +387,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/proxy-from-env",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/proxy-from-env/LICENSE"
   },
-  "rollup@3.26.0": {
+  "rollup@3.29.5": {
     "licenses": "MIT",
     "repository": "https://github.com/rollup/rollup",
     "publisher": "Rich Harris",
@@ -431,7 +431,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vite-plugin-vuetify",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vite-plugin-vuetify/LICENSE.md"
   },
-  "vite@4.3.9": {
+  "vite@4.5.9": {
     "licenses": "MIT",
     "repository": "https://github.com/vitejs/vite",
     "publisher": "Evan You",

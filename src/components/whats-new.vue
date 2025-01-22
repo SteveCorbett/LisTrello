@@ -42,6 +42,12 @@ export default defineComponent({
   setup() {
     const releases: Release[] = [
       {
+        date: "January 2025",
+        version: "3.0.3",
+        description: "Package Updates",
+        details: ["Technical Improvement: Various package updates"],
+      },
+      {
         date: "February 2023",
         version: "3.0.2",
         description: "Handle Workspaces",
@@ -59,7 +65,7 @@ export default defineComponent({
         description: "Version 3 Upgrade",
         details: [
           "Added button to copy formatted lists to the clipboard on desktop devices. This enables formatted lists to be posted directly into applications, including Excel and Word",
-          "Independant scrolling on options and lists view",
+          "Independent scrolling on options and lists view",
           "Improved layout on hand held devices",
           "Technical Improvement: Upgrade from Vue 2 to Vue 3",
           "Technical Improvement: Upgrade Vuex from 3.6.2 to 4.1.0",
