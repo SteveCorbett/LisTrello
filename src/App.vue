@@ -25,9 +25,9 @@
         app
         density="compact"
       >
-        <span class="text-white ml-6">
+        <span class="text-white ml-6 scale-h">
           <a href="https://www.corbtech.com.au" target="_blank" class="footer">
-            © 2020-{new Date().getFullYear()} Corbett Technologies Pty Limited
+            © 2020-{{ new Date().getFullYear() }} Corbett Technologies Pty Limited
           </a>
         </span>
       </v-app-bar>
@@ -90,7 +90,7 @@ a.footer:visited {
   color: white !important;
 }
 
-a.footer:hover {
+.scale-h:hover {
   scale: 1.04;
 }
 
