@@ -6,11 +6,12 @@
         theme="dark"
         class="noprint d-print-none"
         app
-        density="compact"
+        density="comfortable"
       >
         <v-app-bar-nav-icon
           id="nav-bar-icon"
           aria-label="Open or close the menu"
+          class="border-md border-white"
           @click.stop="drawer = !drawer"
         >
           <v-icon icon="mdi-menu" color="white" size="large"></v-icon>

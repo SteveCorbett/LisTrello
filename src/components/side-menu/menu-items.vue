@@ -1,12 +1,17 @@
 <template>
   <v-list dense>
     <template v-for="(item, index) in menuItems" :key="index">
-      <MenuItem v-if="item.type === MenuItemTypes.LINK" :item="item" />
+      <MenuItem v-if="item.type === MenuItemTypes.LINK" :item="item" class="menuItem" />
       <MenuChangeSizeItem
         v-if="item.type === MenuItemTypes.CHANGE_SIZE"
         :item="item"
+        class="menuItem"
       />
-      <MenuLogoutItem v-if="item.type === MenuItemTypes.LOGOUT" :item="item" />
+      <MenuLogoutItem
+        v-if="item.type === MenuItemTypes.LOGOUT"
+        :item="item"
+        class="menuItem"
+      />
     </template>
   </v-list>
 </template>
@@ -70,9 +75,7 @@ export default defineComponent({
         id: "id-contactUs",
         target: "contactUs",
         title: "Contact Us",
-        tooltips: [
-          "Need to send us a comment, suggestion or idea? Click here...",
-        ],
+        tooltips: ["Need to send us a comment, suggestion or idea? Click here..."],
         iconName: "mdi-email-outline",
         iconAlt: "Contact us icon",
         type: MenuItemTypes.LINK,
@@ -100,3 +103,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.menuItem:hover {
+  transform: scale(1.05);
+  transition: transform 0.4s ease-in-out;
+}
+</style>
