@@ -42,6 +42,12 @@ export default defineComponent({
   setup() {
     const releases: Release[] = [
       {
+        date: "April 2025",
+        version: "3.0.5",
+        description: "Maintenance Release",
+        details: ["Technical Improvement: Various package updates"],
+      },
+      {
         date: "February 2025",
         version: "3.0.4",
         description: "Maintenance Release",
