@@ -1,6 +1,6 @@
 {
   "name": "listrello3",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "license": "MIT",
   "private": true,
   "author": "Stephen Corbett",
@@ -12,7 +12,7 @@
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
     "lint-fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "postinstall": "license-checker --production --json  --excludePackages 'listrello3@3.0.1' > ./src/assets/licences.json",
+    "postinstall": "license-checker --production --json  --excludePackages 'listrello3@3.0.5' > ./src/assets/licences.json",
     "test:e2e": "start-server-and-test preview :4173 'cypress run --e2e --browser chrome'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'"
   },
@@ -22,7 +22,7 @@
     "floating-vue": "^2.0.0-beta.20",
     "is-mobile": "^3.1.1",
     "moment": "^2.29.4",
-    "vue": "^3.2.45",
+    "vue": "^3.5.13",
     "vue-router": "^4.1.6",
     "vuetify": "^3.1.11",
     "vuex": "^4.1.0"
