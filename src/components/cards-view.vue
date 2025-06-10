@@ -2,7 +2,7 @@
   <v-card ref="root" variant="outlined" class="pa-2 noprint">
     <div class="justify-end d-none d-md-flex">
       <v-btn
-        v-tooltip="{ content: copyToolTip, triggers: ['hover'] }"
+        v-tooltip="copyToolTip"
         density="compact"
         width="24px"
         min-width="24px"
@@ -18,23 +18,11 @@
       </h1>
       <span v-if="board.dateLastActivity && options.showDates">
         Last Updated:
-        {{
-          filters.dateDisplay(
-            board.dateLastActivity,
-            options.useLocalDateFormat
-          )
-        }}
+        {{ filters.dateDisplay(board.dateLastActivity, options.useLocalDateFormat) }}
         <br />
       </span>
-      <div
-        v-if="
-          options.showDescriptions && board.desc != null && board.desc != ''
-        "
-      >
-        <span
-          v-for="(descLine, ix) in board.descLines"
-          :key="board.id + 'S' + ix"
-        >
+      <div v-if="options.showDescriptions && board.desc != null && board.desc != ''">
+        <span v-for="(descLine, ix) in board.descLines" :key="board.id + 'S' + ix">
           {{ descLine }}
           <br />
         </span>
@@ -54,12 +42,7 @@
             class="Text ml-5 indented"
           >
             - Last Activity:
-            {{
-              filters.dateDisplay(
-                card.dateLastActivity,
-                options.useLocalDateFormat
-              )
-            }}
+            {{ filters.dateDisplay(card.dateLastActivity, options.useLocalDateFormat) }}
           </div>
           <div v-if="options.showDates && card.due" class="Text ml-5 indented">
             - Due Date:
@@ -78,10 +61,7 @@
             v-if="options.showDescriptions && card.desc != ''"
             class="ml-4 mb-3 indented"
           >
-            <span
-              v-for="(descLine, ix) in card.descLines"
-              :key="card.id + 'S' + ix"
-            >
+            <span v-for="(descLine, ix) in card.descLines" :key="card.id + 'S' + ix">
               {{ descLine }}
               <br />
             </span>
