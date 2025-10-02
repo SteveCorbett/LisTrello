@@ -1,5 +1,5 @@
 {
-  "@babel/helper-string-parser@7.25.9": {
+  "@babel/helper-string-parser@7.27.1": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -7,7 +7,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/helper-string-parser",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/helper-string-parser/LICENSE"
   },
-  "@babel/helper-validator-identifier@7.25.9": {
+  "@babel/helper-validator-identifier@7.27.1": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -15,7 +15,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/helper-validator-identifier",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/helper-validator-identifier/LICENSE"
   },
-  "@babel/parser@7.27.0": {
+  "@babel/parser@7.28.4": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -23,7 +23,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/parser",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/parser/LICENSE"
   },
-  "@babel/types@7.27.0": {
+  "@babel/types@7.28.4": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -31,13 +31,13 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/types",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@babel/types/LICENSE"
   },
-  "@esbuild/darwin-x64@0.18.20": {
+  "@esbuild/darwin-x64@0.21.5": {
     "licenses": "MIT",
     "repository": "https://github.com/evanw/esbuild",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@esbuild/darwin-x64",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@esbuild/darwin-x64/README.md"
   },
-  "@floating-ui/core@1.3.1": {
+  "@floating-ui/core@1.7.3": {
     "licenses": "MIT",
     "repository": "https://github.com/floating-ui/floating-ui",
     "publisher": "atomiks",
@@ -51,14 +51,22 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@floating-ui/dom",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@floating-ui/dom/LICENSE"
   },
-  "@jridgewell/sourcemap-codec@1.5.0": {
+  "@floating-ui/utils@0.2.10": {
     "licenses": "MIT",
-    "repository": "https://github.com/jridgewell/sourcemap-codec",
-    "publisher": "Rich Harris",
+    "repository": "https://github.com/floating-ui/floating-ui",
+    "publisher": "atomiks",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@floating-ui/utils",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@floating-ui/utils/LICENSE"
+  },
+  "@jridgewell/sourcemap-codec@1.5.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jridgewell/sourcemaps",
+    "publisher": "Justin Ridgewell",
+    "email": "justin@ridgewell.name",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@jridgewell/sourcemap-codec",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@jridgewell/sourcemap-codec/LICENSE"
   },
-  "@mdi/font@7.2.96": {
+  "@mdi/font@7.4.47": {
     "licenses": "Apache-2.0",
     "repository": "https://github.com/Templarian/MaterialDesign-Webfont",
     "publisher": "Austin Andrews",
@@ -66,82 +74,95 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@mdi/font",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@mdi/font/LICENSE"
   },
-  "@types/node@18.18.4": {
+  "@rollup/rollup-darwin-x64@4.52.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/rollup/rollup",
+    "publisher": "Lukas Taegert-Atkinson",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@rollup/rollup-darwin-x64",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@rollup/rollup-darwin-x64/README.md"
+  },
+  "@types/estree@1.0.8": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@types/estree",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@types/estree/LICENSE"
+  },
+  "@types/node@18.19.129": {
     "licenses": "MIT",
     "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@types/node",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@types/node/LICENSE"
   },
-  "@vue/compiler-core@3.5.13": {
+  "@vue/compiler-core@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/compiler-core",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/compiler-core/LICENSE"
   },
-  "@vue/compiler-dom@3.5.13": {
+  "@vue/compiler-dom@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/compiler-dom",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/compiler-dom/LICENSE"
   },
-  "@vue/compiler-sfc@3.5.13": {
+  "@vue/compiler-sfc@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/compiler-sfc",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/compiler-sfc/LICENSE"
   },
-  "@vue/compiler-ssr@3.5.13": {
+  "@vue/compiler-ssr@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/compiler-ssr",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/compiler-ssr/LICENSE"
   },
-  "@vue/devtools-api@6.5.0": {
+  "@vue/devtools-api@6.6.4": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/vue-devtools",
     "publisher": "Guillaume Chau",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/devtools-api"
   },
-  "@vue/reactivity@3.5.13": {
+  "@vue/reactivity@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/reactivity",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/reactivity/LICENSE"
   },
-  "@vue/runtime-core@3.5.13": {
+  "@vue/runtime-core@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/runtime-core",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/runtime-core/LICENSE"
   },
-  "@vue/runtime-dom@3.5.13": {
+  "@vue/runtime-dom@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/runtime-dom",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/runtime-dom/LICENSE"
   },
-  "@vue/server-renderer@3.5.13": {
+  "@vue/server-renderer@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/server-renderer",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/server-renderer/LICENSE"
   },
-  "@vue/shared@3.5.13": {
+  "@vue/shared@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/shared",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/@vue/shared/LICENSE"
   },
-  "@vuetify/loader-shared@1.7.1": {
+  "@vuetify/loader-shared@2.1.1": {
     "licenses": "MIT",
     "repository": "https://github.com/vuetifyjs/vuetify-loader",
     "publisher": "Kael Watts-Deuchar",
@@ -156,12 +177,20 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/asynckit",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/asynckit/LICENSE"
   },
-  "axios@1.9.0": {
+  "axios@1.12.2": {
     "licenses": "MIT",
     "repository": "https://github.com/axios/axios",
     "publisher": "Matt Zabriskie",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/axios",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/axios/LICENSE"
+  },
+  "call-bind-apply-helpers@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ljharb/call-bind-apply-helpers",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/call-bind-apply-helpers",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/call-bind-apply-helpers/LICENSE"
   },
   "combined-stream@1.0.8": {
     "licenses": "MIT",
@@ -172,15 +201,6 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/combined-stream",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/combined-stream/License"
   },
-  "commondir@1.0.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/substack/node-commondir",
-    "publisher": "James Halliday",
-    "email": "mail@substack.net",
-    "url": "http://substack.net",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/commondir",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/commondir/LICENSE"
-  },
   "csstype@3.1.3": {
     "licenses": "MIT",
     "repository": "https://github.com/frenic/csstype",
@@ -189,7 +209,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/csstype",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/csstype/LICENSE"
   },
-  "debug@4.4.0": {
+  "debug@4.4.3": {
     "licenses": "MIT",
     "repository": "https://github.com/debug-js/debug",
     "publisher": "Josh Junon",
@@ -206,6 +226,14 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/delayed-stream",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/delayed-stream/License"
   },
+  "dunder-proto@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/es-shims/dunder-proto",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/dunder-proto",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/dunder-proto/LICENSE"
+  },
   "entities@4.5.0": {
     "licenses": "BSD-2-Clause",
     "repository": "https://github.com/fb55/entities",
@@ -214,7 +242,39 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/entities",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/entities/LICENSE"
   },
-  "esbuild@0.18.20": {
+  "es-define-property@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ljharb/es-define-property",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/es-define-property",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/es-define-property/LICENSE"
+  },
+  "es-errors@1.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ljharb/es-errors",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/es-errors",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/es-errors/LICENSE"
+  },
+  "es-object-atoms@1.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ljharb/es-object-atoms",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/es-object-atoms",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/es-object-atoms/LICENSE"
+  },
+  "es-set-tostringtag@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/es-shims/es-set-tostringtag",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/es-set-tostringtag",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/es-set-tostringtag/LICENSE"
+  },
+  "esbuild@0.21.5": {
     "licenses": "MIT",
     "repository": "https://github.com/evanw/esbuild",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/esbuild",
@@ -227,22 +287,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/estree-walker",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/estree-walker/LICENSE"
   },
-  "find-cache-dir@3.3.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/avajs/find-cache-dir",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/find-cache-dir",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/find-cache-dir/license"
-  },
-  "find-up@4.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/find-up",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/node_modules/find-up",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/node_modules/find-up/license"
-  },
-  "floating-vue@2.0.0-beta.24": {
+  "floating-vue@2.0.0": {
     "licenses": "MIT",
     "repository": "https://github.com/Akryum/floating-vue",
     "publisher": "Guillaume Chau",
@@ -250,7 +295,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/floating-vue",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/floating-vue/LICENSE"
   },
-  "follow-redirects@1.15.6": {
+  "follow-redirects@1.15.11": {
     "licenses": "MIT",
     "repository": "https://github.com/follow-redirects/follow-redirects",
     "publisher": "Ruben Verborgh",
@@ -259,7 +304,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/follow-redirects",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/follow-redirects/LICENSE"
   },
-  "form-data@4.0.0": {
+  "form-data@4.0.4": {
     "licenses": "MIT",
     "repository": "https://github.com/form-data/form-data",
     "publisher": "Felix Geisendörfer",
@@ -268,11 +313,63 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/form-data",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/form-data/License"
   },
-  "fsevents@2.3.3": {
+  "function-bind@1.1.2": {
     "licenses": "MIT",
-    "repository": "https://github.com/fsevents/fsevents",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/fsevents",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/fsevents/LICENSE"
+    "repository": "https://github.com/Raynos/function-bind",
+    "publisher": "Raynos",
+    "email": "raynos2@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/function-bind",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/function-bind/LICENSE"
+  },
+  "get-intrinsic@1.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ljharb/get-intrinsic",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/get-intrinsic",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/get-intrinsic/LICENSE"
+  },
+  "get-proto@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ljharb/get-proto",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/get-proto",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/get-proto/LICENSE"
+  },
+  "gopd@1.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ljharb/gopd",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/gopd",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/gopd/LICENSE"
+  },
+  "has-symbols@1.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/inspect-js/has-symbols",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "url": "http://ljharb.codes",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/has-symbols",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/has-symbols/LICENSE"
+  },
+  "has-tostringtag@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/inspect-js/has-tostringtag",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "url": "http://ljharb.codes",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/has-tostringtag",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/has-tostringtag/LICENSE"
+  },
+  "hasown@2.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/inspect-js/hasOwn",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/hasown",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/hasown/LICENSE"
   },
   "is-mobile@3.1.1": {
     "licenses": "MIT",
@@ -291,30 +388,20 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/README.md"
   },
-  "locate-path@5.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/locate-path",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/node_modules/locate-path",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/node_modules/locate-path/license"
-  },
-  "magic-string@0.30.17": {
+  "magic-string@0.30.19": {
     "licenses": "MIT",
     "repository": "https://github.com/rich-harris/magic-string",
     "publisher": "Rich Harris",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/magic-string",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/magic-string/LICENSE"
   },
-  "make-dir@3.1.0": {
+  "math-intrinsics@1.1.0": {
     "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/make-dir",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/make-dir",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/make-dir/license"
+    "repository": "https://github.com/es-shims/math-intrinsics",
+    "publisher": "Jordan Harband",
+    "email": "ljharb@gmail.com",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/math-intrinsics",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/math-intrinsics/LICENSE"
   },
   "mime-db@1.52.0": {
     "licenses": "MIT",
@@ -328,7 +415,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/mime-types",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/mime-types/LICENSE"
   },
-  "moment@2.29.4": {
+  "moment@2.30.1": {
     "licenses": "MIT",
     "repository": "https://github.com/moment/moment",
     "publisher": "Iskren Ivov Chernev",
@@ -343,49 +430,13 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/ms",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/ms/license.md"
   },
-  "nanoid@3.3.8": {
+  "nanoid@3.3.11": {
     "licenses": "MIT",
     "repository": "https://github.com/ai/nanoid",
     "publisher": "Andrey Sitnik",
     "email": "andrey@sitnik.ru",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/nanoid",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/nanoid/LICENSE"
-  },
-  "p-limit@2.3.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/p-limit",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/node_modules/p-limit",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/node_modules/p-limit/license"
-  },
-  "p-locate@4.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/p-locate",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/node_modules/p-locate",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/node_modules/p-locate/license"
-  },
-  "p-try@2.2.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/p-try",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/p-try",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/p-try/license"
-  },
-  "path-exists@4.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/path-exists",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/path-exists",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/path-exists/license"
   },
   "picocolors@1.1.1": {
     "licenses": "ISC",
@@ -394,16 +445,7 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/picocolors",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/picocolors/LICENSE"
   },
-  "pkg-dir@4.2.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/pkg-dir",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/pkg-dir/license"
-  },
-  "postcss@8.5.3": {
+  "postcss@8.5.6": {
     "licenses": "MIT",
     "repository": "https://github.com/postcss/postcss",
     "publisher": "Andrey Sitnik",
@@ -420,19 +462,12 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/proxy-from-env",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/proxy-from-env/LICENSE"
   },
-  "rollup@3.29.5": {
+  "rollup@4.52.3": {
     "licenses": "MIT",
     "repository": "https://github.com/rollup/rollup",
     "publisher": "Rich Harris",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/rollup",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/rollup/LICENSE.md"
-  },
-  "semver@6.3.1": {
-    "licenses": "ISC",
-    "repository": "https://github.com/npm/node-semver",
-    "publisher": "GitHub Inc.",
-    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/make-dir/node_modules/semver",
-    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/make-dir/node_modules/semver/LICENSE"
   },
   "source-map-js@1.2.1": {
     "licenses": "BSD-3-Clause",
@@ -449,6 +484,12 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/typescript",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/typescript/LICENSE.txt"
   },
+  "undici-types@5.26.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodejs/undici",
+    "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/undici-types",
+    "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/undici-types/README.md"
+  },
   "upath@2.0.1": {
     "licenses": "MIT",
     "repository": "https://github.com/anodynos/upath",
@@ -457,14 +498,14 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/upath",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/upath/LICENSE"
   },
-  "vite-plugin-vuetify@1.0.2": {
+  "vite-plugin-vuetify@2.1.2": {
     "licenses": "MIT",
     "repository": "https://github.com/vuetifyjs/vuetify-loader",
     "publisher": "Kael Watts-Deuchar",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vite-plugin-vuetify",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vite-plugin-vuetify/LICENSE.md"
   },
-  "vite@4.5.14": {
+  "vite@5.4.20": {
     "licenses": "MIT",
     "repository": "https://github.com/vitejs/vite",
     "publisher": "Evan You",
@@ -479,20 +520,22 @@
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vue-resize",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vue-resize/README.md"
   },
-  "vue-router@4.2.2": {
+  "vue-router@4.5.1": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/router",
+    "publisher": "Eduardo San Martin Morote",
+    "email": "posva13@gmail.com",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vue-router",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vue-router/LICENSE"
   },
-  "vue@3.5.13": {
+  "vue@3.5.22": {
     "licenses": "MIT",
     "repository": "https://github.com/vuejs/core",
     "publisher": "Evan You",
     "path": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vue",
     "licenseFile": "/Users/Steve/Documents/RAD Studio/Projects/Vue/LisTrello/node_modules/vue/LICENSE"
   },
-  "vuetify@3.3.6": {
+  "vuetify@3.10.4": {
     "licenses": "MIT",
     "repository": "https://github.com/vuetifyjs/vuetify",
     "publisher": "John Leider",

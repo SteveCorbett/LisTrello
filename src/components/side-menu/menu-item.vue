@@ -1,7 +1,7 @@
 <template>
   <v-list-item
     :id="item.id"
-    v-tooltip.top-end="tooltips[0]"
+    :v-tooltip="tooltips[0]"
     link
     :disabled="getDisabled()"
     role="menuitem"

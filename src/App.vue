@@ -92,7 +92,7 @@ a.footer:visited {
 }
 
 .scale-h:hover {
-  scale: 1.04;
+  scale: 1.01;
 }
 
 @media print {

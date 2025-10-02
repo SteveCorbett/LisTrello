@@ -1,5 +1,5 @@
 <template>
-  <v-list dense>
+  <v-list dense role="menu">
     <template v-for="(item, index) in menuItems" :key="index">
       <MenuItem v-if="item.type === MenuItemTypes.LINK" :item="item" class="menuItem" />
       <MenuChangeSizeItem
@@ -106,7 +106,7 @@ export default defineComponent({
 
 <style scoped>
 .menuItem:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   transition: transform 0.4s ease-in-out;
 }
 </style>
