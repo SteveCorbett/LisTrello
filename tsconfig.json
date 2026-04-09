@@ -1,21 +1,14 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "exclude": ["src/**/*.d.ts"],
   "compilerOptions": {
-    // "baseUrl": ".",
-    // "paths": {
-    //   "@/*": ["./src/*"]
-    // },
-    "allowJs": true,
-    "moduleResolution": "bundler"
-  },
-
-  "references": [
-    {
-      "path": "./tsconfig.config.json"
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
     },
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ]
+    "allowJs": true,
+    "moduleResolution": "bundler",
+    "resolvePackageJsonExports": false
+  }
 }
