@@ -23,7 +23,7 @@
     "axios": "^1.20.0",
     "floating-vue": "^5.2.2",
     "is-mobile": "^5.0.0",
-    "moment": "^2.29.4",
+    "moment": "^2.31.0",
     "vue": "^3.5.41",
     "vue-router": "^5.3.0",
     "vuetify": "^3.13.2",
