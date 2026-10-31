@@ -30,7 +30,7 @@
     "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@cypress/vue": "^7.0.0",
+    "@cypress/vue": "^7.0.1",
     "@rushstack/eslint-patch": "^1.16.1",
     "@types/node": "^26.6.5",
     "@vitejs/plugin-vue": "^6.0.8",
